@@ -92,6 +92,13 @@ body {
    border-radius: 100%;
 }
 
+.container-fluid {
+   background-color: #ffffff;
+   /* color: #ffffff; */
+   width: 100%;
+   border-radius: 0 0 8px 8px;
+}
+
 main {
    min-height: 100vh;
    width: 80vw;
@@ -134,10 +141,6 @@ main .navbar .fw-semibold {
    font-style: normal;
    font-weight: 400;
    line-height: normal;
-}
-
-.dropdown {
-   color: transparent;
 }
 
 @media screen and (max-width: 1289px) {
