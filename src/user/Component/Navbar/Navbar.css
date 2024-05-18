@@ -1,0 +1,20 @@
+.image-logo {
+   max-width: 200px;
+}
+
+.nav-item {
+   margin-right: 30px;
+}
+
+/* scrool navbar */
+.navbar {
+   background-color: transparent !important; /* Atur latar belakang navbar menjadi transparan */
+   transition: background-color 0.3s ease; /* Tambahkan transisi agar perubahan latar belakang terlihat lebih halus */
+   border-bottom: 8px solid transparent; /* Atur border bottom menjadi transparan */
+}
+
+/* Atur latar belakang navbar menjadi gelap ketika digulir */
+.navbar.scrolled {
+   background-color: #343a40; /* Warna latar belakang yang diinginkan saat navbar digulir */
+   border-bottom-color: #FEB941; /* Warna border bottom yang diinginkan saat navbar digulir */
+}

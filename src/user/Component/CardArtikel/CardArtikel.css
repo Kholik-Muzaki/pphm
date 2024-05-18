@@ -1,0 +1,15 @@
+.container .row .card {
+   margin-top: 15px;
+}
+
+.container .row .card {
+   height: auto;
+}
+
+.card-body {
+   height: 250px;
+}
+
+.read-more {
+   text-decoration: none;
+}

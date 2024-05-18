@@ -1,0 +1,8 @@
+.name-text {
+    color: black;
+    font-weight: bold;
+}
+
+.name-text p {
+    margin-top: 5px;
+}
