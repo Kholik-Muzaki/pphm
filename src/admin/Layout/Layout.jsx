@@ -37,13 +37,13 @@ function Layout({ children, titlePage }) {
                             <SidebarItem
                                 icon={<i className='bx bxs-dashboard bx-sm bx-tada-hover'></i>}
                                 title="Dashboard"
-                                location="#"
+                                location="/admin"
                             />
 
                             <SidebarItem
-                                icon={<i className='bx bxs-bank'></i>}
-                                title="Manage User"
-                                location="#"
+                                icon={<i className='bx bxs-bank bx-sm bx-tada-hover'></i>}
+                                title="Kelola Artikel"
+                                location="/admin/kelola-artikel"
                             />
 
                             <SidebarItem

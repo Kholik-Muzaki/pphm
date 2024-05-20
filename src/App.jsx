@@ -7,6 +7,7 @@ import Artikel from "../src/user/Pages/Artikel/Artikel";
 import Berita from "../src/user/Pages/Berita/Berita";
 import Kontak from "../src/user/Pages/Kontak/Kontak";
 import Dashboard from "./admin/Pages/Dashboard/Dashboard";
+import KelolaArtikel from "./admin/Pages/KelolaArtikel/KelolaArtikel";
 
 function App() {
    return (
@@ -22,6 +23,10 @@ function App() {
 
             {/* Admin */}
             <Route path="/admin" element={<Dashboard />} />
+            <Route path="/admin/kelola-artikel" element={<KelolaArtikel />} />
+
+            {/* Bendahara */}
+            <Route path="/bendahara" element={<Dashboard />} />
          </Routes>
       </Router>
    );

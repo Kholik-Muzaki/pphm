@@ -59,7 +59,7 @@ body {
    background-color: #ebf5ff;
 }
 
-.sidebar .menu .sidebar-link.active {
+.sidebar .menu .sidebar-link {
    background-color: #0085ff;
    color: white;
    border-radius: 12px;
