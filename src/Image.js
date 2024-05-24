@@ -5,6 +5,7 @@ import banner3 from '../src/user/assets/Image/3.jpg'
 import banner from '../src/user/assets/Image/banner.png'
 import berita from '../src/user/assets/Image/Berita.png'
 import adminLogo from '../src/admin/assets/Image/logo-admin.png'
+import imageLogin from '../src/admin/assets/Image/imageLogin.gif'
 
 const image = {
     logo,
@@ -14,6 +15,7 @@ const image = {
     banner,
     berita,
     adminLogo,
+    imageLogin,
 
 }
 
