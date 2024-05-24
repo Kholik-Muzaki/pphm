@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import SidebarItem from "../Component/SideBarItem/SideBarItem";
 import "./Layout.css";
-import Dropdown from "../Component/Dropdown/Dropdown";
 import ModalLogout from "../Component/ModalLogout/ModalLogout";
 import image from "../../Image";
 function Layout({ children, titlePage }) {
@@ -38,12 +37,20 @@ function Layout({ children, titlePage }) {
                             <SidebarItem
                                 icon={<i className='bx bxs-dashboard bx-sm bx-tada-hover'></i>}
                                 title="Dashboard"
-                                location="#"
+                                location="/admin"
                             />
+
+                            <SidebarItem
+                                icon={<i className='bx bxs-bank bx-sm bx-tada-hover'></i>}
+                                title="Kelola Artikel"
+                                location="/admin/kelola-artikel"
+                            />
+
                             <SidebarItem
                                 icon={<i className='bx bxs-bank'></i>}
-                                title="Manage User"
+                                title="Logout"
                                 location="#"
+                                onClick={handleLogoutClick}
                             />
                             <hr className="p-0 m-0" />
                         </ul>
@@ -52,29 +59,18 @@ function Layout({ children, titlePage }) {
             </div>
 
             <main>
-                <nav
-                    id="navbar"
-                    className="navbar bg-transparant d-flex align-items-center justify-content-between"
-                >
-                    <h2 className="fw-semibold">{titlePage}</h2>
-                    <div className="d-flex align-items-center gap-2">
-                        <i className='bx bxs-bell notif-icon'></i>
-                        <Dropdown
-                            className="iconNavbar"
-                            imageSrc={<i className='bx bx-child' ></i>}
-                            dropdownContent={
-                                <>
-                                    <NavLink className="dropdown-item" to="/admin/profile">
-                                        <i className='bx bxs-user-account'></i> Edit Profile
-                                    </NavLink>
-                                    <NavLink className="dropdown-item" onClick={handleLogoutClick}>
-                                        <i className='bx bx-right-arrow-alt' ></i> Logout
-                                    </NavLink>
-                                </>
-                            }
-                        />
+                <div className="container-fluid p-2">
+                    <div className="row">
+                        <div className="col">
+                            <nav
+                                id="navbar"
+                                className="navbar bg-transparant d-flex align-items-center justify-content-between"
+                            >
+                                <h2 className="fw-semibold">{titlePage}</h2>
+                            </nav>
+                        </div>
                     </div>
-                </nav>
+                </div>
                 {children}
 
                 <ModalLogout

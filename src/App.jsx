@@ -7,6 +7,8 @@ import Artikel from "../src/user/Pages/Artikel/Artikel";
 import Berita from "../src/user/Pages/Berita/Berita";
 import Kontak from "../src/user/Pages/Kontak/Kontak";
 import Dashboard from "./admin/Pages/Dashboard/Dashboard";
+import KelolaArtikel from "./admin/Pages/KelolaArtikel/KelolaArtikel";
+import Login from "./admin/Pages/Login/Login";
 
 function App() {
    return (
@@ -20,8 +22,14 @@ function App() {
             <Route path="/berita" element={<Berita />} />
             <Route path="/kontak" element={<Kontak />} />
 
+            {/* Login */}
+            <Route path="/login" element={<Login />} />
             {/* Admin */}
             <Route path="/admin" element={<Dashboard />} />
+            <Route path="/admin/kelola-artikel" element={<KelolaArtikel />} />
+
+            {/* Bendahara */}
+            <Route path="/bendahara" element={<Dashboard />} />
          </Routes>
       </Router>
    );
