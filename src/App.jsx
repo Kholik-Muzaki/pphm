@@ -9,6 +9,7 @@ import Kontak from "../src/user/Pages/Kontak/Kontak";
 import Dashboard from "./admin/Pages/Dashboard/Dashboard";
 import KelolaArtikel from "./admin/Pages/KelolaArtikel/KelolaArtikel";
 import Login from "./admin/Pages/Login/Login";
+import KelolaBerita from "./admin/Pages/KelolaBerita/KelolaBerita";
 
 function App() {
    return (
@@ -27,6 +28,7 @@ function App() {
             {/* Admin */}
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/admin/kelola-artikel" element={<KelolaArtikel />} />
+            <Route path="/admin/kelola-berita" element={<KelolaBerita />} />
 
             {/* Bendahara */}
             <Route path="/bendahara" element={<Dashboard />} />
