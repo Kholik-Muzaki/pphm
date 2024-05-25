@@ -7,19 +7,13 @@ const Login = () => {
 
     const navigate = useNavigate();
     const handleSubmit = (values) => {
-        // alert("Login Success");
-        // alert(formik.values.role)
-        // alert(formik.values.username)
-        // alert(formik.values.password)
-        // navigate("/admin");
-
         const { username, password, role } = values;
-        if (username === "admin" && password === "admin" && role === "Admin") {
+        if (username === import.meta.env.VITE_admin_username && password === import.meta.env.VITE_admin_username && role === "Admin") {
             navigate("/admin");
             alert("Login Success as Admin");
-        } else if (username === "bendahara" && password === "bendahara" && role === "Bendahara") {
+        } else if (username === import.meta.env.VITE_bendahara_username && password === import.meta.env.VITE_bendahara_password && role === "Bendahara") {
             navigate("/bendahara");
-            alert("Login Success as Bendahar");
+            alert("Login Success as Bendahara");
         } else (
             alert("Invalid credentials")
         )
