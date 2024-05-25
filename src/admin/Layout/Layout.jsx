@@ -41,13 +41,19 @@ function Layout({ children, titlePage }) {
                             />
 
                             <SidebarItem
-                                icon={<i className='bx bxs-bank bx-sm bx-tada-hover'></i>}
+                                icon={<i className='bx bxs-book bx-sm bx-tada-hover'></i>}
                                 title="Kelola Artikel"
                                 location="/admin/kelola-artikel"
                             />
 
                             <SidebarItem
-                                icon={<i className='bx bxs-bank'></i>}
+                                icon={<i className='bx bxs-news bx-sm bx-tada-hover'></i>}
+                                title="Kelola Berita"
+                                location="/admin/kelola-berita"
+                            />
+
+                            <SidebarItem
+                                icon={<i className='bx bx-log-out-circle bx-sm bx-tada-hover'></i>}
                                 title="Logout"
                                 location="#"
                                 onClick={handleLogoutClick}

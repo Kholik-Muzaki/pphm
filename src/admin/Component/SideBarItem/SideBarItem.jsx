@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import './SideBarItem.css';
 
 const SidebarItem = ({ icon, title, location, condition, onClick }) => {
     return (
