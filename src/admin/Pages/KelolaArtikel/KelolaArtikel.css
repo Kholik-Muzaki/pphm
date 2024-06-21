@@ -1,7 +1,43 @@
 .container-atas {
-    background-color: #ffffff;
-    border-radius: 8px;
-    margin-top: 35px;
-    padding: 20px 20px;
-    height: auto;
- }
+   background-color: #ffffff;
+   border-radius: 8px;
+   margin-top: 35px;
+   padding: 20px 20px;
+   height: auto;
+}
+
+.thead-dark {
+   background-color: blue;
+}
+
+.table th,
+.table td {
+   text-align: left;
+   vertical-align: middle;
+}
+
+.table th {
+   width: auto;
+}
+
+.table th:nth-child(1) {
+   width: 20%;
+}
+
+.table th:nth-child(2) {
+   width: 15%;
+}
+
+.table th:nth-child(3) {
+   width: 15%;
+}
+
+.table th:nth-child(4) {
+   width: 40%;
+}
+
+.table th:nth-child(5) {
+   width: 10%;
+}
+
+
