@@ -1,55 +1,68 @@
+import React, { useState } from 'react';
 import Layout from "../../Layout/Layout";
 import './KelolaArtikel.css';
-import React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import { articlesData } from '../../../user/data';
 
-function createData(title, author, date, category) {
-    return { title, author, date, category };
-}
-
-const rows = [
-    createData('Understanding React', 'John Doe', '2024-05-20', 'Technology'),
-    createData('Learning JavaScript', 'Jane Smith', '2024-04-18', 'Programming'),
-    createData('Web Development Trends', 'Alice Johnson', '2024-03-22', 'Web Development'),
-];
 const KelolaArtikel = () => {
+    const articlesPerPage = 4; // jumlah artikel per halaman
+    const [currentPage, setCurrentPage] = useState(1);
+
+    // Hitung indeks awal dan akhir artikel untuk halaman yang sedang aktif
+    const indexOfLastArticle = currentPage * articlesPerPage;
+    const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+    const currentArticles = articlesData.slice(indexOfFirstArticle, indexOfLastArticle);
+
+    // Fungsi untuk mengubah halaman
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    const truncateContent = (content, wordLimit) => {
+        const words = content.split(' ');
+        return words.length > wordLimit ? words.slice(0, wordLimit).join(' ') + '...' : content;
+    };
+
     return (
         <>
             <Layout titlePage="Kelola Artikel">
                 <div className="container container-atas">
                     <div className="row">
                         <div className="col-12">
-                            <TableContainer component={Paper}>
-                                <Table sx={{ minWidth: 650 }} aria-label="article table">
-                                    <caption>Kelola Artikel - Manage your articles</caption>
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>Title</TableCell>
-                                            <TableCell align="right">Author</TableCell>
-                                            <TableCell align="right">Date</TableCell>
-                                            <TableCell align="right">Category</TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {rows.map((row) => (
-                                            <TableRow key={row.title}>
-                                                <TableCell component="th" scope="row">
-                                                    {row.title}
-                                                </TableCell>
-                                                <TableCell align="right">{row.author}</TableCell>
-                                                <TableCell align="right">{row.date}</TableCell>
-                                                <TableCell align="right">{row.category}</TableCell>
-                                            </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
+                            <table className="table table-bordered">
+                                <thead className="thead-dark">
+                                    <tr>
+                                        <th style={{ width: '20%' }}>Title</th>
+                                        <th style={{ width: '15%' }}>Author</th>
+                                        <th style={{ width: '15%' }}>Date</th>
+                                        <th style={{ width: '40%' }}>Content</th>
+                                        <th style={{ width: '10%' }}>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {currentArticles.map((article, index) => (
+                                        <tr key={index}>
+                                            <td>{article.Title}</td>
+                                            <td>{article.Author}</td>
+                                            <td>{article.Date}</td>
+                                            <td>{truncateContent(article.Content, 10)}</td>
+                                            <td>
+                                                <button className="btn btn-primary btn-sm mb-2">Edit</button>
+                                                <button className="btn btn-danger btn-sm ml-2">Delete</button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                            {/* Pagination */}
+                            <nav>
+                                <ul className="pagination justify-content-center">
+                                    {Array(Math.ceil(articlesData.length / articlesPerPage)).fill().map((_, index) => (
+                                        <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                                            <button onClick={() => paginate(index + 1)} className="page-link">
+                                                {index + 1}
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -57,4 +70,5 @@ const KelolaArtikel = () => {
         </>
     );
 };
+
 export default KelolaArtikel;

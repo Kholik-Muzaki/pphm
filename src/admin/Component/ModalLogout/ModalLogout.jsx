@@ -8,6 +8,7 @@ const ModalLogout = ({ show, onClose, onSubmit }) => {
     const backdropStyle = {
         display: show ? "block" : "none",
     };
+    
 
     return (
         <>
@@ -23,10 +24,10 @@ const ModalLogout = ({ show, onClose, onSubmit }) => {
                             <p>Pastikan semua pekerjaan telah disimpan sebelum keluar.</p>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-primary" onClick={onClose}>
+                            <button type="button" className="btn btn-outline-primary" onClick={onClose}>
                                 Batal
                             </button>
-                            <button type="button" className="btn btn-outline-primary" onClick={onSubmit}>
+                            <button type="button" className="btn btn-outline-danger" onClick={onSubmit}>
                                 Keluar
                             </button>
                         </div>
