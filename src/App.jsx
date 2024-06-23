@@ -10,11 +10,13 @@ import Dashboard from "./admin/Pages/Dashboard/Dashboard";
 import KelolaArtikel from "./admin/Pages/KelolaArtikel/KelolaArtikel";
 import Login from "./admin/Pages/Login/Login";
 import KelolaBerita from "./admin/Pages/KelolaBerita/KelolaBerita";
+import GaleriFotoVideo from "./user/Pages/Galeri Foto Video/GaleriFotoVideo";
 
 function App() {
    return (
       <Router>
          <Routes>
+            {/* User */}
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/profil-pengasuh" element={<ProfilPengasuh />} />
@@ -22,6 +24,7 @@ function App() {
             <Route path="/artikel" element={<Artikel />} />
             <Route path="/berita" element={<Berita />} />
             <Route path="/kontak" element={<Kontak />} />
+            <Route path="/galeri-foto-video" element={<GaleriFotoVideo />} />
 
             {/* Login */}
             <Route path="/login" element={<Login />} />
