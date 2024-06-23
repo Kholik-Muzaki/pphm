@@ -41,6 +41,12 @@ function Layout({ children, titlePage }) {
                             />
 
                             <SidebarItem
+                                icon={<i className='bx bxs-dashboard bx-sm bx-tada-hover'></i>}
+                                title="Kelola Konten"
+                                location="/admin/kelola-konten"
+                            />
+
+                            <SidebarItem
                                 icon={<i className='bx bxs-book bx-sm bx-tada-hover'></i>}
                                 title="Kelola Artikel"
                                 location="/admin/kelola-artikel"
