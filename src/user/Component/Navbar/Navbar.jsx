@@ -70,6 +70,11 @@ const Navbar = () => {
                         </Link>
                      </li>
                      <li className="nav-item">
+                        <Link to={'/galeri-foto-video'} className="nav-link">
+                           Galeri
+                        </Link>
+                     </li>
+                     <li className="nav-item">
                         <Link to={'/kontak'} className="nav-link">
                            Kontak
                         </Link>
