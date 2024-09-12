@@ -1,0 +1,92 @@
+header {
+   background-color: #222529;
+   color: #fff;
+}
+
+.navbar-brand img {
+   width: 200px;
+   height: auto;
+}
+
+.nav-link {
+   font-weight: 600;
+   text-transform: uppercase;
+   color: #fff !important;
+   padding: 10px 20px;
+   font-size: 18px !important;
+}
+
+.dropdown-item {
+   color: #fff !important;
+}
+
+.navbar-collapse .nav-item {
+   margin-right: 20px;
+}
+
+.nav-item.dropdown > .nav-link::after {
+   content: "\f078";
+   font-family: "Font Awesome 5 Free";
+   font-size: 0.5rem;
+   margin-left: 0.35rem;
+   font-weight: 900;
+   border: none;
+   vertical-align: middle;
+}
+
+.dropdown > .dropdown-menu {
+   background: #191b1d;
+   border: none;
+   border-radius: 0;
+   color: #fff !important;
+}
+
+.navbar-toggler {
+   border: none !important; /* Hilangkan border */
+   background-color: #fff !important; /*Warna toggle putih*/
+   padding: 0; /*Jika diperlukan, hilangkan padding untuk mencegah jarak */
+}
+
+.navbar-toggler-icon {
+   /* Warna toggle putih */
+   border: none; /* Hilangkan border pada icon */
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler:hover {
+   outline: none !important; /* Hilangkan outline saat active/hover/focus */
+   box-shadow: none !important; /* Hilangkan shadow */
+   border: none !important; /* Pastikan border dihilangkan */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+   .dropdown > .dropdown-menu {
+      visibility: hidden;
+      opacity: 0;
+      top: 100%;
+      display: block;
+      transition: all 0.1s ease-out;
+   }
+
+   .dropdown:hover > .dropdown-menu {
+      padding: 20px 0;
+      display: block;
+      visibility: visible;
+      opacity: 1;
+      transition: all 0.3s ease-in-out;
+   }
+}
+
+/* // `lg` applies to medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+   .nav-item.dropdown > .nav-link::after {
+      right: 25px;
+      position: absolute;
+   }
+
+   header {
+      padding-bottom: 10px;
+   }
+}

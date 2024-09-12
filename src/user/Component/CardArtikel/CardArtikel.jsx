@@ -11,8 +11,8 @@ const CardArtikel = ({ data }) => {
                             <div className="card">
                                 <img src={item.image} className="card-img-top" alt="..." />
                                 <div className="card-body">
-                                    <h5 className="card-title">{item.title}</h5>
-                                    <p className="card-text">
+                                    <h5 className="card-title text-dark">{item.title}</h5>
+                                    <p className="card-text text-dark">
                                         {item.text.slice(0, 100)}
                                         <Link to={'/'} className="read-more"> Read More...</Link>
                                     </p>

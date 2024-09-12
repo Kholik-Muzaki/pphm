@@ -1,10 +1,10 @@
 import BannerPage from "../../Component/BannerPage/BannerPage"
-import Navbar from "../../Component/Navbar/Navbar"
+import Navbar2 from "../../Component/Navbar/Navbar2"
 
 const ProfilPengasuh = () => {
     return (
         <>
-            <Navbar />
+            <Navbar2 />
             <BannerPage label="Profil Pengasuh" />
         </>
     )
