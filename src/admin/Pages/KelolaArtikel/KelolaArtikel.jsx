@@ -4,7 +4,7 @@ import './KelolaArtikel.css';
 import { articlesData } from '../../../user/data';
 
 const KelolaArtikel = () => {
-    const articlesPerPage = 4; // jumlah artikel per halaman
+    const articlesPerPage = 5; // jumlah artikel per halaman
     const [currentPage, setCurrentPage] = useState(1);
 
     // Hitung indeks awal dan akhir artikel untuk halaman yang sedang aktif

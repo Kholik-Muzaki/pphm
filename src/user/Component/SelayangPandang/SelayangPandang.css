@@ -3,15 +3,13 @@
    background-color: #1c2331;
    padding: 20px 0;
    color: white;
-   background-image: url('../../assets/Image/bg.png');
+   background-image: url("../../assets/Image/bg.png");
    background-size: cover;
    background-position: center;
-   border-top: 8px solid #FEB941;
-   border-bottom: 8px solid #FEB941;
+   border-top: 8px solid #feb941;
+   border-bottom: 8px solid #feb941;
 }
 
 .selayang-pandang p {
    text-align: justify;
 }
-
-

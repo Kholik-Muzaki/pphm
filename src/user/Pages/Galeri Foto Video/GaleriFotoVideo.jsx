@@ -3,12 +3,12 @@ import Footer from "../../Component/Footer/Footer"
 import AlbumKegiatanHarian from "../../Component/Galeri/AlbumKegiatanHarian"
 import FotoFasilitasPesantren from "../../Component/Galeri/FotoFasilitasPesantren"
 import GaleriAcaraKhusus from "../../Component/Galeri/GaleriAcaraKhusus"
-import Navbar from "../../Component/Navbar/Navbar"
+import Navbar2 from "../../Component/Navbar/Navbar2"
 
 const GaleriFotoVideo = () => {
     return (
         <>
-            <Navbar />
+            <Navbar2 />
             <BannerPage label="Galeri Foto Video" />
             {/* Album kegiatan harian */}
             <h2>Album Kegiatan Harian</h2>

@@ -20,7 +20,7 @@ const SelayangPandang = () => {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-6 text-justify">
+                            <div className="col-sm-12 col-md-12 col-lg-6 text-justify">
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam reiciendis tenetur commodi vitae repellat. Blanditiis accusantium quibusdam ex porro, autem doloribus, error ipsam laborum placeat molestias sapiente obcaecati a iusto?
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia nesciunt voluptatum dolores officiis harum deleniti maxime quidem fugiat accusamus vero a architecto enim molestias aliquid, quia reiciendis, illo eos. Soluta.
@@ -28,13 +28,12 @@ const SelayangPandang = () => {
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia nesciunt voluptatum dolores officiis harum deleniti maxime quidem fugiat accusamus vero a architecto enim molestias aliquid, quia reiciendis, illo eos. Soluta.
                                 </p>
                             </div>
-                            <div className="col-6">
+                            <div className="col-sm-12 col-md-12 col-lg-6">
                                 <iframe
-                                    width="560"
-                                    height="315"
+                                    className='w-100 h-100'
                                     src="https://www.youtube.com/embed/Gof1mFhfzNU?autoplay=1&controls=0"
                                     title="YouTube Live Player"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen
                                 ></iframe>
                             </div>

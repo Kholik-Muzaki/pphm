@@ -11,6 +11,7 @@ import KelolaArtikel from "./admin/Pages/KelolaArtikel/KelolaArtikel";
 import Login from "./admin/Pages/Login/Login";
 import KelolaBerita from "./admin/Pages/KelolaBerita/KelolaBerita";
 import GaleriFotoVideo from "./user/Pages/Galeri Foto Video/GaleriFotoVideo";
+import Navbar2 from "./user/Component/Navbar/Navbar2";
 
 function App() {
    return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/berita" element={<Berita />} />
             <Route path="/kontak" element={<Kontak />} />
             <Route path="/galeri-foto-video" element={<GaleriFotoVideo />} />
+            <Route path="navbar" element={<Navbar2 />} />
 
             {/* Login */}
             <Route path="/login" element={<Login />} />
