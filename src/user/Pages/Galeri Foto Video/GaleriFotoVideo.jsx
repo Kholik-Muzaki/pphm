@@ -1,3 +1,4 @@
+import BackToTopButton from "../../Component/BackToTopButton/BackToTopButton"
 import BannerPage from "../../Component/BannerPage/BannerPage"
 import Footer from "../../Component/Footer/Footer"
 import AlbumKegiatanHarian from "../../Component/Galeri/AlbumKegiatanHarian"
@@ -23,6 +24,7 @@ const GaleriFotoVideo = () => {
             <FotoFasilitasPesantren />
 
             <Footer />
+            <BackToTopButton />
 
         </>
     )

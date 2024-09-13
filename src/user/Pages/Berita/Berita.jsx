@@ -1,3 +1,4 @@
+import BackToTopButton from "../../Component/BackToTopButton/BackToTopButton"
 import BannerPage from "../../Component/BannerPage/BannerPage"
 import CardBerita from "../../Component/CardBerita/CardBerita"
 import Footer from "../../Component/Footer/Footer"
@@ -11,6 +12,7 @@ const Berita = () => {
             <BannerPage label="Berita" />
             <CardBerita data={dataBerita} />
             <Footer />
+            <BackToTopButton />
         </>
     )
 }

@@ -66,63 +66,84 @@ export const artikelData = [
         id: 1,
         image: "https://via.placeholder.com/600x400?text=Artikel+1",
         title: "Kegiatan Pembelajaran Tahfidz Al-Quran di Pondok Pesantren Hidayatul Mubtadi'ien",
-        text: "Pondok Pesantren Hidayatul Mubtadi'ien memiliki program pembelajaran Tahfidz Al-Quran yang intensif. Para santri diajarkan untuk menghafal Al-Quran dengan tartil dan tajwid yang baik. Program ini berlangsung setiap hari dan diawasi oleh para ustadz yang berpengalaman dalam bidang tahfidz."
+        text: "Pondok Pesantren Hidayatul Mubtadi'ien memiliki program pembelajaran Tahfidz Al-Quran yang intensif. Para santri diajarkan untuk menghafal Al-Quran dengan tartil dan tajwid yang baik. Program ini berlangsung setiap hari dan diawasi oleh para ustadz yang berpengalaman dalam bidang tahfidz.",
+        date: "2024-09-13",
+        author: "Kholik Muzaki"
     },
     {
         id: 2,
         image: "https://via.placeholder.com/600x400?text=Artikel+2",
         title: "Diskusi Agama: Mendalami Ilmu Keislaman di Pondok Pesantren Hidayatul Mubtadi'ien",
-        text: "Pondok Pesantren Hidayatul Mubtadi'ien sering mengadakan diskusi agama yang bertujuan untuk memperdalam pemahaman santri terhadap ajaran Islam. Diskusi-diskusi ini dipandu oleh kyai terkemuka dan membahas berbagai topik dalam ilmu keislaman."
+        text: "Pondok Pesantren Hidayatul Mubtadi'ien sering mengadakan diskusi agama yang bertujuan untuk memperdalam pemahaman santri terhadap ajaran Islam. Diskusi-diskusi ini dipandu oleh kyai terkemuka dan membahas berbagai topik dalam ilmu keislaman.",
+        date: "2024-09-13",
+        author: "Kholik Muzaki"
     },
     {
         id: 3,
         image: "https://via.placeholder.com/600x400?text=Artikel+3",
         title: "Kegiatan Seni Budaya: Menciptakan Kreativitas di Pondok Pesantren Hidayatul Mubtadi'ien",
-        text: "Pondok Pesantren Hidayatul Mubtadi'ien tidak hanya fokus pada pendidikan agama, tetapi juga memberikan perhatian pada pengembangan seni dan budaya. Setiap tahun, pesantren ini menggelar festival seni dan budaya yang menampilkan bakat-bakat seni santri dalam bidang tari, musik, dan seni rupa."
+        text: "Pondok Pesantren Hidayatul Mubtadi'ien tidak hanya fokus pada pendidikan agama, tetapi juga memberikan perhatian pada pengembangan seni dan budaya. Setiap tahun, pesantren ini menggelar festival seni dan budaya yang menampilkan bakat-bakat seni santri dalam bidang tari, musik, dan seni rupa.",
+        date: "2024-09-13",
+        author: "Kholik Muzaki"
     },
     {
         id: 4,
         image: "https://via.placeholder.com/600x400?text=Artikel+4",
         title: "Kegiatan Keagamaan Rutin di Pondok Pesantren Hidayatul Mubtadi'ien",
-        text: "Pondok Pesantren Hidayatul Mubtadi'ien mengadakan kegiatan keagamaan rutin seperti shalat berjamaah, pengajian kitab kuning, dan kelas-kelas pengajian. Kegiatan ini bertujuan untuk memperkuat keimanan dan ketakwaan santri serta memperdalam pemahaman mereka terhadap ajaran Islam."
+        text: "Pondok Pesantren Hidayatul Mubtadi'ien mengadakan kegiatan keagamaan rutin seperti shalat berjamaah, pengajian kitab kuning, dan kelas-kelas pengajian. Kegiatan ini bertujuan untuk memperkuat keimanan dan ketakwaan santri serta memperdalam pemahaman mereka terhadap ajaran Islam.",
+        date: "2024-09-13",
+        author: "Kholik Muzaki"
     },
     {
         id: 5,
         image: "https://via.placeholder.com/600x400?text=Artikel+5",
         title: "Kegiatan Pendidikan Karakter di Pondok Pesantren Hidayatul Mubtadi'ien",
-        text: "Selain aspek keagamaan, Pondok Pesantren Hidayatul Mubtadi'ien juga menekankan pentingnya pendidikan karakter. Melalui berbagai kegiatan seperti ceramah, tazkiyatun nafs, dan bimbingan rohani, pesantren berupaya membentuk santri yang berakhlak mulia dan mampu menjadi pemimpin yang amanah."
+        text: "Selain aspek keagamaan, Pondok Pesantren Hidayatul Mubtadi'ien juga menekankan pentingnya pendidikan karakter. Melalui berbagai kegiatan seperti ceramah, tazkiyatun nafs, dan bimbingan rohani, pesantren berupaya membentuk santri yang berakhlak mulia dan mampu menjadi pemimpin yang amanah.",
+        date: "2024-09-13",
+        author: "Kholik Muzaki"
     },
     {
         id: 6,
         image: "https://via.placeholder.com/600x400?text=Artikel+6",
         title: "Kegiatan Ekstrakurikuler di Pondok Pesantren Hidayatul Mubtadi'ien",
-        text: "Pondok Pesantren Hidayatul Mubtadi'ien menyediakan berbagai kegiatan ekstrakurikuler untuk mengembangkan bakat dan minat santri. Mulai dari olahraga, seni, hingga kewirausahaan, semua dirancang untuk memberikan kesempatan kepada santri untuk berkembang sesuai dengan potensi mereka."
+        text: "Pondok Pesantren Hidayatul Mubtadi'ien menyediakan berbagai kegiatan ekstrakurikuler untuk mengembangkan bakat dan minat santri. Mulai dari olahraga, seni, hingga kewirausahaan, semua dirancang untuk memberikan kesempatan kepada santri untuk berkembang sesuai dengan potensi mereka.",
+        date: "2024-09-13",
+        author: "Kholik Muzaki"
     },
     {
         id: 7,
         image: "https://via.placeholder.com/600x400?text=Artikel+7",
         title: "Kegiatan Kemasyarakatan di Pondok Pesantren Hidayatul Mubtadi'ien",
-        text: "Pondok Pesantren Hidayatul Mubtadi'ien mendorong santri untuk berkontribusi pada masyarakat melalui berbagai kegiatan kemasyarakatan. Ini termasuk pengabdian kepada masyarakat, program pemberdayaan ekonomi, dan kegiatan sosial lainnya yang bertujuan untuk membentuk santri yang peduli dan bertanggung jawab."
+        text: "Pondok Pesantren Hidayatul Mubtadi'ien mendorong santri untuk berkontribusi pada masyarakat melalui berbagai kegiatan kemasyarakatan. Ini termasuk pengabdian kepada masyarakat, program pemberdayaan ekonomi, dan kegiatan sosial lainnya yang bertujuan untuk membentuk santri yang peduli dan bertanggung jawab.",
+        date: "2024-09-13",
+        author: "Kholik Muzaki"
     },
     {
         id: 8,
         image: "https://via.placeholder.com/600x400?text=Artikel+8",
         title: "Pengembangan Literasi di Pondok Pesantren Hidayatul Mubtadi'ien",
-        text: "Pondok Pesantren Hidayatul Mubtadi'ien juga memberikan perhatian pada pengembangan literasi di antara santri. Melalui program-program seperti perpustakaan, diskusi buku, dan kegiatan menulis, pesantren berupaya meningkatkan minat dan keterampilan literasi santri."
+        text: "Pondok Pesantren Hidayatul Mubtadi'ien juga memberikan perhatian pada pengembangan literasi di antara santri. Melalui program-program seperti perpustakaan, diskusi buku, dan kegiatan menulis, pesantren berupaya meningkatkan minat dan keterampilan literasi santri.",
+        date: "2024-09-13",
+        author: "Kholik Muzaki"
     },
     {
         id: 9,
         image: "https://via.placeholder.com/600x400?text=Artikel+9",
         title: "Pendidikan Kewirausahaan di Pondok Pesantren Hidayatul Mubtadi'ien",
-        text: "Selain pendidikan agama, Pondok Pesantren Hidayatul Mubtadi'ien juga memberikan pelatihan kewirausahaan kepada santri. Tujuannya adalah untuk membekali mereka dengan keterampilan dan pengetahuan yang diperlukan untuk menjadi pengusaha yang sukses di masa depan."
+        text: "Selain pendidikan agama, Pondok Pesantren Hidayatul Mubtadi'ien juga memberikan pelatihan kewirausahaan kepada santri. Tujuannya adalah untuk membekali mereka dengan keterampilan dan pengetahuan yang diperlukan untuk menjadi pengusaha yang sukses di masa depan.",
+        date: "2024-09-13",
+        author: "Kholik Muzaki"
     },
     {
         id: 10,
         image: "https://via.placeholder.com/600x400?text=Artikel+10",
         title: "Peran Teknologi dalam Pendidikan di Pondok Pesantren Hidayatul Mubtadi'ien",
-        text: "Pondok Pesantren Hidayatul Mubtadi'ien tidak ketinggalan dalam memanfaatkan teknologi dalam pendidikan. Mereka menggunakan teknologi untuk meningkatkan kualitas pembelajaran, memberikan akses ke sumber daya pendidikan yang lebih luas, dan mempersiapkan santri untuk menghadapi tantangan masa depan."
+        text: "Pondok Pesantren Hidayatul Mubtadi'ien tidak ketinggalan dalam memanfaatkan teknologi dalam pendidikan. Mereka menggunakan teknologi untuk meningkatkan kualitas pembelajaran, memberikan akses ke sumber daya pendidikan yang lebih luas, dan mempersiapkan santri untuk menghadapi tantangan masa depan.",
+        date: "2024-09-13",
+        author: "Kholik Muzaki"
     }
 ];
+
 
 export const articlesData = [
     {
@@ -143,7 +164,7 @@ export const articlesData = [
         "Date": "2022-11-30",
         "Content": "Digital marketing has undergone a significant transformation in the 21st century, driven by the rapid advancement of technology and changes in consumer behavior. Traditional marketing strategies have given way to more sophisticated, data-driven approaches that leverage the power of social media, search engines, and content marketing. Personalization and customer engagement are now at the core of successful marketing campaigns. Companies are increasingly using big data analytics to understand their customers better and tailor their messages to meet individual preferences. Moreover, the rise of mobile technology has made it essential for businesses to optimize their marketing efforts for mobile devices. As digital marketing continues to evolve, staying ahead of the trends and adopting innovative strategies will be crucial for businesses looking to maintain a competitive edge. The future of digital marketing lies in the seamless integration of technology and creativity, with a focus on delivering value to customers in meaningful and measurable ways."
     },
-    
+
     {
         "Title": "The Impact of Climate Change on Coastal Ecosystems",
         "Author": "Jane Doe",
