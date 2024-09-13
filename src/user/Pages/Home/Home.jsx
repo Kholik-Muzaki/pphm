@@ -1,5 +1,5 @@
 import Alamat from "../../Component/Alamat/Alamat";
-import Caraousel from "../../Component/Caraousel/Caraousel";
+import BackToTopButton from "../../Component/BackToTopButton/BackToTopButton";
 import HeaderMenu from "../../Component/Caraousel/HeaderMenu";
 import Footer from "../../Component/Footer/Footer";
 // import Galeri from "../../Component/Galeri/Galeri";
@@ -18,6 +18,7 @@ const Home = () => {
          {/* <Galeri /> */}
          <Alamat alamat="Alamat" />
          <Footer />
+         <BackToTopButton />
       </>
    );
 };

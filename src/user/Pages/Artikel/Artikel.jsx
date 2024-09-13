@@ -1,3 +1,4 @@
+import BackToTopButton from "../../Component/BackToTopButton/BackToTopButton"
 import BannerPage from "../../Component/BannerPage/BannerPage"
 import CardArtikel from "../../Component/CardArtikel/CardArtikel"
 import Footer from "../../Component/Footer/Footer"
@@ -11,6 +12,7 @@ const Artikel = () => {
         <BannerPage label = "Artikel" />
         <CardArtikel data={artikelData}/>
         <Footer />
+        <BackToTopButton />
         </>
     )
 }
