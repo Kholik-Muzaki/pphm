@@ -6,10 +6,20 @@
    background-image: url("../../assets/Image/bg.png");
    background-size: cover;
    background-position: center;
+   background-attachment: fixed;
    border-top: 8px solid #feb941;
    border-bottom: 8px solid #feb941;
 }
 
+.h1-selayang-pandang {
+   font-size: 30px !important;
+   font-weight: bold;
+   color: #ff9900;
+}
+
 .selayang-pandang p {
    text-align: justify;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 400;
 }

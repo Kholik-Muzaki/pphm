@@ -5,7 +5,7 @@ const Footer = () => {
    return (
       <div className="container-fluid mt-5">
          <footer className="text-center text-lg-start text-white" style={{ backgroundColor: "#1c2331" }}>
-            <section className="d-flex justify-content-between p-4" style={{ backgroundColor: "#FEB941" }}>
+            <section className="d-flex justify-content-between p-4 footer-section-1" style={{ backgroundColor: "#FEB941" }}>
                <div className="me-5">
                   <span>Get connected with us on social networks:</span>
                </div>
@@ -30,15 +30,15 @@ const Footer = () => {
                   </a>
                </div>
             </section>
-            <section className="">
+            <section className="footer-section-2">
                <div className="container text-center text-md-start mt-5">
                   <div className="row mt-3">
-                     <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                     <div className="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
                         <img src={image.logo} alt="logo pphm" height="100px" className="mt-0" />
                         <p className="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui consequuntur nobis debitis. Quaerat est beatae autem atque sint, similique ullam dolor delectus provident accusantium adipisci voluptatem veritatis dolorum ab cumque.</p>
                      </div>
                      <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <h6 className="text-uppercase fw-bold">Link Website</h6>
+                        <h6 className="text-uppercase fw-bold h6-footer">Link Website</h6>
                         <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{ width: 60, backgroundColor: "#7c4dff", height: 2 }} />
                         <p>
                            <a href="#!" className="text-white">
@@ -71,8 +71,8 @@ const Footer = () => {
                            </a>
                         </p>
                      </div>
-                     <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <h6 className="text-uppercase fw-bold">Link Terkait</h6>
+                     <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 className="text-uppercase fw-bold h6-footer">Link Terkait</h6>
                         <hr className="mb-4 mt-0 d-inline-blocFk mx-auto" style={{ width: 60, backgroundColor: "#7c4dff", height: 2 }} />
                         <p>
                            <a href="#!" className="text-white">
@@ -96,7 +96,7 @@ const Footer = () => {
                         </p>
                      </div>
                      <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                        <h6 className="text-uppercase fw-bold">Kontak</h6>
+                        <h6 className="text-uppercase fw-bold h6-footer">Kontak</h6>
                         <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{ width: 60, backgroundColor: "#7c4dff", height: 2 }} />
                         <p>
                            <i className="fas fa-home mr-3" /> Purwokerto Selatan, Banyumas

@@ -2,3 +2,9 @@
    height: 400px;
    width: 100%;
 }
+
+.h1-alamat {
+   color: #ff9900;
+   font-weight: bold;
+   font-size: 30px;
+}
