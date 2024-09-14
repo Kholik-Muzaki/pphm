@@ -6,7 +6,7 @@ const Alamat = (props) => {
          <div className="container-fluid">
             <div className="row">
                <div className="col-12">
-                  <h1 className="fw-bold fs-1 text-center">{props.alamat}</h1>
+                  <h1 className="text-center h1-alamat">{props.alamat}</h1>
                   <hr />
                </div>
             </div>

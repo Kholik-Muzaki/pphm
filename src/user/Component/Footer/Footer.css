@@ -3,11 +3,37 @@
    padding: 0;
 }
 
+.footer-section-2 a {
+   text-decoration: none;
+}
+
+.footer-section-2 a:hover {
+   color: #ff9900 !important;
+}
+
 .text-white {
    text-decoration: none;
    color: red;
 }
 
 .text {
-    text-align: justify;
+   text-align: justify;
 }
+
+.h6-footer {
+   color: #ff9900;
+}
+
+@media screen and (max-width: 576px) {
+   .footer-section-2 {
+      text-align: center;
+   }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+   .footer-section-2 {
+      text-align: center;
+   }
+}
+
+

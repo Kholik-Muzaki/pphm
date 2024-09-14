@@ -10,11 +10,11 @@ const SelayangPandang = () => {
     return (
         <>
             <div data-aos="fade-up" data-aos-duration="2000">
-                <div className="container-fluid selayang-pandang">
+                <div className="container-fluid selayang-pandang mt-3 mb-3">
                     <div className="container">
                         <div className="row">
                             <div className="col">
-                                <h1 className="fw-bold fs-4 text-center">
+                                <h1 className="fw-bold text-center h1-selayang-pandang">
                                     Selayang Pandang <hr />
                                 </h1>
                             </div>
