@@ -33,7 +33,7 @@ const BackToTopButton = () => {
         <div className="back-to-top">
             {isVisible && (
                 <button onClick={scrollToTop} className="back-to-top-button">
-                    <i class='bx bx-chevrons-up bx-fade-up-hover bx-md'></i>
+                    <i className='bx bx-chevrons-up bx-fade-up-hover bx-md'></i>
                 </button>
             )}
         </div>
