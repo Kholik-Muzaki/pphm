@@ -183,6 +183,27 @@ export const articlesData = [
         "Date": "2022-11-30",
         "Content": "Digital marketing has undergone a significant transformation in the 21st century, driven by the rapid advancement of technology and changes in consumer behavior. Traditional marketing strategies have given way to more sophisticated, data-driven approaches that leverage the power of social media, search engines, and content marketing. Personalization and customer engagement are now at the core of successful marketing campaigns. Companies are increasingly using big data analytics to understand their customers better and tailor their messages to meet individual preferences. Moreover, the rise of mobile technology has made it essential for businesses to optimize their marketing efforts for mobile devices. As digital marketing continues to evolve, staying ahead of the trends and adopting innovative strategies will be crucial for businesses looking to maintain a competitive edge. The future of digital marketing lies in the seamless integration of technology and creativity, with a focus on delivering value to customers in meaningful and measurable ways."
     },
+];
+
+export const dataProgramUnggulan = [
+    {
+        "id": 1,
+        "image": "https://via.placeholder.com/600x400?text=Kegiatan+Kemasyarakatan",
+        "title": "Kajian Kitab Kuning",
+        "text": "Pengajian kitab kuning bulanan yang diadakan setiap bulan gunan meningkatkan kesejahteraan masyarakat"
+    },
+    {
+        "id": 2,
+        "image": "https://via.placeholder.com/600x400?text=Kegiatan+Kemasyarakatan",
+        "title": "Kajian Kitab Kuning",
+        "text": "Pengajian kitab kuning tahunan yang diadakan setiap tahun gunan meningkatkan kesejahteraan masyarakat"
+    },
+    {
+        "id": 3,
+        "image": "https://via.placeholder.com/600x400?text=Kegiatan+Kemasyarakatan",
+        "title": "Kajian Kitab Kuning",
+        "text": "Pengajian kitab kuning tahunan yang diadakan setiap tahun gunan meningkatkan kesejahteraan masyarakat"
+    }
 ]
 
 
