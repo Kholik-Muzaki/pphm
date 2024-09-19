@@ -204,6 +204,64 @@ export const dataProgramUnggulan = [
         "title": "Kajian Kitab Kuning",
         "text": "Pengajian kitab kuning tahunan yang diadakan setiap tahun gunan meningkatkan kesejahteraan masyarakat"
     }
+];
+
+export const albums = [
+    {
+        title: 'Album 1',
+        description: 'Keterangan singkat tentang album 1.',
+        images: [
+            {
+                src: 'https://via.placeholder.com/800x400?text=Gambar+1',
+                caption: 'Gambar 1'
+            },
+            {
+                src: 'https://via.placeholder.com/800x400?text=Gambar+2',
+                caption: 'Gambar 2'
+            },
+            {
+                src: 'https://via.placeholder.com/800x400?text=Gambar+3',
+                caption: 'Gambar 3'
+            },
+        ],
+    },
+    {
+        title: 'Album 2',
+        description: 'Keterangan singkat tentang album 2.',
+        images: [
+            {
+                src: 'https://via.placeholder.com/800x400?text=Gambar+4',
+                caption: 'Gambar 4'
+            },
+            {
+                src: 'https://via.placeholder.com/800x400?text=Gambar+5',
+                caption: 'Gambar 5'
+            },
+            {
+                src: 'https://via.placeholder.com/800x400?text=Gambar+6',
+                caption: 'Gambar 6'
+            },
+        ],
+    },
+    {
+        title: 'Album 3',
+        description: 'Keterangan singkat tentang album 3.',
+        images: [
+            {
+                src: 'https://via.placeholder.com/800x400?text=Gambar+7',
+                caption: 'Gambar 7'
+            },
+            {
+                src: 'https://via.placeholder.com/800x400?text=Gambar+8',
+                caption: 'Gambar 8'
+            },
+            {
+                src: 'https://via.placeholder.com/800x400?text=Gambar+9',
+                caption: 'Gambar 9'
+            },
+        ],
+    }
 ]
+
 
 
