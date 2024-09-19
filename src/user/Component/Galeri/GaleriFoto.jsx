@@ -1,4 +1,5 @@
 import React from 'react';
+import './GaleriFoto.css';
 
 const GaleriFoto = ({ album, index }) => {
     return (
@@ -40,8 +41,8 @@ const GaleriFoto = ({ album, index }) => {
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-4 d-flex flex-column justify-content-center">
                     {/* Deskripsi album */}
-                    <h4>Album: {album.title}</h4>
-                    <p>{album.description}</p>
+                    <h4 className='album-title'>Album: {album.title}</h4>
+                    <p className='album-description'>{album.description}</p>
                 </div>
             </div>
             <hr />
