@@ -261,7 +261,35 @@ export const albums = [
             },
         ],
     }
-]
+];
+
+export const linkVideo = [
+    {
+        id: 1,
+        link: "https://www.youtube.com/embed/SA5sFIPAMMc"
+    },
+    {
+        id: 2,
+        link: "https://www.youtube.com/embed/dSG8Gzl0wPo"
+    },
+    {
+        id: 3,
+        link: "https://www.youtube.com/embed/9qRLoS_mETI"
+    },
+    {
+        id: 4,
+        link: "https://www.youtube.com/embed/D3-gtrCLuUw"
+    },
+    {
+        id: 5,
+        link: "https://www.youtube.com/embed/g3wRx9NsphM"
+    },
+    {
+        id: 6,
+        link: "https://www.youtube.com/embed/hxiUeqMoiiE"
+    }
+];
+
 
 
 
