@@ -1,0 +1,58 @@
+.container {
+   padding: 20px;
+}
+
+.carousel-item img {
+   border-radius: 10px; /* Membuat gambar lebih halus */
+}
+
+.album-title {
+   font-size: 24px;
+   font-weight: bold;
+   color: #fff;
+   background-color: #ff9900;
+   padding: 10px 15px;
+   border-radius: 20px;
+   width: fit-content;
+   transition: background-color 0.3s;
+}
+
+.album-title:hover {
+   background-color: #e68a00; /* Warna saat hover */
+}
+
+.album-description {
+   text-align: justify;
+   color: #333; /* Warna teks yang lebih gelap untuk kontras */
+   font-size: 18px;
+   font-weight: 400;
+   line-height: 1.5; /* Meningkatkan keterbacaan */
+}
+
+@media (max-width: 768px) {
+   .album-title {
+      font-size: 20px; /* Mengurangi ukuran font di layar kecil */
+   }
+
+   .album-description {
+      font-size: 16px; /* Mengurangi ukuran font deskripsi di layar kecil */
+   }
+
+   .carousel-item img {
+      height: 300px; /* Mengurangi tinggi gambar di layar kecil */
+   }
+}
+
+@media (max-width: 576px) {
+   .album-title {
+      font-size: 18px; /* Ukuran lebih kecil untuk ponsel */
+   }
+
+   .album-description {
+      font-size: 14px; /* Ukuran lebih kecil untuk ponsel */
+   }
+
+   .carousel-item img {
+      height: 200px; /* Ukuran gambar lebih kecil di ponsel */
+   }
+}
