@@ -1,6 +1,7 @@
 import Alamat from "../../Component/Alamat/Alamat";
 import BackToTopButton from "../../Component/BackToTopButton/BackToTopButton";
 import HeaderMenu from "../../Component/Caraousel/HeaderMenu";
+import FasilitasPesantren from "../../Component/FasilitasPesantren/FasilitasPesantren";
 import Footer from "../../Component/Footer/Footer";
 // import Galeri from "../../Component/Galeri/Galeri";
 import Navbar2 from "../../Component/Navbar/Navbar2";
@@ -17,6 +18,7 @@ const Home = () => {
          <ProfilHome />
          <SelayangPandang />
          {/* <Galeri /> */}
+         <FasilitasPesantren />
          <ProgramUnggulan />
          <Quote />
          <Alamat alamat="Alamat" />

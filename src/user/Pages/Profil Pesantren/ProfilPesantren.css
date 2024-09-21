@@ -1,0 +1,40 @@
+/* src/Pages/ProfilPesantren/ProfilPesantren.css */
+
+/* Style umum */
+.h3-title-profil {
+    font-size: 30px !important;
+    font-weight: bold;
+    color: #ff9900;
+}
+
+.lead {
+   font-size: 1.2rem;
+   line-height: 1.6;
+}
+
+hr {
+   border-top: 2px solid #ddd;
+   width: 60%;
+   margin: 0 auto;
+}
+
+/* Visi dan Misi */
+.vision-mission {
+   text-align: left;
+   font-size: 1.1rem;
+}
+
+.vision-mission ul {
+   padding-left: 20px;
+}
+
+.vision-mission ul li {
+   margin-bottom: 10px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+   .vision-mission ul {
+      padding-left: 15px;
+   }
+}

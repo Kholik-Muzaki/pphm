@@ -1,0 +1,45 @@
+.h3-fasilitas-pesantren {
+   font-size: 30px !important;
+   font-weight: bold;
+   color: #ff9900;
+}
+
+.facility-card {
+   background-color: #f9f9f9;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   text-align: center;
+   height: 300px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.facility-card:hover {
+   transform: translateY(-10px); /* Move the card up slightly */
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+.facility-icon {
+   font-size: 40px;
+   color: #3498db;
+   margin-bottom: 15px;
+   transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.facility-card:hover .facility-icon {
+   color: #1abc9c; /* Change icon color on hover */
+}
+
+.facility-card h5 {
+   font-weight: 600;
+   margin-bottom: 15px;
+}
+
+.facility-card p {
+   font-size: 16px;
+   color: #666;
+   flex-grow: 1;
+}
