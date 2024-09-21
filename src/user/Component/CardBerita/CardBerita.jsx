@@ -1,5 +1,5 @@
-import './CardBerita.css'
 import { Link } from 'react-router-dom'
+import './CardBerita.css'
 
 const CardBerita = ({ data }) => {
     return (
@@ -8,14 +8,19 @@ const CardBerita = ({ data }) => {
                 <div className="row">
                     {data.map(item => (
                         <div key={item.id} className="col-sm-12 col-md-6 col-lg-4">
-                            <div className="card">
+                            <div className="card card-artikel">
                                 <img src={item.image} className="card-img-top" alt="..." />
                                 <div className="card-body">
-                                    <h5 className="card-title">{item.title}</h5>
-                                    <p className="card-text">
-                                        {item.text.slice(0, 100)}
-                                        <Link to={''} className='read-more'><span className='read-more'> Read More ... </span></Link>
+                                    <h5 className="card-title text-title">{item.title}</h5>
+                                    <p className="card-text text-dark">
+                                        {item.text.slice(0, 100)}...
+                                        <br />
                                     </p>
+                                    <Link to={`/berita/${item.id}`} className="read-more"> Read More...</Link>
+                                </div>
+                                <div className="card-footer d-flex justify-content-between">
+                                    <p className='text-footer'>{item.date}</p>
+                                    <p className='text-footer'>Author: {item.author}</p>
                                 </div>
                             </div>
                         </div>
@@ -23,8 +28,7 @@ const CardBerita = ({ data }) => {
                 </div>
             </div>
         </>
-
     )
 }
 
-export default CardBerita
+export default CardBerita;

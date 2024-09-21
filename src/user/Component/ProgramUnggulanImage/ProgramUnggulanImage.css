@@ -1,16 +1,18 @@
-.card {
+.card-program-unggulan {
    border: none !important;
    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3) !important;
    opacity: 1;
-   transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Tambahkan transition */
+   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card:hover {
+.card-program-unggulan:hover {
    background-color: #ff9900;
    opacity: 0.8;
+   transform: scale(1.05);
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
-.card:hover .title-program-unggulan {
+.card-program-unggulan:hover .title-program-unggulan {
    color: #fff !important;
 }
 

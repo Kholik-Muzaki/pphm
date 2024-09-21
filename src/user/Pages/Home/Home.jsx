@@ -6,6 +6,7 @@ import Footer from "../../Component/Footer/Footer";
 import Navbar2 from "../../Component/Navbar/Navbar2";
 import ProfilHome from "../../Component/ProfilHome/ProfilHome";
 import ProgramUnggulan from "../../Component/ProgramUnggulan/ProgramUnggulan";
+import Quote from "../../Component/Quote/Quote";
 import SelayangPandang from "../../Component/SelayangPandang/SelayangPandang";
 const Home = () => {
    return (
@@ -17,6 +18,7 @@ const Home = () => {
          <SelayangPandang />
          {/* <Galeri /> */}
          <ProgramUnggulan />
+         <Quote />
          <Alamat alamat="Alamat" />
          <Footer />
          <BackToTopButton />

@@ -12,6 +12,8 @@ import Login from "./admin/Pages/Login/Login";
 import KelolaBerita from "./admin/Pages/KelolaBerita/KelolaBerita";
 import GaleriFotoVideo from "./user/Pages/Galeri Foto Video/GaleriFotoVideo";
 import Navbar2 from "./user/Component/Navbar/Navbar2";
+import DetailBerita from "./user/Pages/DetailBerita/DetailBerita";
+import DetailArtikel from "./user/Pages/DetailArtikel/DetailArtikel";
 
 function App() {
    return (
@@ -23,7 +25,9 @@ function App() {
             <Route path="/profil-pengasuh" element={<ProfilPengasuh />} />
             <Route path="/profil-pesantren" element={<ProfilPesantren />} />
             <Route path="/artikel" element={<Artikel />} />
+            <Route path="/artikel/:id" element={<DetailArtikel />} />
             <Route path="/berita" element={<Berita />} />
+            <Route path="/berita/:id" element={<DetailBerita />} />
             <Route path="/kontak" element={<Kontak />} />
             <Route path="/galeri-foto-video" element={<GaleriFotoVideo />} />
             <Route path="navbar" element={<Navbar2 />} />

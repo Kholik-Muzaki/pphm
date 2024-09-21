@@ -1,8 +1,23 @@
+.text-kontak {
+   font-size: 30px;
+   font-weight: bold;
+   color: #ff9900;
+}
+
 .name-text {
-    color: black;
-    font-weight: bold;
+   color: #ff9900;
+   font-weight: bold;
+   font-size: 24px;
 }
 
 .name-text p {
-    margin-top: 5px;
+   margin-top: 5px;
+}
+
+.bx {
+   transition: all 0.3s;
+}
+.bx:hover {
+   color: #fff;
+   background-color: #ff9900;
 }

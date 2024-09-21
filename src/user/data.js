@@ -3,61 +3,81 @@ export const dataBerita = [
         id: 1,
         image: "https://via.placeholder.com/600x400?text=Santri+di+Pesantren",
         title: "Pesantren Al-Hikmah Gelar Lomba Tilawah Al-Quran",
-        text: "Pondok Pesantren Al-Hikmah menggelar lomba tilawah Al-Quran sebagai bagian dari kegiatan tahunan mereka. Lomba ini diikuti oleh santri-santri dari berbagai tingkatan dan telah menjadi ajang untuk menampilkan bakat dan keterampilan mereka dalam membaca Al-Quran dengan tartil dan tajwid yang baik. Acara tersebut juga dihadiri oleh para ulama terkemuka yang memberikan motivasi kepada para peserta."
+        text: "Pondok Pesantren Al-Hikmah menggelar lomba tilawah Al-Quran sebagai bagian dari kegiatan tahunan mereka lorem ipsum...Pondok Pesantren Baiturrahman menyelenggarakan diskusi agama yang bertema...",
+        author: "Ustadz Ahmad",
+        date: "2024-09-15"
     },
     {
         id: 2,
         image: "https://via.placeholder.com/600x400?text=Diskusi+Agama",
         title: "Diskusi Agama: Mendalami Makna Hadis dan Aplikasinya dalam Kehidupan Sehari-hari",
-        text: "Pondok Pesantren Baiturrahman menyelenggarakan diskusi agama yang bertema 'Mendalami Makna Hadis dan Aplikasinya dalam Kehidupan Sehari-hari'. Diskusi ini bertujuan untuk memperdalam pemahaman santri terhadap ajaran Islam, khususnya hadis, serta bagaimana mengaplikasikannya dalam kehidupan sehari-hari. Diskusi dihadiri oleh para kyai dan ustadz terkemuka sebagai pembicara."
+        text: "Pondok Pesantren Baiturrahman menyelenggarakan diskusi agama yang bertema...",
+        author: "Ustadzah Fatimah",
+        date: "2024-09-16"
     },
     {
         id: 3,
         image: "https://via.placeholder.com/600x400?text=Festival+Seni+dan+Budaya",
         title: "Festival Seni dan Budaya: Merayakan Keanekaragaman Warisan Budaya di Pondok Pesantren Raudhatul Hasanah",
-        text: "Pondok Pesantren Raudhatul Hasanah menggelar Festival Seni dan Budaya sebagai bagian dari upaya mereka untuk memperkenalkan dan merayakan keanekaragaman warisan budaya di kalangan santri. Festival ini menampilkan berbagai pertunjukan seni tradisional, seperti tari, musik, dan seni rupa, yang berasal dari berbagai daerah di Indonesia. Acara tersebut dihadiri oleh para tokoh budaya serta masyarakat umum yang tertarik untuk mempelajari dan menghargai kekayaan budaya bangsa."
+        text: "Pondok Pesantren Raudhatul Hasanah menggelar Festival Seni dan Budaya...",
+        author: "Ustadz Muhammad",
+        date: "2024-09-17"
     },
     {
         id: 4,
         image: "https://via.placeholder.com/600x400?text=Tahfidz+Al-Quran",
         title: "Tahfidz Al-Quran: Meningkatkan Kualitas Hafalan Santri di Pesantren Bina Ummah",
-        text: "Pesantren Bina Ummah mengadakan program Tahfidz Al-Quran untuk meningkatkan kualitas hafalan santri. Program ini telah membawa hasil yang memuaskan, dengan banyak santri yang mampu menghafal juz-juz Al-Quran dalam waktu yang relatif singkat. Para santri juga dilatih untuk memahami makna dan tafsir ayat-ayat yang mereka hafal, sehingga tidak hanya menguasai hafalan, tetapi juga pemahaman Al-Quran yang mendalam."
+        text: "Pesantren Bina Ummah mengadakan program Tahfidz Al-Quran...",
+        author: "Ustadz Ali",
+        date: "2024-09-18"
     },
     {
         id: 5,
         image: "https://via.placeholder.com/600x400?text=Kegiatan+Ekstrakurikuler",
         title: "Kegiatan Ekstrakurikuler: Mengembangkan Bakat dan Minat Santri di Pesantren Madinatul Ilmi",
-        text: "Pesantren Madinatul Ilmi tidak hanya fokus pada pendidikan agama, tetapi juga mengembangkan bakat dan minat santri melalui berbagai kegiatan ekstrakurikuler. Mulai dari seni, olahraga, kewirausahaan, hingga kegiatan sosial, semua dirancang untuk memberikan kesempatan kepada setiap santri untuk berkembang sesuai dengan potensi yang dimilikinya. Hal ini menjadi salah satu keunggulan pesantren dalam mencetak generasi yang beriman dan berakhlak mulia."
+        text: "Pesantren Madinatul Ilmi tidak hanya fokus pada pendidikan agama...",
+        author: "Ustadzah Zainab",
+        date: "2024-09-19"
     },
     {
         id: 6,
         image: "https://via.placeholder.com/600x400?text=Kajian+Kitab+Kuning",
         title: "Kajian Kitab Kuning: Mendalami Ilmu Keislaman di Pesantren Darul Ulum",
-        text: "Pesantren Darul Ulum rutin mengadakan kajian kitab kuning sebagai bagian dari program pendidikan mereka. Kajian ini bertujuan untuk mendalami ilmu keislaman klasik yang terdapat dalam kitab-kitab klasik Islam. Para santri diajak untuk memahami ajaran-ajaran agama secara mendalam dan mampu mengaplikasikannya dalam kehidupan sehari-hari. Kajian tersebut dipandu oleh para kyai yang ahli dalam bidang ilmu keislaman."
+        text: "Pesantren Darul Ulum rutin mengadakan kajian kitab kuning...",
+        author: "Ustadz Hasan",
+        date: "2024-09-20"
     },
     {
         id: 7,
         image: "https://via.placeholder.com/600x400?text=Kegiatan+Pembinaan+Akhlak",
         title: "Kegiatan Pembinaan Akhlak: Membentuk Karakter Santri di Pesantren Hidayatullah",
-        text: "Pesantren Hidayatullah memiliki program pembinaan akhlak yang bertujuan untuk membentuk karakter santri yang berkualitas. Melalui berbagai kegiatan seperti muhadharah (ceramah), tazkiyatun nafs (penyucian jiwa), dan bimbingan rohani, pesantren berupaya untuk membentuk santri yang taat pada ajaran agama, berakhlak mulia, serta mampu menjadi pemimpin yang amanah dalam masyarakat."
+        text: "Pesantren Hidayatullah memiliki program pembinaan akhlak...",
+        author: "Ustadzah Aisyah",
+        date: "2024-09-21"
     },
     {
         id: 8,
         image: "https://via.placeholder.com/600x400?text=Kegiatan+Pembelajaran",
         title: "Kegiatan Pembelajaran: Menyajikan Metode Pendidikan Terbaik di Pesantren Al-Falah",
-        text: "Pesantren Al-Falah mengusung konsep pembelajaran yang menekankan pada penerapan metode pendidikan terbaik. Para guru yang berkualifikasi dan berpengalaman dirancang untuk memberikan pembelajaran yang efektif dan menyenangkan. Pesantren juga dilengkapi dengan fasilitas pembelajaran yang memadai, seperti perpustakaan dan laboratorium, untuk mendukung proses belajar mengajar yang interaktif dan berkualitas."
+        text: "Pesantren Al-Falah mengusung konsep pembelajaran yang menekankan pada penerapan metode pendidikan terbaik...",
+        author: "Ustadzah Maryam",
+        date: "2024-09-22"
     },
     {
         id: 9,
         image: "https://via.placeholder.com/600x400?text=Kegiatan+Keagamaan",
         title: "Kegiatan Keagamaan: Meningkatkan Ketaatan Beragama Santri di Pesantren An-Nur",
-        text: "Pesantren An-Nur mengadakan berbagai kegiatan keagamaan yang bertujuan untuk meningkatkan ketaatan beragama santri. Mulai dari shalat berjamaah, pengajian rutin, hingga kelas-kelas pengajian kitab kuning, semua dirancang untuk memperkuat keimanan dan ketakwaan santri. Pesantren juga mengundang para ulama dan kyai terkemuka sebagai pembicara untuk memberikan pemahaman agama yang lebih mendalam kepada santri."
+        text: "Pesantren An-Nur mengadakan berbagai kegiatan keagamaan...",
+        author: "Ustadz Yusuf",
+        date: "2024-09-23"
     },
     {
         id: 10,
         image: "https://via.placeholder.com/600x400?text=Kegiatan+Kemasyarakatan",
         title: "Kegiatan Kemasyarakatan: Mendorong Santri untuk Berkontribusi pada Masyarakat di Pesantren Modern",
-        text: "Pesantren Modern mengajarkan pentingnya berkontribusi pada masyarakat melalui berbagai kegiatan kemasyarakatan. Santri diajak untuk aktif dalam kegiatan sosial seperti pengabdian kepada masyarakat, program pemberdayaan ekonomi masyarakat, dan kegiatan-kegiatan kemanusiaan lainnya. Hal ini bertujuan untuk membentuk santri yang tidak hanya cerdas dan beriman, tetapi juga peduli dan bertanggung jawab terhadap lingkungan sekitarnya."
+        text: "Pesantren Modern mengajarkan pentingnya berkontribusi pada masyarakat melalui berbagai kegiatan...",
+        author: "Ustadz Abdullah",
+        date: "2024-09-24"
     }
 ];
 
