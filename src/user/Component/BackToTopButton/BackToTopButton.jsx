@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 const BackToTopButton = () => {
     const [isVisible, setIsVisible] = useState(false);
 
-    // Fungsi untuk memantau scroll dan mengubah visibilitas tombol
     const toggleVisibility = () => {
         if (window.pageYOffset > 300) {
             setIsVisible(true);
@@ -13,8 +12,7 @@ const BackToTopButton = () => {
             setIsVisible(false);
         }
     };
-
-    // Fungsi untuk scroll kembali ke atas
+    
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,

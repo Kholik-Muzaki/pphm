@@ -16,6 +16,14 @@ header {
    font-size: 18px !important;
 }
 
+.nav-link:hover {
+   color: #ff9900 !important;
+   text-decoration-line: overline;
+   text-decoration-color: #fff;
+   text-decoration-style: solid;
+   text-decoration-thickness: 3px;
+}
+
 .dropdown-item {
    color: #fff !important;
 }
@@ -38,6 +46,11 @@ header {
    background: #191b1d;
    border: none;
    border-radius: 0;
+   color: #fff !important;
+}
+
+.dropdown-item:hover {
+   background-color: #ff9900 !important;
    color: #fff !important;
 }
 

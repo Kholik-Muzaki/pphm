@@ -14,3 +14,14 @@ p {
    font-weight: bold;
    color: #ff9900;
 }
+
+.btn-profil {
+   background-color: #ff9900 !important;
+   color: #fff !important;
+   border-radius: 10px;
+   transition: background-color 0.3s;
+}
+
+.btn-profil:hover {
+   background-color: #e68a00 !important;
+}

@@ -1,9 +1,15 @@
-.container .row .card {
+.container .row .card-artikel {
    margin-top: 15px;
 }
 
-.container .row .card {
+.container .row .card-artikel {
    height: auto;
+   transition: scale 0.8s, box-shadow 0.3s;
+}
+
+.card-artikel:hover {
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+   transform: scale(1.05);
 }
 
 .card-body {
@@ -12,4 +18,15 @@
 
 .read-more {
    text-decoration: none;
+}
+
+.text-title {
+   color: #ff9900 !important;
+   font-weight: bold;
+   font-size: 20px;
+}
+
+.text-footer {
+   font-size: 16px;
+   color: #3d3b39;
 }
