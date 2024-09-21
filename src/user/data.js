@@ -310,6 +310,25 @@ export const linkVideo = [
     }
 ];
 
+export const fasilitasPesantren = [
+    {
+        icon: "fas fa-mosque",
+        title: "Masjid",
+        description: "Masjid Al-Hikmah merupakan pusat kegiatan ibadah dan pengajian yang bisa menampung hingga 1000 santri dan jamaah."
+    },
+    {
+        icon: "fas fa-bed",
+        title: "Asrama",
+        description: "Pesantren memiliki asrama yang nyaman dan bersih untuk para santri. Setiap asrama dilengkapi dengan fasilitas yang mendukung kenyamanan."
+    },
+    {
+        icon: "fas fa-book",
+        title: "Perpustakaan",
+        description: "Perpustakaan pesantren menyediakan berbagai koleksi kitab-kitab Islam klasik, buku-buku pelajaran, dan referensi modern yang dapat diakses santri."
+    },
+    // Tambahkan lebih banyak fasilitas sesuai kebutuhan
+];
+
 
 
 
