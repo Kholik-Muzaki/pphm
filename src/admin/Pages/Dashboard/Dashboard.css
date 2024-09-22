@@ -5,61 +5,62 @@
    padding: 20px 20px;
    height: auto;
 }
-.card {
-    width: 100%;
-    color: white !important;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 20px;
+
+.card-dashboard {
+   width: 100%;
+   color: white !important;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   overflow: hidden;
+   font-family: Arial, sans-serif;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   margin-bottom: 20px;
 }
 
 .card-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+   padding: 20px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 .card-number {
-    font-size: 2em;
-    font-weight: bold;
+   font-size: 2em;
+   font-weight: bold;
 }
 
 .card-title {
-    margin: 10px 0;
-    font-size: 1.2em;
+   margin: 10px 0;
+   font-size: 1.2em;
 }
 
 /* Specific background colors for each card */
 .card-transaksi-masuk {
-    background-color: #007bff !important;/* Blue */
+   background-color: #007bff !important; /* Blue */
 }
 
 .card-transaksi-keluar {
-    background-color: #28a745 !important; /* Green */
+   background-color: #28a745 !important; /* Green */
 }
 
 .card-total-pengeluaran {
-    background-color: #dc3545 !important; /* Red */
+   background-color: #dc3545 !important; /* Red */
 }
 
 .card-total-pemasukan {
-    background-color: #ffc107 !important; /* Yellow */
+   background-color: #ffc107 !important; /* Yellow */
 }
 
 .card-sisa-kas {
-    background-color: #17a2b8 !important; /* Teal */
+   background-color: #17a2b8 !important; /* Teal */
 }
 
 .card-jumlah-artikel {
-    background-color: #6f42c1 !important; /* Purple */
+   background-color: #6f42c1 !important; /* Purple */
 }
 
 .card-jumlah-berita {
-    background-color: #fd7e14 !important; /* Orange */
+   background-color: #fd7e14 !important; /* Orange */
 }

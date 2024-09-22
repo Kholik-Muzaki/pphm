@@ -1,31 +1,53 @@
+/* Container atas */
 .container-atas {
-   background-color: #ffffff;
-   border-radius: 8px;
-   margin-top: 35px;
-   padding: 20px 20px;
+   background-color: #f9f9f9;
+   border-radius: 12px;
+   margin-top: 30px;
+   padding: 25px 20px;
+   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
    height: auto;
 }
 
+/* Table heading */
 .thead-dark {
-   background-color: blue;
+   background-color: #4a90e2; /* Biru muda cerah */
+   color: white;
+}
+
+/* Table styles */
+.table {
+   border-collapse: separate;
+   border-spacing: 0 10px; /* Jarak antar baris */
+   width: 100%;
+   background-color: #fff;
 }
 
 .table th,
 .table td {
-   text-align: left;
+   padding: 12px;
    vertical-align: middle;
+   text-align: left;
+   border-bottom: 2px solid #e0e0e0; /* Border bawah baris */
 }
 
 .table th {
-   width: auto;
+   font-weight: bold;
+   text-transform: uppercase;
+   letter-spacing: 0.1em;
+   background-color: #eef3fc; /* Biru muda */
+}
+
+.table td {
+   background-color: #f7fafc; /* Warna lembut untuk isi tabel */
+   border-radius: 8px;
 }
 
 .table th:nth-child(1) {
-   width: 20%;
+   width: 15%;
 }
 
 .table th:nth-child(2) {
-   width: 15%;
+   width: 20%;
 }
 
 .table th:nth-child(3) {
@@ -33,11 +55,63 @@
 }
 
 .table th:nth-child(4) {
-   width: 40%;
+   width: 15%;
 }
 
 .table th:nth-child(5) {
-   width: 10%;
+   width: 30%;
 }
 
+.table td img {
+   border-radius: 6px;
+}
 
+/* Tombol action */
+.table .btn-primary {
+   background-color: #4caf50; /* Hijau cerah */
+   border: none;
+   padding: 6px 12px;
+   border-radius: 4px;
+   font-size: 14px;
+}
+
+.table .btn-danger {
+   background-color: #e74c3c; /* Merah cerah */
+   border: none;
+   padding: 6px 12px;
+   border-radius: 4px;
+   font-size: 14px;
+}
+
+/* Tombol add article */
+.btn-add-article {
+   background-color: #ffcc00; /* Kuning cerah */
+   color: #333;
+   font-weight: bold;
+   border: none;
+   padding: 10px 20px;
+   border-radius: 6px;
+   margin-bottom: 20px;
+   font-size: 16px;
+   transition: background-color 0.3s ease;
+}
+
+.btn-add-article:hover {
+   background-color: #ffdb4d; /* Sedikit lebih cerah */
+}
+
+/* Pagination */
+.pagination .page-item .page-link {
+   background-color: #fff;
+   color: #333;
+   border-radius: 4px;
+   padding: 8px 12px;
+   margin: 0 5px;
+   border: 1px solid #ddd;
+}
+
+.pagination .page-item.active .page-link {
+   background-color: #4a90e2;
+   color: white;
+   border: none;
+}

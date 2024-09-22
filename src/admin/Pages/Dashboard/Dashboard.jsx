@@ -7,9 +7,9 @@ const Dashboard = () => {
         <>
             <Layout titlePage={"Dashboard"}>
                 <div className="container container-atas">
-                    <div className="row">
-                        <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-transaksi-masuk">
+                    <div className="row row-dashboard">
+                        <div className="col-sm-12 col-md-4 col-lg-3 mb-4">
+                            <div className="card card-dashboard card-transaksi-masuk">
                                 <div className="card-content">
                                     <div className="card-number">
                                         <CountUp end={100} duration={2.5} />
@@ -20,7 +20,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-transaksi-keluar">
+                            <div className="card card-dashboard card-transaksi-keluar">
                                 <div className="card-content">
                                     <div className="card-number">
                                         <CountUp end={100} duration={2.5} />
@@ -31,7 +31,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-total-pengeluaran">
+                            <div className="card card-dashboard card-total-pengeluaran">
                                 <div className="card-content">
                                     <div className="card-number">
                                         <CountUp end={100} duration={2.5} />
@@ -42,7 +42,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-total-pemasukan">
+                            <div className="card card-dashboard card-total-pemasukan">
                                 <div className="card-content">
                                     <div className="card-number">
                                         <CountUp end={100} duration={2.5} />
@@ -53,7 +53,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-sisa-kas">
+                            <div className="card card-dashboard card-sisa-kas">
                                 <div className="card-content">
                                     <div className="card-number">
                                         <CountUp end={100} duration={2.5} />
@@ -64,7 +64,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-jumlah-artikel">
+                            <div className="card card-dashboard card-jumlah-artikel">
                                 <div className="card-content">
                                     <div className="card-number">
                                         <CountUp end={100} duration={2.5} />
@@ -75,7 +75,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-jumlah-berita">
+                            <div className="card card-dashboard card-jumlah-berita">
                                 <div className="card-content">
                                     <div className="card-number">
                                         <CountUp end={100} duration={2.5} />

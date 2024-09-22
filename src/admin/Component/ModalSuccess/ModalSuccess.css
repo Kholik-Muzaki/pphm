@@ -1,0 +1,67 @@
+/* Modal overlay dengan background semi transparan */
+.modal-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.6);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 1000;
+}
+
+/* Style modal box */
+.modal-success {
+   background-color: white;
+   border-radius: 15px;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+   padding: 20px;
+   width: 350px;
+   max-width: 90%;
+   text-align: center;
+   position: relative;
+}
+
+/* Konten modal dengan padding */
+.modal-content-success {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+/* Gambar ceklist */
+.modal-icon {
+   width: 80px;
+   height: 80px;
+   margin-bottom: 20px;
+}
+
+/* Modal header dan body */
+.modal-header-success h5 {
+   font-size: 1.5rem;
+   font-weight: bold;
+   margin-bottom: 10px;
+}
+
+.modal-body-success p {
+   font-size: 1rem;
+   color: #555;
+   margin-bottom: 20px;
+}
+
+/* Tombol footer */
+.modal-footer-success .btn {
+   background-color: #28a745;
+   border: none;
+   padding: 10px 20px;
+   font-size: 1rem;
+   border-radius: 10px;
+   color: white;
+   cursor: pointer;
+}
+
+.modal-footer-success .btn:hover {
+   background-color: #218838;
+}

@@ -6,6 +6,7 @@ import banner from '../src/user/assets/Image/banner.png'
 import berita from '../src/user/assets/Image/Berita.png'
 import adminLogo from '../src/admin/assets/Image/logo-admin.png'
 import imageLogin from '../src/admin/assets/Image/imageLogin.gif'
+import sukses from '../src/admin/assets/Image/sukses.png'
 
 const image = {
     logo,
@@ -16,6 +17,7 @@ const image = {
     berita,
     adminLogo,
     imageLogin,
+    sukses
 
 }
 

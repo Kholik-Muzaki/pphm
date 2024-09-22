@@ -24,7 +24,11 @@ const ProfilHome = () => {
                   <div className="col-sm-12 col-md-12 col-lg-6 order-sm-2 order-md-2 order-lg-2">
                      <h2 className="h2-profil-home">Profil Pengasuh</h2>
                      <hr />
-                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit minima sed culpa nesciunt? Quia sequi aliquam et aperiam illum dolores quasi, molestias iusto similique placeat esse expedita nemo numquam, sapiente doloremque. Facere incidunt ullam totam corrupti voluptas mollitia praesentium necessitatibus esse ipsa? Velit nulla officiis tempora harum sequi optio laborum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem est itaque hic, soluta maxime minima repellat magni tempora molestias impedit laudantium quas blanditiis ducimus at. Veniam ad numquam fuga sed. Culpa suscipit repellat dolorum accusantium, enim, in a libero blanditiis sequi cum eligendi autem eos ab ipsa nisi delectus iusto.</p>
+                     <p>
+                        KH. Ahmad Maulana merupakan pengasuh Pondok Pesantren Al-Hikmah yang telah berdedikasi dalam dunia pendidikan Islam selama lebih dari 30 tahun. Dengan pengalaman yang luas dalam membina santri, beliau berperan aktif dalam menyebarkan ajaran Islam yang rahmatan lil alamin dan membimbing santri-santrinya menjadi insan yang berakhlak mulia.
+
+                        Latar belakang pendidikan beliau mencakup pendidikan formal di dalam dan luar negeri, termasuk studi keislaman di Universitas Al-Azhar, Mesir. Selain itu, beliau juga aktif sebagai tokoh ulama dalam berbagai forum dakwah internasional dan memiliki komitmen untuk membangun generasi muda muslim yang berkualitas.
+                     </p>
                      <Link to='/profil-pengasuh' className="text-decoration-none">
                         <button className="btn d-flex justify-content-center align-items-center flex-row btn-profil">
                            Baca Selengkapnya
@@ -41,7 +45,11 @@ const ProfilHome = () => {
                   <div className="col-sm-12 col-md-12 col-lg-6 order-sm-2 order-md-2 order-lg-1">
                      <h2 className="h2-profil-home">Profil Pesantren</h2>
                      <hr />
-                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit minima sed culpa nesciunt? Quia sequi aliquam et aperiam illum dolores quasi, molestias iusto similique placeat esse expedita nemo numquam, sapiente doloremque. Facere incidunt ullam totam corrupti voluptas mollitia praesentium necessitatibus esse ipsa? Velit nulla officiis tempora harum sequi optio laborum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem est itaque hic, soluta maxime minima repellat magni tempora molestias impedit laudantium quas blanditiis ducimus at. Veniam ad numquam fuga sed. Culpa suscipit repellat dolorum accusantium, enim, in a libero blanditiis sequi cum eligendi autem eos ab ipsa nisi delectus iusto.</p>
+                     <p>
+                        Pesantren Al-Hikmah didirikan pada tahun 1980 oleh KH. Ahmad Maulana dengan tujuan untuk memberikan pendidikan agama yang komprehensif kepada generasi muda. Seiring waktu, pesantren ini berkembang menjadi salah satu lembaga pendidikan Islam terkemuka, dengan ribuan santri dari seluruh Indonesia.
+
+                        Dengan motto "Membangun Generasi Qurani", Pesantren Al-Hikmah terus berinovasi dalam mengembangkan kurikulum yang seimbang antara pendidikan agama dan umum, serta memberikan fasilitas yang mendukung perkembangan santri.
+                     </p>
                      <Link to='/profil-pesantren' className="text-decoration-none">
                         <button className="btn d-flex justify-content-center align-items-center flex-row btn-profil">
                            Baca Selengkapnya

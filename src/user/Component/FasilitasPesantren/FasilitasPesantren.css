@@ -35,11 +35,13 @@
 
 .facility-card h5 {
    font-weight: 600;
+   font-size: 24px;
+   color: #ff9900;
    margin-bottom: 15px;
 }
 
 .facility-card p {
-   font-size: 16px;
+   font-size: 18px;
    color: #666;
    flex-grow: 1;
 }
