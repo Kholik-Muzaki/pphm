@@ -167,43 +167,55 @@ export const artikelData = [
 
 export const articlesData = [
     {
+        "id": 1,
         "Title": "The Impact of Climate Change on Coastal Ecosystems",
         "Author": "Jane Doe",
         "Date": "2023-05-15",
-        "Content": "Climate change is having a profound impact on coastal ecosystems around the world. Rising sea levels, increased temperatures, and changes in weather patterns are all contributing to the degradation of these fragile environments. In many regions, coastal habitats such as mangroves, salt marshes, and coral reefs are under threat. These ecosystems are not only vital for the biodiversity they support but also for the protection they offer to coastal communities from storms and erosion. The loss of these habitats can have devastating consequences, both for wildlife and human populations. Efforts to mitigate the effects of climate change and protect coastal ecosystems are therefore of paramount importance. This includes reducing greenhouse gas emissions, implementing sustainable coastal management practices, and investing in the restoration of degraded habitats. By taking action now, we can help ensure that these vital ecosystems continue to provide their essential services for generations to come."
+        "Content": "Climate change is having a profound impact on coastal ecosystems around the world. Rising sea levels, increased temperatures, and changes in weather patterns are all contributing to the degradation of these fragile environments...",
+        "Image": "https://example.com/images/climate-change.jpg" // URL gambar
     },
     {
+        "id": 2,
         "Title": "Advancements in Artificial Intelligence: Opportunities and Challenges",
         "Author": "John Smith",
         "Date": "2024-02-20",
-        "Content": "Artificial intelligence (AI) has made remarkable strides in recent years, transforming industries and reshaping the way we live and work. From self-driving cars to advanced medical diagnostics, AI applications are becoming increasingly pervasive. However, with these advancements come significant challenges. Ethical concerns about privacy, job displacement, and the potential for bias in AI systems are at the forefront of public discourse. There is also the issue of ensuring that AI technologies are developed and deployed responsibly. Balancing innovation with ethical considerations requires a collaborative effort from technologists, policymakers, and society at large. While the opportunities presented by AI are immense, addressing these challenges is crucial to harnessing its full potential in a way that benefits all of humanity. As we move forward, continued research, transparent practices, and inclusive dialogue will be key to navigating the complex landscape of artificial intelligence."
+        "Content": "Artificial intelligence (AI) has made remarkable strides in recent years, transforming industries and reshaping the way we live and work. From self-driving cars to advanced medical diagnostics...",
+        "Image": "https://example.com/images/ai-advancements.jpg" // URL gambar
     },
     {
+        "id": 3,
         "Title": "The Evolution of Digital Marketing Strategies in the 21st Century",
         "Author": "Emily Johnson",
         "Date": "2022-11-30",
-        "Content": "Digital marketing has undergone a significant transformation in the 21st century, driven by the rapid advancement of technology and changes in consumer behavior. Traditional marketing strategies have given way to more sophisticated, data-driven approaches that leverage the power of social media, search engines, and content marketing. Personalization and customer engagement are now at the core of successful marketing campaigns. Companies are increasingly using big data analytics to understand their customers better and tailor their messages to meet individual preferences. Moreover, the rise of mobile technology has made it essential for businesses to optimize their marketing efforts for mobile devices. As digital marketing continues to evolve, staying ahead of the trends and adopting innovative strategies will be crucial for businesses looking to maintain a competitive edge. The future of digital marketing lies in the seamless integration of technology and creativity, with a focus on delivering value to customers in meaningful and measurable ways."
+        "Content": "Digital marketing has undergone a significant transformation in the 21st century, driven by the rapid advancement of technology and changes in consumer behavior...",
+        "Image": "https://example.com/images/digital-marketing.jpg" // URL gambar
     },
-
     {
+        "id": 4,
         "Title": "The Impact of Climate Change on Coastal Ecosystems",
         "Author": "Jane Doe",
         "Date": "2023-05-15",
-        "Content": "Climate change is having a profound impact on coastal ecosystems around the world. Rising sea levels, increased temperatures, and changes in weather patterns are all contributing to the degradation of these fragile environments. In many regions, coastal habitats such as mangroves, salt marshes, and coral reefs are under threat. These ecosystems are not only vital for the biodiversity they support but also for the protection they offer to coastal communities from storms and erosion. The loss of these habitats can have devastating consequences, both for wildlife and human populations. Efforts to mitigate the effects of climate change and protect coastal ecosystems are therefore of paramount importance. This includes reducing greenhouse gas emissions, implementing sustainable coastal management practices, and investing in the restoration of degraded habitats. By taking action now, we can help ensure that these vital ecosystems continue to provide their essential services for generations to come."
+        "Content": "Climate change is having a profound impact on coastal ecosystems around the world. Rising sea levels, increased temperatures, and changes in weather patterns...",
+        "Image": "https://example.com/images/climate-change.jpg" // URL gambar
     },
     {
+        "id": 5,
         "Title": "Advancements in Artificial Intelligence: Opportunities and Challenges",
         "Author": "John Smith",
         "Date": "2024-02-20",
-        "Content": "Artificial intelligence (AI) has made remarkable strides in recent years, transforming industries and reshaping the way we live and work. From self-driving cars to advanced medical diagnostics, AI applications are becoming increasingly pervasive. However, with these advancements come significant challenges. Ethical concerns about privacy, job displacement, and the potential for bias in AI systems are at the forefront of public discourse. There is also the issue of ensuring that AI technologies are developed and deployed responsibly. Balancing innovation with ethical considerations requires a collaborative effort from technologists, policymakers, and society at large. While the opportunities presented by AI are immense, addressing these challenges is crucial to harnessing its full potential in a way that benefits all of humanity. As we move forward, continued research, transparent practices, and inclusive dialogue will be key to navigating the complex landscape of artificial intelligence."
+        "Content": "Artificial intelligence (AI) has made remarkable strides in recent years, transforming industries and reshaping the way we live and work...",
+        "Image": "https://example.com/images/ai-advancements.jpg" // URL gambar
     },
     {
+        "id": 6,
         "Title": "The Evolution of Digital Marketing Strategies in the 21st Century",
         "Author": "Emily Johnson",
         "Date": "2022-11-30",
-        "Content": "Digital marketing has undergone a significant transformation in the 21st century, driven by the rapid advancement of technology and changes in consumer behavior. Traditional marketing strategies have given way to more sophisticated, data-driven approaches that leverage the power of social media, search engines, and content marketing. Personalization and customer engagement are now at the core of successful marketing campaigns. Companies are increasingly using big data analytics to understand their customers better and tailor their messages to meet individual preferences. Moreover, the rise of mobile technology has made it essential for businesses to optimize their marketing efforts for mobile devices. As digital marketing continues to evolve, staying ahead of the trends and adopting innovative strategies will be crucial for businesses looking to maintain a competitive edge. The future of digital marketing lies in the seamless integration of technology and creativity, with a focus on delivering value to customers in meaningful and measurable ways."
-    },
+        "Content": "Digital marketing has undergone a significant transformation in the 21st century, driven by the rapid advancement of technology and changes in consumer behavior...",
+        "Image": "https://example.com/images/digital-marketing.jpg" // URL gambar
+    }
 ];
+
 
 export const dataProgramUnggulan = [
     {

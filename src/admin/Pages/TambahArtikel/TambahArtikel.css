@@ -1,0 +1,36 @@
+.form-container {
+   margin-top: 20px;
+   margin-bottom: 20px;
+   max-width: 100%; /* Pastikan form menggunakan lebar penuh */
+   height: 100vh;
+   color: black !important;
+}
+
+.row-form-add {
+   height: 100%;
+}
+
+.card {
+   width: 100%; /* Buat card menyesuaikan dengan lebar container */
+   width: 100%; /* Kamu bisa ubah ini jika ingin membatasi ukuran maksimal */
+   margin: 0 auto; /* Untuk memastikan card tetap berada di tengah */
+   height: 100%;
+}
+
+.card-body-add {
+   height: 100%;
+}
+
+.form-add-artikel {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   height: 100%;
+   padding: 20px;
+   gap: 20px;
+}
+
+.editor {
+   height: autp;
+   margin-bottom: 20px;
+}

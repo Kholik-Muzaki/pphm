@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Layout from "../../Layout/Layout";
 import './KelolaArtikel.css';
 import { articlesData } from '../../../user/data';
+import { Link } from 'react-router-dom';
 
 const KelolaArtikel = () => {
     const articlesPerPage = 5; // jumlah artikel per halaman
@@ -21,53 +22,64 @@ const KelolaArtikel = () => {
     };
 
     return (
-        <>
-            <Layout titlePage="Kelola Artikel">
-                <div className="container container-atas">
-                    <div className="row">
-                        <div className="col-12">
-                            <table className="table table-bordered">
-                                <thead className="thead-dark">
-                                    <tr>
-                                        <th style={{ width: '20%' }}>Title</th>
-                                        <th style={{ width: '15%' }}>Author</th>
-                                        <th style={{ width: '15%' }}>Date</th>
-                                        <th style={{ width: '40%' }}>Content</th>
-                                        <th style={{ width: '10%' }}>Action</th>
+        <Layout titlePage="Kelola Artikel">
+            <div className="container container-atas">
+                <div className="row">
+                    <div className="col-12">
+                        <Link to={'/admin/tambah-artikel'}>
+                            <button className="btn btn-primary btn-add-article">Buat Artikel</button>
+                        </Link>
+                    </div>
+                    <div className="col-12">
+                        <table className="table">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th style={{ width: '10%' }}>Image</th> {/* Kolom untuk Image */}
+                                    <th style={{ width: '20%' }}>Title</th>
+                                    <th style={{ width: '15%' }}>Author</th>
+                                    <th style={{ width: '15%' }}>Date</th>
+                                    <th style={{ width: '30%' }}>Content</th>
+                                    <th style={{ width: '10%' }}>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {currentArticles.map((article, index) => (
+                                    <tr key={index}>
+                                        <td>
+                                            <img
+                                                src={article.Image} // Pastikan data artikel memiliki URL gambar di `Image`
+                                                alt={article.Title}
+                                                style={{ width: '100%', height: 'auto' }} // Set ukuran gambar
+                                            />
+                                        </td>
+                                        <td>{article.Title}</td>
+                                        <td>{article.Author}</td>
+                                        <td>{article.Date}</td>
+                                        <td>{truncateContent(article.Content, 10)}</td>
+                                        <td>
+                                            <button className="btn btn-primary btn-sm mb-2">Edit</button>
+                                            <button className="btn btn-danger btn-sm ml-2">Delete</button>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    {currentArticles.map((article, index) => (
-                                        <tr key={index}>
-                                            <td>{article.Title}</td>
-                                            <td>{article.Author}</td>
-                                            <td>{article.Date}</td>
-                                            <td>{truncateContent(article.Content, 10)}</td>
-                                            <td>
-                                                <button className="btn btn-primary btn-sm mb-2">Edit</button>
-                                                <button className="btn btn-danger btn-sm ml-2">Delete</button>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                            {/* Pagination */}
-                            <nav>
-                                <ul className="pagination justify-content-center">
-                                    {Array(Math.ceil(articlesData.length / articlesPerPage)).fill().map((_, index) => (
-                                        <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-                                            <button onClick={() => paginate(index + 1)} className="page-link">
-                                                {index + 1}
-                                            </button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </nav>
-                        </div>
+                                ))}
+                            </tbody>
+                        </table>
+                        {/* Pagination */}
+                        <nav>
+                            <ul className="pagination justify-content-center">
+                                {Array(Math.ceil(articlesData.length / articlesPerPage)).fill().map((_, index) => (
+                                    <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                                        <button onClick={() => paginate(index + 1)} className="page-link">
+                                            {index + 1}
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
                     </div>
                 </div>
-            </Layout>
-        </>
+            </div>
+        </Layout>
     );
 };
 

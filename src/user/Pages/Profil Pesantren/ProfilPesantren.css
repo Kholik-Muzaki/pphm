@@ -1,5 +1,3 @@
-/* src/Pages/ProfilPesantren/ProfilPesantren.css */
-
 /* Style umum */
 .h3-title-profil {
     font-size: 30px !important;
@@ -14,7 +12,7 @@
 
 hr {
    border-top: 2px solid #ddd;
-   width: 60%;
+   /* width: 60%; */
    margin: 0 auto;
 }
 

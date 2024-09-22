@@ -10,7 +10,7 @@ const Quote = () => {
         <div className="container-fluid container-quote" data-aos="fade-up" data-aos-duration="2000">
             <div className="row row-quote">
                 <div className="col-12 col-quote">
-                    <h1 className='h1-quote'>
+                    <h1 className='h1-quote text-center lh-2'>
                         مَنْ سَلَكَ طَرِيْقًا يَلْتَمِسُ فِيْهِ عِلْمًا، سَهَّلَ اللهُ لَهُ بِهِ طَرِيْقًا إِلَى الْجَنَّةِ
                     </h1>
                     <p className='p-quote'>
