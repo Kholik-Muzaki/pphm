@@ -1,99 +1,133 @@
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import SidebarItem from "../Component/SideBarItem/SideBarItem";
+import React from "react";
 import "./Layout.css";
-import ModalLogout from "../Component/ModalLogout/ModalLogout";
+import { Link } from "react-router-dom";
 import image from "../../Image";
-function Layout({ children, titlePage }) {
-    const navigate = useNavigate();
 
-    const [showLogoutModal, setShowLogoutModal] = useState(false);
-
-    const handleLogoutClick = () => {
-        setShowLogoutModal(true);
-    };
-
-    const handleLogoutConfirm = () => {
-        localStorage.removeItem("token");
-        navigate("/");
-        setShowLogoutModal(false);
-    };
-
-    const handleLogoutCancel = () => {
-        setShowLogoutModal(false);
-    };
-
+const Layout = ({ children, titlePage }) => {
     return (
-        <>
-            <div className="sidebar">
-                <div className="offcanvass offcanvas-start ">
-                    <div className="offcanvas-header d-flex justify-content-center">
-                        <img src={image.adminLogo} alt="" />
-                        <img src={image.adminLogo} alt="" />
-                    </div>
-                    <hr className="p-0 m-0" />
-                    <div className="offcanvass-body d-grid  align-items-stretch ">
-                        <ul className="menu d-grid justify-content-center align-items-center mx-auto p-0 ">
-                            <SidebarItem
-                                icon={<i className='bx bxs-dashboard bx-sm bx-tada-hover'></i>}
-                                title="Dashboard"
-                                location="/admin"
-                            />
+        <div className="container-fluid container-main-layout">
+            <div className="row">
+                <div className="col-auto bg-light sidebar-menu d-flex justify-content-center">
+                    <div className="icon-sidebar">
+                        <section className="section-logo mb-3">
+                            <img src={image.logo2} alt="" className="image-logo" />
+                        </section>
+                        {/* section main */}
+                        <section className="section-main mb-3">
+                            <p className="p-section-main">Main</p>
 
-                            <SidebarItem
-                                icon={<i className='bx bxs-dashboard bx-sm bx-tada-hover'></i>}
-                                title="Kelola Konten"
-                                location="/admin/kelola-konten"
-                            />
+                            <div className="logo-sidebar">
+                                <Link to="/admin">
+                                    <img src={image.dashboard} alt="" className="img-logo" />
+                                </Link>
+                            </div>
+                            <div className="logo-sidebar">
+                                <Link to='/admin/kelola-artikel'>
+                                    <img src={image.artikel} alt="" className="img-logo" />
+                                </Link>
+                            </div>
+                            <div className="logo-sidebar">
+                                <Link to="/admin/kelola-berita">
+                                    <img src={image.berita2} alt="" className="img-logo" />
+                                </Link>
+                            </div>
+                            <div className="logo-sidebar">
+                                <Link to="/admin/kelola-foto">
+                                    <img src={image.photo} alt="" className="img-logo" />
+                                </Link>
+                            </div>
+                            <div className="logo-sidebar">
+                                <Link to="/admin/kelola-video">
+                                    <img src={image.video} alt="" className="img-logo" />
+                                </Link>
+                            </div>
+                        </section>
+                        <hr />
 
-                            <SidebarItem
-                                icon={<i className='bx bxs-book bx-sm bx-tada-hover'></i>}
-                                title="Kelola Artikel"
-                                location="/admin/kelola-artikel"
-                            />
-
-                            <SidebarItem
-                                icon={<i className='bx bxs-news bx-sm bx-tada-hover'></i>}
-                                title="Kelola Berita"
-                                location="/admin/kelola-berita"
-                            />
-
-                            <SidebarItem
-                                icon={<i className='bx bx-log-out-circle bx-sm bx-tada-hover'></i>}
-                                title="Logout"
-                                location="#"
-                                onClick={handleLogoutClick}
-                            />
-                            <hr className="p-0 m-0" />
-                        </ul>
+                        {/* section more */}
+                        <section className="section-main mb-2">
+                            <p className="p-section-main">More</p>
+                            <div className="logo-sidebar">
+                                <Link to="/pengaturan">
+                                    <img src={image.keluar} alt="" className="img-logo" />
+                                </Link>
+                            </div>
+                        </section>
                     </div>
                 </div>
-            </div>
+                <div className="col">
+                    <header className="header-menu-layout">
+                            {/* Hamburger Button */}
+                            <button className="btn button-hamburger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                                <img src={image.hamburger} alt="" />
+                            </button>
+                            <span className="title-page">{titlePage}</span>
+                    </header>
+                    <hr style={{ margin: "0px 18px 16px 18px" }} />
 
-            <main>
-                <div className="container-fluid p-2">
-                    <div className="row">
-                        <div className="col">
-                            <nav
-                                id="navbar"
-                                className="navbar bg-transparant d-flex align-items-center justify-content-between"
-                            >
-                                <h2 className="fw-semibold">{titlePage}</h2>
-                            </nav>
+                    {/* Offcanvas Sidebar */}
+                    <div className="offcanvas offcanvas-start" tabIndex={-1} id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
+                        <div className="offcanvas-header d-flex align-items-center justify-content-start">
+                            <section className="section-logo mb-3 d-flex flex-column align-items-center justify-content-center">
+                                <img src={image.logo2} alt="" className="image-logo" />
+                                <span className="header-logo text-center">Pondok Pesantren Hidayatul Mubtadi'ien</span>
+                            </section>
+                        </div>
+                        <div className="offcanvas-body">
+                            {/* Sidebar content inside Offcanvas */}
+                            <section className="section-main-offcanvas mb-3">
+                                <div className="">
+                                    <p className="p-section-main-offcanvas">Main</p>
+                                </div>
+                                <div className="logo-sidebar-offcanvas">
+                                    <Link to="/admin" className="text-decoration-none text-dark">
+                                        <img src={image.dashboard} alt="" className="img-logo" />
+                                        <span className="ms-2">Dashboard</span>
+                                    </Link>
+                                </div>
+                                <div className="logo-sidebar-offcanvas">
+                                    <Link to="/admin/kelola-artikel" className="text-decoration-none text-dark">
+                                        <img src={image.artikel} alt="" className="img-logo" />
+                                        <span className="ms-2">Kelola Artikel</span>
+                                    </Link>
+                                </div>
+                                <div className="logo-sidebar-offcanvas">
+                                    <Link to="/admin/kelola-berita" className="text-decoration-none text-dark">
+                                        <img src={image.berita2} alt="" className="img-logo" />
+                                        <span className="ms-2">Kelola Berita</span>
+                                    </Link>
+                                </div>
+                                <div className="logo-sidebar-offcanvas">
+                                    <Link to="/admin/kelola-foto" className="text-decoration-none text-dark">
+                                        <img src={image.photo} alt="" className="img-logo" />
+                                        <span className="ms-2">Kelola Foto</span>
+                                    </Link>
+                                </div>
+                                <div className="logo-sidebar-offcanvas">
+                                    <Link to="/admin/kelola-video" className="text-decoration-none text-dark">
+                                        <img src={image.video} alt="" className="img-logo" />
+                                        <span className="ms-2">Kelola Video</span>
+                                    </Link>
+                                </div>
+                                <hr />
+                            </section>
+
+                            <section className="section-main-offcanvas mb-2">
+                                <p className="p-section-main-offcanvas">More</p>
+                                <div className="logo-sidebar-offcanvas">
+                                    <Link to="/" className="text-decoration-none text-dark">
+                                        <img src={image.keluar} alt="" className="img-logo" />
+                                        <span className="ms-2">Keluar</span>
+                                    </Link>
+                                </div>
+                            </section>
                         </div>
                     </div>
+                    <div className="main-content">{children}</div>
                 </div>
-                {children}
-
-                <ModalLogout
-                    show={showLogoutModal}
-                    title="Logout"
-                    onClose={handleLogoutCancel}
-                    onSubmit={handleLogoutConfirm}
-                />
-            </main>
-        </>
+            </div>
+        </div>
     );
-}
+};
 
-export default Layout; 
+export default Layout;

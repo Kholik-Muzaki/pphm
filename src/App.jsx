@@ -15,6 +15,7 @@ import Navbar2 from "./user/Component/Navbar/Navbar2";
 import DetailBerita from "./user/Pages/DetailBerita/DetailBerita";
 import DetailArtikel from "./user/Pages/DetailArtikel/DetailArtikel";
 import TambahArtikel from "./admin/Pages/TambahArtikel/TambahArtikel";
+import Coba from "./admin/Pages/Coba";
 
 function App() {
    return (
@@ -43,6 +44,8 @@ function App() {
 
             {/* Bendahara */}
             <Route path="/bendahara" element={<Dashboard />} />
+
+            <Route path="/coba" element={<Coba />} />
          </Routes>
       </Router>
    );

@@ -1,85 +1,70 @@
 import React, { useState } from 'react';
+import { artikelData as initialArtikelData } from "../../../user/data"; // Inisialisasi data artikel
+import TableContent from "../../Component/TableContent/TableContent";
 import Layout from "../../Layout/Layout";
-import './KelolaArtikel.css';
-import { articlesData } from '../../../user/data';
-import { Link } from 'react-router-dom';
+import ModalDelete from '../../Component/ModalDelete/ModalDelete';
+import ModalSuccess from '../../Component/ModalSuccess/ModalSuccess';
 
 const KelolaArtikel = () => {
-    const articlesPerPage = 5; // jumlah artikel per halaman
-    const [currentPage, setCurrentPage] = useState(1);
+    const [artikelData, setArtikelData] = useState(initialArtikelData); // Menyimpan data artikel dalam state
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+    const [selectedArtikel, setSelectedArtikel] = useState(null);
 
-    // Hitung indeks awal dan akhir artikel untuk halaman yang sedang aktif
-    const indexOfLastArticle = currentPage * articlesPerPage;
-    const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-    const currentArticles = articlesData.slice(indexOfFirstArticle, indexOfLastArticle);
+    const handleEdit = (artikel) => {
+        alert(`Berhasil diedit: ${artikel.title}`);
+    };
 
-    // Fungsi untuk mengubah halaman
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const handleDelete = (artikel) => {
+        setSelectedArtikel(artikel); 
+        setIsModalOpen(true);
+    };
 
-    const truncateContent = (content, wordLimit) => {
-        const words = content.split(' ');
-        return words.length > wordLimit ? words.slice(0, wordLimit).join(' ') + '...' : content;
+    const handleDeleteConfirm = () => {
+        // Hapus artikel dari artikelData
+        const updatedData = artikelData.filter(artikel => artikel.id !== selectedArtikel.id);
+        setArtikelData(updatedData); 
+
+        setIsModalOpen(false); 
+        setIsSuccessModalOpen(true); 
+        setSelectedArtikel(null);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false); // Menyembunyikan modal delete
+    };
+
+    const closeSuccessModal = () => {
+        setIsSuccessModalOpen(false); // Menyembunyikan modal sukses
     };
 
     return (
-        <Layout titlePage="Kelola Artikel">
-            <div className="container container-atas">
-                <div className="row">
-                    <div className="col-12">
-                        <Link to={'/admin/tambah-artikel'}>
-                            <button className="btn btn-primary btn-add-article">Buat Artikel</button>
-                        </Link>
-                    </div>
-                    <div className="col-12">
-                        <table className="table">
-                            <thead className="thead-dark">
-                                <tr>
-                                    <th style={{ width: '10%' }}>Image</th> {/* Kolom untuk Image */}
-                                    <th style={{ width: '20%' }}>Title</th>
-                                    <th style={{ width: '15%' }}>Author</th>
-                                    <th style={{ width: '15%' }}>Date</th>
-                                    <th style={{ width: '30%' }}>Content</th>
-                                    <th style={{ width: '10%' }}>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {currentArticles.map((article, index) => (
-                                    <tr key={index}>
-                                        <td>
-                                            <img
-                                                src={article.Image} // Pastikan data artikel memiliki URL gambar di `Image`
-                                                alt={article.Title}
-                                                style={{ width: '100%', height: 'auto' }} // Set ukuran gambar
-                                            />
-                                        </td>
-                                        <td>{article.Title}</td>
-                                        <td>{article.Author}</td>
-                                        <td>{article.Date}</td>
-                                        <td>{truncateContent(article.Content, 10)}</td>
-                                        <td>
-                                            <button className="btn btn-primary btn-sm mb-2">Edit</button>
-                                            <button className="btn btn-danger btn-sm ml-2">Delete</button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                        {/* Pagination */}
-                        <nav>
-                            <ul className="pagination justify-content-center">
-                                {Array(Math.ceil(articlesData.length / articlesPerPage)).fill().map((_, index) => (
-                                    <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-                                        <button onClick={() => paginate(index + 1)} className="page-link">
-                                            {index + 1}
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </Layout>
+        <>
+            <Layout titlePage="Kelola artikel">
+               <div className="container">
+                 <TableContent data={artikelData} onEdit={handleEdit} onDelete={handleDelete} />
+               </div>
+            </Layout>
+
+            {/* Modal Delete */}
+            {isModalOpen && (
+                <ModalDelete
+                    onClose={closeModal}
+                    title="Konfirmasi Hapus"
+                    description={`Apakah kamu yakin ingin menghapus artikel "${selectedArtikel?.title}"?`}
+                    onConfirm={handleDeleteConfirm} // Tambahkan fungsi untuk handle "Oke"
+                />
+            )}
+
+            {/* Modal Success */}
+            {isSuccessModalOpen && (
+                <ModalSuccess
+                    onClose={closeSuccessModal}
+                    title="Berhasil"
+                    description="Artikel berhasil dihapus."
+                />
+            )}
+        </>
     );
 };
 
