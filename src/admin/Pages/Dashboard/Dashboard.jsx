@@ -1,95 +1,39 @@
-import CountUp from 'react-countup';
+// Dashboard.js
+import React from 'react';
 import Layout from "../../Layout/Layout";
 import './Dashboard.css';
+import CardDashboard from '../../Component/CardDashboard/CardDashboard';
 
 const Dashboard = () => {
+    // Data dummy
+    const cardsData = [
+        { title: "Transaksi Masuk", number: 100, iconClass: 'bx bx-cart-download', bgColor: 'card-transaksi-masuk' },
+        { title: "Transaksi Keluar", number: 200, iconClass: 'bx bxs-cart-add', bgColor: 'card-transaksi-keluar' },
+        { title: "Total Pengeluaran", number: 300, iconClass: 'bx bx-receipt', bgColor: 'card-total-pengeluaran' },
+        { title: "Total Pemasukan", number: 400, iconClass: 'bx bx-barcode', bgColor: 'card-total-pemasukan' },
+        { title: "Sisa Kas", number: 500, iconClass: 'bx bxs-badge-dollar', bgColor: 'card-sisa-kas' },
+        { title: "Jumlah Artikel", number: 600, iconClass: 'bx bx-library', bgColor: 'card-jumlah-artikel' },
+        { title: "Jumlah Berita", number: 700, iconClass: 'bx bx-book-content', bgColor: 'card-jumlah-berita' },
+    ];
+
     return (
-        <>
-            <Layout titlePage={"Dashboard"}>
-                <div className="container container-atas">
-                    <div className="row row-dashboard">
-                        <div className="col-sm-12 col-md-4 col-lg-3 mb-4">
-                            <div className="card card-dashboard card-transaksi-masuk">
-                                <div className="card-content">
-                                    <div className="card-number">
-                                        <CountUp end={100} duration={2.5} />
-                                    </div>
-                                    <i className='bx bx-cart-download bx-tada bx-md'></i>
-                                    <div className="card-title">Transaksi Masuk</div>
-                                </div>
-                            </div>
+        <Layout titlePage={"Dashboard"}>
+            <div className="container">
+                <div className="row row-dashboard">
+                    {cardsData.map((card, index) => (
+                        <div key={index} className="col-sm-12 col-md-4 col-lg-3">
+                            <CardDashboard
+                                title={card.title}
+                                number={card.number}
+                                iconClass={card.iconClass}
+                                bgColor={card.bgColor}
+                            />
                         </div>
-                        <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-dashboard card-transaksi-keluar">
-                                <div className="card-content">
-                                    <div className="card-number">
-                                        <CountUp end={100} duration={2.5} />
-                                    </div>
-                                    <i className='bx bxs-cart-add bx-tada bx-md'></i>
-                                    <div className="card-title">Transaksi Keluar</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-dashboard card-total-pengeluaran">
-                                <div className="card-content">
-                                    <div className="card-number">
-                                        <CountUp end={100} duration={2.5} />
-                                    </div>
-                                    <i className='bx bx-receipt bx-tada bx-md'></i>
-                                    <div className="card-title">Total Pengeluaran</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-dashboard card-total-pemasukan">
-                                <div className="card-content">
-                                    <div className="card-number">
-                                        <CountUp end={100} duration={2.5} />
-                                    </div>
-                                    <i className='bx bx-barcode bx-tada bx-md'></i>
-                                    <div className="card-title">Total Pemasukan</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-dashboard card-sisa-kas">
-                                <div className="card-content">
-                                    <div className="card-number">
-                                        <CountUp end={100} duration={2.5} />
-                                    </div>
-                                    <i className='bx bxs-badge-dollar bx-tada bx-md'></i>
-                                    <div className="card-title">Sisa Kas</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-dashboard card-jumlah-artikel">
-                                <div className="card-content">
-                                    <div className="card-number">
-                                        <CountUp end={100} duration={2.5} />
-                                    </div>
-                                    <i className='bx bx-library bx-tada bx-md'></i>
-                                    <div className="card-title">Jumlah Artikel</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-12 col-md-4 col-lg-3">
-                            <div className="card card-dashboard card-jumlah-berita">
-                                <div className="card-content">
-                                    <div className="card-number">
-                                        <CountUp end={100} duration={2.5} />
-                                    </div>
-                                    <i className='bx bx-book-content bx-tada bx-md'></i>
-                                    <div className="card-title">Jumlah Berita</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
-            </Layout>
-        </>
-    )
+            </div>
+        </Layout>
+    );
 }
 
 export default Dashboard;

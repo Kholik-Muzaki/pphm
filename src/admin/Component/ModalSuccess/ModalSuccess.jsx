@@ -2,7 +2,7 @@ import React from 'react';
 import './ModalSuccess.css';
 import image from '../../../Image';
 
-const ModalSuccess = ({ onClose }) => {
+const ModalSuccess = ({ onClose, title, description }) => {
     return (
         <div className="modal-overlay">
             <div className="modal-success">
@@ -15,8 +15,8 @@ const ModalSuccess = ({ onClose }) => {
                         />
                     </div>
                     <div className="modal-body-success">
-                        <h5>Artikel Berhasil Disimpan!</h5>
-                        <p>Terima kasih sudah menambah artikel baru.</p>
+                        <h5>{title}</h5>
+                        <p>{description}</p>
                     </div>
                     <div className="modal-footer-success">
                         <button

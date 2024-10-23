@@ -1,4 +1,3 @@
-
 .card-dashboard {
    width: 100%;
    color: white !important;
@@ -29,7 +28,7 @@
    font-size: 1.2em;
 }
 
-/* Specific background colors for each card */
+/* Background colors are passed as class names */
 .card-transaksi-masuk {
    background-color: #007bff !important; /* Blue */
 }

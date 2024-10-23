@@ -124,7 +124,10 @@ const TambahArtikel = () => {
 
             {/* Modal Success */}
             {isModalVisible && (
-                <ModalSuccess onClose={handleModalClose} />
+                <ModalSuccess
+                    onClose={handleModalClose}
+                    title={'Sukses'}
+                    description={'Artikel Berhasil Ditambahkan'} />
             )}
         </Layout>
     );

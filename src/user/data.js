@@ -164,59 +164,6 @@ export const artikelData = [
     }
 ];
 
-
-export const articlesData = [
-    {
-        "id": 1,
-        "Title": "The Impact of Climate Change on Coastal Ecosystems",
-        "Author": "Jane Doe",
-        "Date": "2023-05-15",
-        "Content": "Climate change is having a profound impact on coastal ecosystems around the world. Rising sea levels, increased temperatures, and changes in weather patterns are all contributing to the degradation of these fragile environments...",
-        "Image": "https://example.com/images/climate-change.jpg" // URL gambar
-    },
-    {
-        "id": 2,
-        "Title": "Advancements in Artificial Intelligence: Opportunities and Challenges",
-        "Author": "John Smith",
-        "Date": "2024-02-20",
-        "Content": "Artificial intelligence (AI) has made remarkable strides in recent years, transforming industries and reshaping the way we live and work. From self-driving cars to advanced medical diagnostics...",
-        "Image": "https://example.com/images/ai-advancements.jpg" // URL gambar
-    },
-    {
-        "id": 3,
-        "Title": "The Evolution of Digital Marketing Strategies in the 21st Century",
-        "Author": "Emily Johnson",
-        "Date": "2022-11-30",
-        "Content": "Digital marketing has undergone a significant transformation in the 21st century, driven by the rapid advancement of technology and changes in consumer behavior...",
-        "Image": "https://example.com/images/digital-marketing.jpg" // URL gambar
-    },
-    {
-        "id": 4,
-        "Title": "The Impact of Climate Change on Coastal Ecosystems",
-        "Author": "Jane Doe",
-        "Date": "2023-05-15",
-        "Content": "Climate change is having a profound impact on coastal ecosystems around the world. Rising sea levels, increased temperatures, and changes in weather patterns...",
-        "Image": "https://example.com/images/climate-change.jpg" // URL gambar
-    },
-    {
-        "id": 5,
-        "Title": "Advancements in Artificial Intelligence: Opportunities and Challenges",
-        "Author": "John Smith",
-        "Date": "2024-02-20",
-        "Content": "Artificial intelligence (AI) has made remarkable strides in recent years, transforming industries and reshaping the way we live and work...",
-        "Image": "https://example.com/images/ai-advancements.jpg" // URL gambar
-    },
-    {
-        "id": 6,
-        "Title": "The Evolution of Digital Marketing Strategies in the 21st Century",
-        "Author": "Emily Johnson",
-        "Date": "2022-11-30",
-        "Content": "Digital marketing has undergone a significant transformation in the 21st century, driven by the rapid advancement of technology and changes in consumer behavior...",
-        "Image": "https://example.com/images/digital-marketing.jpg" // URL gambar
-    }
-];
-
-
 export const dataProgramUnggulan = [
     {
         "id": 1,
