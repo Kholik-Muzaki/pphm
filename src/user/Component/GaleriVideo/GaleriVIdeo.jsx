@@ -7,7 +7,7 @@ const GaleriVideo = () => {
             <div className="container">
                 <div className="row">
                     {linkVideo.map((video) => (
-                        <div className="col-sm-6 col-md-6 col-lg-4" key={video.id}>
+                        <div className="col-sm-6 col-md-6 col-lg-4 mb-3" key={video.id}>
                             <iframe
                                 src={video.link}
                                 className='iframe-youtube'

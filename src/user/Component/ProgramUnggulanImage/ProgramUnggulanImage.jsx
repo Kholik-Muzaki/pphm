@@ -4,7 +4,7 @@ const ProgramUnggulanImage = ({ data }) => {
     return (
         <>
             {data.map(item => (
-                <div key={item.id} className="col-sm-12 col-md-6 col-lg-4">
+                <div key={item.id} className="col-sm-12 col-md-6 col-lg-4  mb-4">
                     <div className="card card-program-unggulan">
                         <img src={item.image} className="card-img" alt="" />
                         <div className="card-body">

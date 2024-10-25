@@ -9,12 +9,16 @@ import 'boxicons/css/boxicons.min.css';
 import 'primereact/resources/themes/saga-blue/theme.css';  // Pilih tema yang diinginkan
 import 'primereact/resources/primereact.min.css';          // Gaya utama PrimeReact
 import 'primeicons/primeicons.css';
-import 'primeflex/themes/primeone-light.css'   
-import 'primeflex/themes/primeone-dark.css'  
+import 'primeflex/themes/primeone-light.css'
+import 'primeflex/themes/primeone-dark.css'
+import { Provider } from 'react-redux'
+import store from './admin/store/store.js'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
 )
