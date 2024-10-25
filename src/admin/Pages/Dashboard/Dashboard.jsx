@@ -21,7 +21,7 @@ const Dashboard = () => {
             <div className="container">
                 <div className="row row-dashboard">
                     {cardsData.map((card, index) => (
-                        <div key={index} className="col-sm-12 col-md-4 col-lg-3">
+                        <div key={index} className="col-sm-12 col-md-4 col-lg-3 mb-4">
                             <CardDashboard
                                 title={card.title}
                                 number={card.number}

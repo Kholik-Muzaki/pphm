@@ -16,6 +16,8 @@ import photo from '../src/admin/assets/Image/photo.png'
 import video from '../src/admin/assets/Image/video.png'
 import keluar from '../src/admin/assets/Image/out.png'
 import hamburger from '../src/admin/assets/Image/hamburger.png'
+import searchIcon from '../src/admin/assets/Image/search.svg'
+import notFound from '../src/admin/assets/Image/notFound.svg'
 
 const image = {
     logo,
@@ -35,9 +37,9 @@ const image = {
     photo,
     video,
     keluar,
-    hamburger
-
-
+    hamburger,
+    searchIcon,
+    notFound
 }
 
 export default image;

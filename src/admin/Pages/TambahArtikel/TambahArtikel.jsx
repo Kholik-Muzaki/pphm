@@ -2,9 +2,11 @@ import React, { useState, useRef } from 'react';
 import Layout from "../../Layout/Layout";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './TambahArtikel.css';
-import ModalSuccess from '../../Component/ModalSuccess/ModalSuccess'; // Import modal
+import ModalSuccess from '../../Component/ModalSuccess/ModalSuccess';
+import { addArtikel } from '../../store/artikelSlice';
 
 const TambahArtikel = () => {
     const [title, setTitle] = useState('');
@@ -12,33 +14,32 @@ const TambahArtikel = () => {
     const [date, setDate] = useState('');
     const [image, setImage] = useState('');
     const [content, setContent] = useState('');
-    const [isModalVisible, setIsModalVisible] = useState(false); // State untuk modal
+    const [isModalVisible, setIsModalVisible] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    // Ref for ReactQuill
     const quillRef = useRef(null);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Ambil editor instance dari ref untuk akses lebih lanjut (opsional)
-        const editorInstance = quillRef.current.getEditor();
 
         const newArticle = {
-            Title: title,
-            Author: author,
-            Date: date,
-            Image: image,
-            Content: content
+            id: Date.now(),
+            title,
+            author,
+            date,
+            image,
+            content
         };
-        console.log(newArticle);
 
-        // Setelah submit berhasil, tampilkan modal
+        dispatch(addArtikel(newArticle));
+
         setIsModalVisible(true);
     };
 
     const handleModalClose = () => {
         setIsModalVisible(false);
-        navigate('/admin/kelola-artikel'); // Redirect setelah modal ditutup
+        navigate('/admin/kelola-artikel');
     };
 
     return (
@@ -91,7 +92,6 @@ const TambahArtikel = () => {
                                             type="file"
                                             className="form-control text-dark"
                                             id="image"
-                                            value={image}
                                             onChange={(e) => setImage(e.target.value)}
                                             required
                                         />
@@ -99,7 +99,7 @@ const TambahArtikel = () => {
                                     <div className="form-group text-dark">
                                         <label htmlFor="content" className='text-dark fw-bold'>Content : </label>
                                         <ReactQuill
-                                            ref={quillRef} // Attach ref to Quill
+                                            ref={quillRef}
                                             theme="snow"
                                             value={content}
                                             onChange={setContent}
@@ -122,7 +122,6 @@ const TambahArtikel = () => {
                 </div>
             </div>
 
-            {/* Modal Success */}
             {isModalVisible && (
                 <ModalSuccess
                     onClose={handleModalClose}

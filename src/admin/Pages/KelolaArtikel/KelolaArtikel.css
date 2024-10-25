@@ -1,0 +1,69 @@
+.custom-thead .table-head {
+   border: 1px solid #eceff8 !important;
+}
+
+.custom-thead th {
+   background-color: #eceff8;
+   font-weight: 500;
+   font-size: 16px;
+   text-align: center;
+   position: relative; /* Penting untuk pseudo-element */
+}
+
+.custom-thead th::after {
+   content: "";
+   position: absolute;
+   right: 0;
+   top: 25%; /* Mengatur posisi awal dari garis */
+   height: 50%; /* Membuat garis hanya setengah dari tinggi th */
+   width: 1px;
+   background-color: #d4d9ea;
+}
+
+.custom-thead th:last-child::after {
+   display: none; /* Tidak menampilkan garis pada elemen terakhir */
+}
+
+.custom-tbody td {
+   font-size: 16px;
+   font-weight: 400;
+   position: relative;
+   padding: 12px 15px;
+   border: none; /* Menghilangkan border pada td */
+   border-bottom: 2px solid #eceff8;
+}
+
+.custom-tbody {
+   border: none; /* Menghilangkan border pada tbody jika ada */
+}
+
+/* data not found */
+.h6-notfound {
+   font-size: 20px;
+   font-weight: 500;
+}
+
+.p-notfound {
+   font-size: 16px;
+   font-weight: 400;
+   color: #828282;
+}
+
+/* wrap table content */
+.wrap-table-content-whitout-card {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   height: 85vh; /* Default height */
+   overflow: hidden; /* Prevent content from overflowing outside */
+}
+
+.overflow-table {
+   flex-grow: 1; /* Allow the table to take the remaining space */
+   overflow-y: auto; /* Enable vertical scrolling when content exceeds max-height */
+   max-height: calc(85vh - 20px); /* Ensure that the table content stays within the defined height */
+}
+
+.table-responsive {
+   max-height: 100%;
+}

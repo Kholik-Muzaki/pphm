@@ -1,0 +1,22 @@
+/* .col-cari-data-barang {
+   padding-left: 0px !important;
+} */
+
+.input-group-search {
+    margin-top: 0px !important;
+    height: 38px !important;
+    border: none;
+ }
+ 
+ .form-control-cari-data-barang {
+    padding: 9.5px 12px 9.5px 0px !important;
+ }
+ 
+ .form-control-cari-data-barang::placeholder {
+    color: #9f9f9f !important;
+ }
+ 
+ .form-control-cari-data-barang:focus {
+    box-shadow: none !important;
+ }
+ 
