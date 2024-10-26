@@ -1,78 +1,157 @@
-import Layout from "../../Layout/Layout"
-import { dataBerita } from "../../../user/data";
-import { useState } from "react";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Pagination from "../../Component/Pagination/Pagination";
+import Layout from "../../Layout/Layout";
+import Search from '../../Component/Search/Search';
+import image from '../../../Image';
+import { Link } from 'react-router-dom';
+import { deleteBerita } from '../../store/beritaSlice';
+import ModalDelete from '../../Component/ModalDelete/ModalDelete';
 
 const KelolaBerita = () => {
-    const articlesPerPage = 4; // jumlah artikel per halaman
+    const beritaList = useSelector((state) => state.berita.dataBerita); // Ambil artikel dari Redux state
+    const dispatch = useDispatch(); // Inisialisasi useDispatch
+    const [showModal, setShowModal] = useState(false);
+    const [beritaIdToDelete, setBeritaIdToDelete] = useState(null);
+
     const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(3);
+    const [searchTerm, setSearchTerm] = useState('');
+    const itemsPerPageOptions = [3, 5, 10, 20];
 
-    // Hitung indeks awal dan akhir artikel untuk halaman yang sedang aktif
-    const indexOfLastArticle = currentPage * articlesPerPage;
-    const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-    const currentBerita = dataBerita.slice(indexOfFirstArticle, indexOfLastArticle);
+    // Handle Delete Click
+    const handleDeleteClick = (id) => {
+        setBeritaIdToDelete(id);
+        setShowModal(true);
+    };
 
-    // Fungsi untuk mengubah halaman
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const handleDeleteConfirm = () => {
+        if (beritaIdToDelete !== null) {
+            dispatch(deleteBerita(beritaIdToDelete));
+            setShowModal(false);
+            setBeritaIdToDelete(null);
+        }
+    };
+
+    const handleModalClose = () => {
+        setShowModal(false);
+        setBeritaIdToDelete(null);
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+        setCurrentPage(1);
+    };
+
+    const indexOfLastBerita = currentPage * itemsPerPage;
+    const indexOfFirstBerita = indexOfLastBerita - itemsPerPage;
+
+    const filteredBerita = beritaList.filter((berita) =>
+        berita.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        berita.content.toLowerCase().includes(searchTerm.toLowerCase()) || // Pastikan ini adalah field yang benar
+        berita.author.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const currentBerita = filteredBerita.slice(indexOfFirstBerita, indexOfLastBerita);
+    const totalPages = Math.ceil(filteredBerita.length / itemsPerPage);
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+
+    const handleItemsPerPageChange = (newItemsPerPage) => {
+        setItemsPerPage(newItemsPerPage);
+        setCurrentPage(1);
+    };
 
     const truncateContent = (content, wordLimit) => {
-        if (!content) return ''; // Jika content undefined, kembalikan string kosong
+        if (!content) return '';
         const words = content.split(' ');
         return words.length > wordLimit ? words.slice(0, wordLimit).join(' ') + '...' : content;
     };
-    
 
     return (
-        <>
-            <Layout titlePage="Kelola Artikel">
-                <div className="container container-atas">
-                    <div className="row">
-                        <div className="col-12">
-                            <table className="table table-bordered">
-                                <thead className="thead-dark">
-                                    <tr>
-                                        <th style={{ width: '10%' }}>Image</th> {/* Kolom untuk Image */}
-                                        <th style={{ width: '20%' }}>Title</th>
-                                        <th style={{ width: '15%' }}>Author</th>
-                                        <th style={{ width: '15%' }}>Date</th>
-                                        <th style={{ width: '30%' }}>Content</th>
-                                        <th style={{ width: '10%' }}>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {currentBerita.map((article, index) => (
-                                        <tr key={index}>
-                                            <td>{article.image}</td>
-                                            <td>{article.title}</td>
-                                            <td>{article.author}</td>
-                                            <td>{article.date}</td>
-                                            <td>{truncateContent(article.text, 10)}</td>
-                                            <td>
-                                                <button className="btn btn-primary btn-sm mb-2">Edit</button>
-                                                <button className="btn btn-danger btn-sm ml-2">Delete</button>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                            {/* Pagination */}
-                            <nav>
-                                <ul className="pagination justify-content-center">
-                                    {Array(Math.ceil(dataBerita.length / articlesPerPage)).fill().map((_, index) => (
-                                        <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-                                            <button onClick={() => paginate(index + 1)} className="page-link">
-                                                {index + 1}
-                                            </button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </nav>
-                        </div>
+        <Layout titlePage="Kelola Berita">
+            <div className="wrap-table-content-whitout-card">
+                <div className="row">
+                    <div className="col-4 mb-2">
+                        <Search onSearchChange={handleSearchChange} />
+                    </div>
+                    <div className="col-2 ms-auto">
+                        <Link to='/admin/tambah-berita'>
+                            <button type="button" className="btn btn-primary">Tambah Berita</button>
+                        </Link>
                     </div>
                 </div>
-            </Layout>
-        </>
-    )
-}
+                <div className="overflow-table">
+                    <div className="table-responsive">
+                        <table className="table table-bordered">
+                            <thead className="custom-thead">
+                                <tr className='table-head'>
+                                    <th>ID</th>
+                                    <th>Gambar</th>
+                                    <th>Judul</th>
+                                    <th>Konten</th>
+                                    <th>Penulis</th>
+                                    <th>Tanggal</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody className='custom-tbody'>
+                                {filteredBerita.length > 0 ? (
+                                    currentBerita.map((berita) => (
+                                        <tr key={berita.id} className='align-middle'>
+                                            <td>{berita.id}</td>
+                                            <td>
+                                                {berita.image && <img src={berita.image} alt={berita.title} style={{ width: '50px', height: '50px' }} />}
+                                            </td>
+                                            <td>{berita.title}</td>
+                                            <td>{truncateContent(berita.content, 10)}</td>
+                                            <td>{berita.author}</td>
+                                            <td>{berita.date}</td>
 
+                                            <td>
+                                                <Link to={`/admin/edit-berita/${berita.id}`}>
+                                                    <button className='btn btn-outline-warning mb-1 px-0'><i className='bx bxs-edit-alt' /></button>
+                                                </Link>
+                                                <button className='btn btn-danger mb-1 px-0' onClick={() => handleDeleteClick(berita.id)}><i className='bx bx-trash' /></button>
+                                                <button className='btn btn-primary mb-1 px-0'><i className='bx bx-show' /></button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                ) : (
+                                    <tr>
+                                        <td colSpan={7} className="text-center">
+                                            <img src={image.notFound} alt="" className='mt-5' />
+                                            <h6 className='mt-2'>Data tidak ditemukan</h6>
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    itemsPerPage={itemsPerPage}
+                    itemsPerPageOptions={itemsPerPageOptions}
+                    onPageChange={handlePageChange}
+                    onItemsPerPageChange={handleItemsPerPageChange}
+                />
 
-export default KelolaBerita
+                {/* Modal Konfirmasi Delete */}
+                {showModal && (
+                    <ModalDelete
+                        onClose={handleModalClose}
+                        onConfirm={handleDeleteConfirm}
+                        title="Hapus Berita"
+                        description="Apakah Anda yakin ingin menghapus Berita ini?"
+                    />
+                )}
+            </div>
+        </Layout>
+    );
+};
+
+export default KelolaBerita;

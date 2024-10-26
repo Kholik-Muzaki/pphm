@@ -3,7 +3,7 @@ export const dataBerita = [
         id: 1,
         image: "https://via.placeholder.com/600x400?text=Santri+di+Pesantren",
         title: "Pesantren Al-Hikmah Gelar Lomba Tilawah Al-Quran",
-        text: "Pondok Pesantren Al-Hikmah menggelar lomba tilawah Al-Quran sebagai bagian dari kegiatan tahunan mereka lorem ipsum...Pondok Pesantren Baiturrahman menyelenggarakan diskusi agama yang bertema...",
+        content: "Pondok Pesantren Al-Hikmah menggelar lomba tilawah Al-Quran sebagai bagian dari kegiatan tahunan mereka lorem ipsum...Pondok Pesantren Baiturrahman menyelenggarakan diskusi agama yang bertema...",
         author: "Ustadz Ahmad",
         date: "2024-09-15"
     },
@@ -11,7 +11,7 @@ export const dataBerita = [
         id: 2,
         image: "https://via.placeholder.com/600x400?text=Diskusi+Agama",
         title: "Diskusi Agama: Mendalami Makna Hadis dan Aplikasinya dalam Kehidupan Sehari-hari",
-        text: "Pondok Pesantren Baiturrahman menyelenggarakan diskusi agama yang bertema...",
+        content: "Pondok Pesantren Baiturrahman menyelenggarakan diskusi agama yang bertema...",
         author: "Ustadzah Fatimah",
         date: "2024-09-16"
     },
@@ -19,7 +19,7 @@ export const dataBerita = [
         id: 3,
         image: "https://via.placeholder.com/600x400?text=Festival+Seni+dan+Budaya",
         title: "Festival Seni dan Budaya: Merayakan Keanekaragaman Warisan Budaya di Pondok Pesantren Raudhatul Hasanah",
-        text: "Pondok Pesantren Raudhatul Hasanah menggelar Festival Seni dan Budaya...",
+        content: "Pondok Pesantren Raudhatul Hasanah menggelar Festival Seni dan Budaya...",
         author: "Ustadz Muhammad",
         date: "2024-09-17"
     },
@@ -27,7 +27,7 @@ export const dataBerita = [
         id: 4,
         image: "https://via.placeholder.com/600x400?text=Tahfidz+Al-Quran",
         title: "Tahfidz Al-Quran: Meningkatkan Kualitas Hafalan Santri di Pesantren Bina Ummah",
-        text: "Pesantren Bina Ummah mengadakan program Tahfidz Al-Quran...",
+        content: "Pesantren Bina Ummah mengadakan program Tahfidz Al-Quran...",
         author: "Ustadz Ali",
         date: "2024-09-18"
     },
@@ -35,7 +35,7 @@ export const dataBerita = [
         id: 5,
         image: "https://via.placeholder.com/600x400?text=Kegiatan+Ekstrakurikuler",
         title: "Kegiatan Ekstrakurikuler: Mengembangkan Bakat dan Minat Santri di Pesantren Madinatul Ilmi",
-        text: "Pesantren Madinatul Ilmi tidak hanya fokus pada pendidikan agama...",
+        content: "Pesantren Madinatul Ilmi tidak hanya fokus pada pendidikan agama...",
         author: "Ustadzah Zainab",
         date: "2024-09-19"
     },
@@ -43,7 +43,7 @@ export const dataBerita = [
         id: 6,
         image: "https://via.placeholder.com/600x400?text=Kajian+Kitab+Kuning",
         title: "Kajian Kitab Kuning: Mendalami Ilmu Keislaman di Pesantren Darul Ulum",
-        text: "Pesantren Darul Ulum rutin mengadakan kajian kitab kuning...",
+        content: "Pesantren Darul Ulum rutin mengadakan kajian kitab kuning...",
         author: "Ustadz Hasan",
         date: "2024-09-20"
     },
@@ -51,7 +51,7 @@ export const dataBerita = [
         id: 7,
         image: "https://via.placeholder.com/600x400?text=Kegiatan+Pembinaan+Akhlak",
         title: "Kegiatan Pembinaan Akhlak: Membentuk Karakter Santri di Pesantren Hidayatullah",
-        text: "Pesantren Hidayatullah memiliki program pembinaan akhlak...",
+        content: "Pesantren Hidayatullah memiliki program pembinaan akhlak...",
         author: "Ustadzah Aisyah",
         date: "2024-09-21"
     },
@@ -59,7 +59,7 @@ export const dataBerita = [
         id: 8,
         image: "https://via.placeholder.com/600x400?text=Kegiatan+Pembelajaran",
         title: "Kegiatan Pembelajaran: Menyajikan Metode Pendidikan Terbaik di Pesantren Al-Falah",
-        text: "Pesantren Al-Falah mengusung konsep pembelajaran yang menekankan pada penerapan metode pendidikan terbaik...",
+        content: "Pesantren Al-Falah mengusung konsep pembelajaran yang menekankan pada penerapan metode pendidikan terbaik...",
         author: "Ustadzah Maryam",
         date: "2024-09-22"
     },
@@ -67,7 +67,7 @@ export const dataBerita = [
         id: 9,
         image: "https://via.placeholder.com/600x400?text=Kegiatan+Keagamaan",
         title: "Kegiatan Keagamaan: Meningkatkan Ketaatan Beragama Santri di Pesantren An-Nur",
-        text: "Pesantren An-Nur mengadakan berbagai kegiatan keagamaan...",
+        content: "Pesantren An-Nur mengadakan berbagai kegiatan keagamaan...",
         author: "Ustadz Yusuf",
         date: "2024-09-23"
     },
@@ -75,7 +75,7 @@ export const dataBerita = [
         id: 10,
         image: "https://via.placeholder.com/600x400?text=Kegiatan+Kemasyarakatan",
         title: "Kegiatan Kemasyarakatan: Mendorong Santri untuk Berkontribusi pada Masyarakat di Pesantren Modern",
-        text: "Pesantren Modern mengajarkan pentingnya berkontribusi pada masyarakat melalui berbagai kegiatan...",
+        content: "Pesantren Modern mengajarkan pentingnya berkontribusi pada masyarakat melalui berbagai kegiatan...",
         author: "Ustadz Abdullah",
         date: "2024-09-24"
     }
