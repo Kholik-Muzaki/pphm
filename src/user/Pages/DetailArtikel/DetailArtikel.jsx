@@ -22,7 +22,7 @@ const DetailArtikel = () => {
                     <div className="col">
                         <img src={artikel.image} alt={artikel.title} className="img-fluid mb-4" />
                         <h1 className="fw-bold h1-title-detail">{artikel.title}</h1>
-                        <p className="mt-3">{artikel.text}</p>
+                        <p className="mt-3">{artikel.content}</p>
                         <p><strong>Author: </strong>{artikel.author}</p>
                         <p><strong>Date: </strong>{artikel.date}</p>
                     </div>

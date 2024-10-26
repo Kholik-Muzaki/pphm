@@ -13,7 +13,7 @@ const CardArtikel = ({ data }) => {
                                 <div className="card-body">
                                     <h5 className="card-title text-title">{item.title}</h5>
                                     <p className="card-text text-dark">
-                                        {item.text.slice(0, 100)}
+                                        {item.content.slice(0, 100)}
                                         <br />
                                     </p>
                                     <Link to={`/artikel/${item.id}`} className="read-more"> Read More...</Link>
