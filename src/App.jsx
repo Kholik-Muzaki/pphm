@@ -17,6 +17,10 @@ import DetailArtikel from "./user/Pages/DetailArtikel/DetailArtikel";
 import TambahArtikel from "./admin/Pages/TambahArtikel/TambahArtikel";
 import Coba from "./admin/Pages/Coba";
 import EditArtikel from "./admin/Pages/EditArtikel/EditArtikel";
+import TambahBerita from "./admin/Pages/TambahBerita/TambahBerita";
+import EditBerita from "./admin/Pages/EditBerita/EditBerita";
+import KelolaFoto from "./admin/Pages/KelolaFoto/KelolaFoto";
+import KelolaVideo from "./admin/Pages/KelolaVideo/KelolaVideo";
 
 function App() {
    return (
@@ -41,8 +45,12 @@ function App() {
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/admin/kelola-artikel" element={<KelolaArtikel />} />
             <Route path="admin/tambah-artikel" element={<TambahArtikel />} />
-            <Route path="admin/edit-artikel/:id" element={<EditArtikel/>} />
+            <Route path="admin/edit-artikel/:id" element={<EditArtikel />} />
             <Route path="/admin/kelola-berita" element={<KelolaBerita />} />
+            <Route path="/admin/tambah-berita" element={<TambahBerita />} />
+            <Route path="admin/edit-berita/:id" element={<EditBerita />} />
+            <Route path="admin/kelola-foto" element={<KelolaFoto />} />
+            <Route path="admin/kelola-video" element={<KelolaVideo />} />
 
             {/* Bendahara */}
             <Route path="/bendahara" element={<Dashboard />} />
