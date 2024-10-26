@@ -16,6 +16,7 @@ import DetailBerita from "./user/Pages/DetailBerita/DetailBerita";
 import DetailArtikel from "./user/Pages/DetailArtikel/DetailArtikel";
 import TambahArtikel from "./admin/Pages/TambahArtikel/TambahArtikel";
 import Coba from "./admin/Pages/Coba";
+import EditArtikel from "./admin/Pages/EditArtikel/EditArtikel";
 
 function App() {
    return (
@@ -40,6 +41,7 @@ function App() {
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/admin/kelola-artikel" element={<KelolaArtikel />} />
             <Route path="admin/tambah-artikel" element={<TambahArtikel />} />
+            <Route path="admin/edit-artikel/:id" element={<EditArtikel/>} />
             <Route path="/admin/kelola-berita" element={<KelolaBerita />} />
 
             {/* Bendahara */}

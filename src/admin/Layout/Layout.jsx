@@ -57,11 +57,11 @@ const Layout = ({ children, titlePage }) => {
                 </div>
                 <div className="col">
                     <header className="header-menu-layout">
-                            {/* Hamburger Button */}
-                            <button className="btn button-hamburger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
-                                <img src={image.hamburger} alt="" />
-                            </button>
-                            <span className="title-page">{titlePage}</span>
+                        {/* Hamburger Button */}
+                        <button className="btn button-hamburger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                            <img src={image.hamburger} alt="" />
+                        </button>
+                        <span className="title-page">{titlePage}</span>
                     </header>
                     <hr style={{ margin: "0px 18px 16px 18px" }} />
 

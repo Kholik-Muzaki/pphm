@@ -1,48 +1,54 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Layout from "../../Layout/Layout";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import './TambahArtikel.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import './EditArtikel.css';
 import ModalSuccess from '../../Component/ModalSuccess/ModalSuccess';
-import { addArtikel } from '../../store/artikelSlice';
-
-const TambahArtikel = () => {
+import { editArtikel } from '../../store/artikelSlice';
+const EditArtikel = () => {
+    const { id } = useParams()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [date, setDate] = useState('');
-    const [image, setImage] = useState(null); // Changed to null for file storage
+    const [image, setImage] = useState('');
     const [content, setContent] = useState('');
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
     const quillRef = useRef(null);
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0]; // Get the first file
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {f
-                setImage(reader.result); // Store the base64 string
-            };
-            reader.readAsDataURL(file); // Convert the file to base64
+    // Ambil artikel berdasarkan ID
+    const articles = useSelector((state) => state.artikel.articles);
+    const articleToEdit = articles.find(article => article.id === parseInt(id));
+
+    useEffect(() => {
+        if (articleToEdit) {
+            setTitle(articleToEdit.title);
+            setAuthor(articleToEdit.author);
+            setDate(articleToEdit.date);
+            setImage(articleToEdit.image);
+            setContent(articleToEdit.content);
+        } else {
+            // Jika artikel tidak ditemukan, bisa diarahkan ke halaman lain atau tampilkan pesan
+            navigate('/admin/kelola-artikel');
         }
-    };
+    }, [articleToEdit, navigate]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const newArticle = {
-            id: Date.now(),
+        const editedArticle = {
+            id: articleToEdit.id, // Tetapkan ID artikel yang sama
             title,
             author,
             date,
-            image, // This will be the base64 string
+            image,
             content
         };
 
-        dispatch(addArtikel(newArticle));
+        dispatch(editArtikel(editedArticle));
         setIsModalVisible(true);
     };
 
@@ -52,13 +58,13 @@ const TambahArtikel = () => {
     };
 
     return (
-        <Layout titlePage="Tambah Artikel">
+        <Layout titlePage="Edit Artikel">
             <div className="container form-container">
                 <div className="row justify-content-center row-form-add">
                     <div className="col-12">
                         <div className="card">
                             <div className="card-header bg-primary text-white text-center">
-                                <h4>Buat Artikel Baru</h4>
+                                <h4>Edit Artikel</h4>
                             </div>
                             <div className="card-body card-body-add">
                                 <form onSubmit={handleSubmit} className='form-add-artikel'>
@@ -101,15 +107,13 @@ const TambahArtikel = () => {
                                             type="file"
                                             className="form-control text-dark"
                                             id="image"
-                                            accept="image/*" // Optional: limit file types to images
-                                            onChange={handleImageChange} // Use the new handler
+                                            onChange={(e) => setImage(e.target.value)}
                                             required
                                         />
                                     </div>
                                     <div className="form-group text-dark">
                                         <label htmlFor="content" className='text-dark fw-bold'>Content : </label>
                                         <ReactQuill
-                                            ref={quillRef}
                                             theme="snow"
                                             value={content}
                                             onChange={setContent}
@@ -119,7 +123,7 @@ const TambahArtikel = () => {
                                     </div>
                                     <div className="text-center mt-3 d-flex gap-3">
                                         <button type="submit" className="btn btn-success">
-                                            Simpan Artikel
+                                            Update Artikel
                                         </button>
                                         <button type="button" className="btn btn-secondary ml-3" onClick={() => navigate('/admin/kelola-artikel')}>
                                             Kembali
@@ -135,11 +139,12 @@ const TambahArtikel = () => {
             {isModalVisible && (
                 <ModalSuccess
                     onClose={handleModalClose}
-                    title={'Sukses'}
-                    description={'Artikel Berhasil Ditambahkan'} />
+                    title='Sukses'
+                    description='Artikel Berhasil Diperbarui'
+                />
             )}
         </Layout>
     );
 };
 
-export default TambahArtikel;
+export default EditArtikel;
