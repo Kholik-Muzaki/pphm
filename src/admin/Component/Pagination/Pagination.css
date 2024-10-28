@@ -1,0 +1,68 @@
+/* Pagination.css */
+
+/* Container */
+.pagination-wrap {
+   background-color: #f8f9fa;
+   border-radius: 8px;
+   padding: 10px 15px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown untuk memilih jumlah item per halaman */
+.items-per-page {
+   font-size: 16px;
+}
+
+/* Styling untuk dropdown */
+.form-select {
+   border: 1px solid #ced4da;
+   border-radius: 5px;
+   padding: 5px 10px;
+}
+
+/* Pagination List */
+.pagination {
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+}
+
+/* Pagination Item */
+.page-item {
+   margin: 0 5px;
+}
+
+/* Tombol Pagination */
+.page-link {
+   display: inline-block;
+   padding: 8px 12px;
+   border-radius: 5px;
+   color: #007bff;
+   background-color: transparent;
+   border: 1px solid transparent;
+   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Hover dan Active State */
+.page-link:hover {
+   background-color: #e9ecef;
+   color: #0056b3;
+}
+
+.page-item.active .page-link {
+   background-color: #007bff;
+   color: white;
+   border-color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+   .pagination-wrap {
+      flex-direction: column; /* Mengubah ke kolom pada layar kecil */
+      align-items: flex-start; /* Menyelaraskan ke kiri */
+   }
+
+   .items-per-page {
+      margin-bottom: 10px; /* Memberi jarak di bawah dropdown pada layar kecil */
+   }
+}
