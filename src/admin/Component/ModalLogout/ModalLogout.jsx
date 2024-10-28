@@ -1,4 +1,5 @@
 import React from "react";
+import "./ModalLogout.css";
 
 const ModalLogout = ({ show, onClose, onSubmit }) => {
     const modalStyle = {
@@ -8,7 +9,7 @@ const ModalLogout = ({ show, onClose, onSubmit }) => {
     const backdropStyle = {
         display: show ? "block" : "none",
     };
-    
+
 
     return (
         <>
@@ -17,19 +18,26 @@ const ModalLogout = ({ show, onClose, onSubmit }) => {
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">Anda Yakin Ingin Keluar?</h5>
+                            <h5 className="modal-title">Logout</h5>
                             <button type="button" className="btn-close" onClick={onClose} />
                         </div>
-                        <div className="modal-body">
-                            <p>Pastikan semua pekerjaan telah disimpan sebelum keluar.</p>
+                        <div className="modal-body  text-center">
+                            <h5>Apakah Anda Yakin Ingin Keluar?</h5>
+                            <p>Pastikan semua pekerjaan telah disimpan sebelum keluar</p>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-outline-primary" onClick={onClose}>
-                                Batal
-                            </button>
-                            <button type="button" className="btn btn-outline-danger" onClick={onSubmit}>
-                                Keluar
-                            </button>
+                            <div className="row button-footer-logout">
+                                <div className="col-6">
+                                    <button type="button" className="btn btn-danger" onClick={onSubmit}>
+                                        Keluar
+                                    </button>
+                                </div>
+                                <div className="col-6">
+                                    <button type="button" className="btn btn-outline-primary" onClick={onClose}>
+                                        Batal
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,4 @@
+import "./Pagination.css";
 const Pagination = ({ currentPage, totalPages, itemsPerPage, itemsPerPageOptions, onPageChange, onItemsPerPageChange }) => {
     const handlePageChange = (page) => {
         if (page !== currentPage) {

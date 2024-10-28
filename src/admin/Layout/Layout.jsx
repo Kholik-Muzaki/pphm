@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Layout.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import image from "../../Image";
+import ModalLogout from "../Component/ModalLogout/ModalLogout";
 
 const Layout = ({ children, titlePage }) => {
+    const [showModalLogout, setShowModalLogout] = useState(false);
+    const navigate = useNavigate();
+
+    const handleLogoutClick = () => {
+        setShowModalLogout(true);
+    }
+
+    const handleCloseModal = () => {
+        setShowModalLogout(false);
+    }
+
+    const handleLogoutConfirm = () => {
+        // proses logout
+
+        navigate('/login');
+    }
+
+
     return (
         <div className="container-fluid container-main-layout">
             <div className="row">
@@ -48,9 +67,11 @@ const Layout = ({ children, titlePage }) => {
                         <section className="section-main mb-2">
                             <p className="p-section-main">More</p>
                             <div className="logo-sidebar">
-                                <Link to="/pengaturan">
+                                <button
+                                    className="btn btn-link text-decoration-none"
+                                    onClick={handleLogoutClick}>
                                     <img src={image.keluar} alt="" className="img-logo" />
-                                </Link>
+                                </button>
                             </div>
                         </section>
                     </div>
@@ -115,10 +136,13 @@ const Layout = ({ children, titlePage }) => {
                             <section className="section-main-offcanvas mb-2">
                                 <p className="p-section-main-offcanvas">More</p>
                                 <div className="logo-sidebar-offcanvas">
-                                    <Link to="/" className="text-decoration-none text-dark">
+                                    <button
+                                        className="btn btn-link text-decoration-none"
+                                        onClick={handleLogoutClick}>
+
                                         <img src={image.keluar} alt="" className="img-logo" />
                                         <span className="ms-2">Keluar</span>
-                                    </Link>
+                                    </button>
                                 </div>
                             </section>
                         </div>
@@ -126,6 +150,13 @@ const Layout = ({ children, titlePage }) => {
                     <div className="main-content">{children}</div>
                 </div>
             </div>
+
+            <ModalLogout
+                show={showModalLogout}
+                omClose={handleCloseModal}
+                onSubmit={handleLogoutConfirm}
+                onClose={handleCloseModal}
+            ></ModalLogout>
         </div>
     );
 };

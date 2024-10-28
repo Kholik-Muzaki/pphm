@@ -245,27 +245,33 @@ export const albums = [
 export const linkVideo = [
     {
         id: 1,
-        link: "https://www.youtube.com/embed/SA5sFIPAMMc"
+        link: "https://www.youtube.com/embed/SA5sFIPAMMc",
+        judul: "Sholawat Bersama menyamut tahun baru hijriyah"
     },
     {
         id: 2,
-        link: "https://www.youtube.com/embed/dSG8Gzl0wPo"
+        link: "https://www.youtube.com/embed/dSG8Gzl0wPo",
+        judul: "Sholawat Bersama menyamut tahun baru hijriyah"
     },
     {
         id: 3,
-        link: "https://www.youtube.com/embed/9qRLoS_mETI"
+        link: "https://www.youtube.com/embed/9qRLoS_mETI",
+        judul: "Sholawat Bersama menyamut tahun baru hijriyah"
     },
     {
         id: 4,
-        link: "https://www.youtube.com/embed/D3-gtrCLuUw"
+        link: "https://www.youtube.com/embed/D3-gtrCLuUw",
+        judul: "Sholawat Bersama menyamut tahun baru hijriyah"
     },
     {
         id: 5,
-        link: "https://www.youtube.com/embed/g3wRx9NsphM"
+        link: "https://www.youtube.com/embed/g3wRx9NsphM",
+        judul: "Sholawat Bersama menyamut tahun baru hijriyah"
     },
     {
         id: 6,
-        link: "https://www.youtube.com/embed/hxiUeqMoiiE"
+        link: "https://www.youtube.com/embed/hxiUeqMoiiE",
+        judul: "Sholawat Bersama menyamut tahun baru hijriyah"
     }
 ];
 
