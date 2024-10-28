@@ -294,6 +294,23 @@ export const fasilitasPesantren = [
     // Tambahkan lebih banyak fasilitas sesuai kebutuhan
 ];
 
+export const DataKeuangan = [
+    {
+        id: 1,
+        jenisTransaksi : 'Pengeluaran',
+        jumlah : 1000000,
+        tanggal : '2023-09-13',
+        keterangan : 'Pembayaran bulan September 2023'
+    },
+    {
+        id: 2,
+        jenisTransaksi : 'Pemasukan',
+        jumlah : 1000000,
+        tanggal : '2023-09-13',
+        keterangan : 'Pemasukan bulan September 2023'
+    }
+];
+
 
 
 

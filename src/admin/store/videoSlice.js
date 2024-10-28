@@ -14,10 +14,10 @@ const videoSlice = createSlice({
             state.videos = state.videos.filter(video => video.id !== action.payload);
         },
         editVideo: (state, action) => {
-            const { id, title, link } = action.payload;
+            const { id, judul, link } = action.payload;
             const existingVideo = state.videos.find(video => video.id === id);
             if (existingVideo) {
-                existingVideo.title = title;
+                existingVideo.judul = judul;
                 existingVideo.link = link;
             }
         }
