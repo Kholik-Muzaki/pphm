@@ -18,6 +18,7 @@ import keluar from '../src/admin/assets/Image/out.png'
 import hamburger from '../src/admin/assets/Image/hamburger.png'
 import searchIcon from '../src/admin/assets/Image/search.svg'
 import notFound from '../src/admin/assets/Image/notFound.svg'
+import money from '../src/bendahara/assets/money.png'
 
 const image = {
     logo,
@@ -39,7 +40,8 @@ const image = {
     keluar,
     hamburger,
     searchIcon,
-    notFound
+    notFound,
+    money
 }
 
 export default image;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Layout.css";
 import { Link, useNavigate } from "react-router-dom";
+import ModalLogout from "../../admin/Component/ModalLogout/ModalLogout";
 import image from "../../Image";
-import ModalLogout from "../Component/ModalLogout/ModalLogout";
 
 const Layout = ({ children, titlePage }) => {
     const [showModalLogout, setShowModalLogout] = useState(false);
@@ -36,28 +36,13 @@ const Layout = ({ children, titlePage }) => {
                             <p className="p-section-main">Main</p>
 
                             <div className="logo-sidebar">
-                                <Link to="/admin">
+                                <Link to="/bendahara">
                                     <img src={image.dashboard} alt="" className="img-logo" />
                                 </Link>
                             </div>
                             <div className="logo-sidebar">
-                                <Link to='/admin/kelola-artikel'>
-                                    <img src={image.artikel} alt="" className="img-logo" />
-                                </Link>
-                            </div>
-                            <div className="logo-sidebar">
-                                <Link to="/admin/kelola-berita">
-                                    <img src={image.berita2} alt="" className="img-logo" />
-                                </Link>
-                            </div>
-                            <div className="logo-sidebar">
-                                <Link to="/admin/kelola-foto">
-                                    <img src={image.photo} alt="" className="img-logo" />
-                                </Link>
-                            </div>
-                            <div className="logo-sidebar">
-                                <Link to="/admin/kelola-video">
-                                    <img src={image.video} alt="" className="img-logo" />
+                                <Link to='/bendahara/kelola-keuangan'>
+                                    <img src={image.money} alt="" className="img-logo" />
                                 </Link>
                             </div>
                         </section>
@@ -101,33 +86,15 @@ const Layout = ({ children, titlePage }) => {
                                     <p className="p-section-main-offcanvas">Main</p>
                                 </div>
                                 <div className="logo-sidebar-offcanvas">
-                                    <Link to="/admin" className="text-decoration-none text-dark">
+                                    <Link to="/bendahara" className="text-decoration-none text-dark">
                                         <img src={image.dashboard} alt="" className="img-logo" />
                                         <span className="ms-2">Dashboard</span>
                                     </Link>
                                 </div>
                                 <div className="logo-sidebar-offcanvas">
-                                    <Link to="/admin/kelola-artikel" className="text-decoration-none text-dark">
-                                        <img src={image.artikel} alt="" className="img-logo" />
+                                    <Link to="/bendahara/kelola-keuangan" className="text-decoration-none text-dark">
+                                        <img src={image.money} alt="" className="img-logo" />
                                         <span className="ms-2">Kelola Artikel</span>
-                                    </Link>
-                                </div>
-                                <div className="logo-sidebar-offcanvas">
-                                    <Link to="/admin/kelola-berita" className="text-decoration-none text-dark">
-                                        <img src={image.berita2} alt="" className="img-logo" />
-                                        <span className="ms-2">Kelola Berita</span>
-                                    </Link>
-                                </div>
-                                <div className="logo-sidebar-offcanvas">
-                                    <Link to="/admin/kelola-foto" className="text-decoration-none text-dark">
-                                        <img src={image.photo} alt="" className="img-logo" />
-                                        <span className="ms-2">Kelola Foto</span>
-                                    </Link>
-                                </div>
-                                <div className="logo-sidebar-offcanvas">
-                                    <Link to="/admin/kelola-video" className="text-decoration-none text-dark">
-                                        <img src={image.video} alt="" className="img-logo" />
-                                        <span className="ms-2">Kelola Video</span>
                                     </Link>
                                 </div>
                                 <hr />
@@ -141,7 +108,7 @@ const Layout = ({ children, titlePage }) => {
                                         onClick={handleLogoutClick}>
 
                                         <img src={image.keluar} alt="" className="img-logo ms-0" />
-                                        <span className="text-dark ms-2">Keluar</span>
+                                        <span className="ms-2 text-dark">Keluar</span>
                                     </button>
                                 </div>
                             </section>

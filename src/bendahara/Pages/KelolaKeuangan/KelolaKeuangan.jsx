@@ -1,58 +1,58 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Pagination from "../../Component/Pagination/Pagination";
+import { useDispatch, useSelector } from "react-redux";
+import Search from "../../../admin/Component/Search/Search";
 import Layout from "../../Layout/Layout";
-import Search from '../../Component/Search/Search';
-import image from '../../../Image';
-import { Link } from 'react-router-dom';
-import ModalDelete from '../../Component/ModalDelete/ModalDelete';
-import { deleteVideo } from '../../store/videoSlice';
+import { deleteKeuangan } from "../../../admin/store/keuanganSlice";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import Pagination from "../../../admin/Component/Pagination/Pagination";
 
-const KelolaVideo = () => {
-    const videos = useSelector((state) => state.video.videos);
+const KelolaKeuangan = () => {
     const dispatch = useDispatch();
+    const KeuanganList = useSelector((state) => state.keuangan.dataKeuangan);
     const [showModal, setShowModal] = useState(false);
-    const [videoToDelete, setVideoToDelete] = useState(null);
+    const [keuanganToDelete, setKeuanganToDelete] = useState(null);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(3);
     const [searchTerm, setSearchTerm] = useState('');
     const itemsPerPageOptions = [3, 5, 10, 20];
 
-    // Handle Delete Click
+    // handle delete click
     const handleDeleteClick = (id) => {
-        setVideoToDelete(id);
+        setKeuanganToDelete(id);
         setShowModal(true);
     };
 
     const handleDeleteConfirm = () => {
-        if (videoToDelete !== null) {
-            dispatch(deleteVideo(videoToDelete));
+        if (keuanganToDelete !== null) {
+            dispatch(deleteKeuangan(keuanganToDelete));
             setShowModal(false);
-            setVideoToDelete(null);
+            setKeuanganToDelete(null);
         }
-    };
+    }
 
     const handleModalClose = () => {
         setShowModal(false);
-        setVideoToDelete(null);
+        setKeuanganToDelete(null);
     };
 
-    const handleSearchChange = (e) => {
-        setSearchTerm(e.target.value);
+    // handle serch
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
         setCurrentPage(1);
     };
 
-    // pagination
-    const indexOfLastVideo = currentPage * itemsPerPage;
-    const indexOfFirstVideo = indexOfLastVideo - itemsPerPage;
+    const indexOfLastKeuangan = currentPage * itemsPerPage;
+    const indexOfFirstKeuangan = indexOfLastKeuangan - itemsPerPage;
 
-    const filteredVideo = videos.filter((video) =>
-        video.judul && video.judul.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredKeuangan = KeuanganList.filter((keuangan) =>
+        keuangan.jenisTransaksi.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        keuangan.jumlah.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        keuangan.keterangan.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const currentVideos = filteredVideo.slice(indexOfFirstVideo, indexOfLastVideo);
-    const totalPages = Math.ceil(filteredVideo.length / itemsPerPage);
+    const currentKeuangan = filteredKeuangan.slice(indexOfFirstKeuangan, indexOfLastKeuangan);
+    const totalPages = Math.ceil(filteredKeuangan.length / itemsPerPage);
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
@@ -63,16 +63,17 @@ const KelolaVideo = () => {
         setCurrentPage(1);
     };
 
+
     return (
-        <Layout titlePage="Kelola Album Video">
+        <Layout titlePage="Kelola Keuangan">
             <div className="wrap-table-content-whitout-card">
                 <div className="row">
                     <div className="col-4 mb-2">
                         <Search onSearchChange={handleSearchChange} />
                     </div>
                     <div className="col-2 ms-auto">
-                        <Link to='/admin/tambah-video'>
-                            <button type="button" className="btn btn-primary">Tambah Video</button>
+                        <Link to='/admin/tambah-artikel'>
+                            <button type="button" className="btn btn-primary">Tambah Keuangan</button>
                         </Link>
                     </div>
                 </div>
@@ -82,23 +83,27 @@ const KelolaVideo = () => {
                             <thead className="custom-thead">
                                 <tr className='table-head'>
                                     <th>ID</th>
-                                    <th>Judul</th>
-                                    <th>Link Video</th>
+                                    <th>Jenis Transaksi</th>
+                                    <th>Jumlah</th>
+                                    <th>Tanggal</th>
+                                    <th>Keterangan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody className='custom-tbody'>
-                                {filteredVideo.length > 0 ? (
-                                    currentVideos.map((video) => (
-                                        <tr key={video.id} className='align-middle'>
-                                            <td>{video.id}</td>
-                                            <td>{video.judul}</td>
-                                            <td>{video.link}</td>
+                                {filteredKeuangan.length > 0 ? (
+                                    currentKeuangan.map((keuangan) => (
+                                        <tr key={keuangan.id} className='align-middle'>
+                                            <td>{keuangan.id}</td>
+                                            <td>{keuangan.jenisTransaksi}</td>
+                                            <td>{keuangan.jumlah}</td>
+                                            <td>{keuangan.tanggal}</td>
+                                            <td>{keuangan.keterangan}</td>
                                             <td>
-                                                <Link to={`/admin/edit-video/${video.id}`}>
+                                                <Link to={`/admin/edit-artikel/${keuangan.id}`}>
                                                     <button className='btn btn-outline-warning mb-1 px-0'><i className='bx bxs-edit-alt' /></button>
                                                 </Link>
-                                                <button className='btn btn-danger mb-1 px-0' onClick={() => handleDeleteClick(video.id)}><i className='bx bx-trash' /></button>
+                                                <button className='btn btn-danger mb-1 px-0' onClick={() => handleDeleteClick(keuangan.id)}><i className='bx bx-trash' /></button>
                                                 <button className='btn btn-primary mb-1 px-0'><i className='bx bx-show' /></button>
                                             </td>
                                         </tr>
@@ -129,13 +134,14 @@ const KelolaVideo = () => {
                     <ModalDelete
                         onClose={handleModalClose}
                         onConfirm={handleDeleteConfirm}
-                        title="Hapus Video"
-                        description="Apakah Anda yakin ingin menghapus Video ini?"
+                        title="Hapus Artikel"
+                        description="Apakah Anda yakin ingin menghapus data keuangan ini?"
                     />
                 )}
             </div>
         </Layout>
-    );
-};
 
-export default KelolaVideo;
+    )
+}
+
+export default KelolaKeuangan;

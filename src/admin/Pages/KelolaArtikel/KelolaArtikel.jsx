@@ -4,14 +4,14 @@ import Pagination from "../../Component/Pagination/Pagination";
 import Layout from "../../Layout/Layout";
 import "./KelolaArtikel.css";
 import Search from '../../Component/Search/Search';
-import image from '../../../Image'; // Pastikan path ini benar
+import image from '../../../Image';
 import { Link } from 'react-router-dom';
 import { deleteArtikel } from '../../store/artikelSlice';
 import ModalDelete from '../../Component/ModalDelete/ModalDelete';
 
 const KelolaArtikel = () => {
-    const articles = useSelector((state) => state.artikel.articles); // Ambil artikel dari Redux state
-    const dispatch = useDispatch(); // Inisialisasi useDispatch
+    const articles = useSelector((state) => state.artikel.articles); 
+    const dispatch = useDispatch(); 
     const [showModal, setShowModal] = useState(false);
     const [articleIdToDelete, setArticleIdToDelete] = useState(null);
 
@@ -49,7 +49,7 @@ const KelolaArtikel = () => {
 
     const filteredArticles = articles.filter((article) =>
         article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        article.content.toLowerCase().includes(searchTerm.toLowerCase()) || // Pastikan ini adalah field yang benar
+        article.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
         article.author.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
