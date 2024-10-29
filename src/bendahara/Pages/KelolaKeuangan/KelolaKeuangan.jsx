@@ -5,6 +5,7 @@ import { deleteKeuangan } from "../../../admin/store/keuanganSlice";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../../../admin/Component/Pagination/Pagination";
+import ModalDelete from "../../../admin/Component/ModalDelete/ModalDelete";
 
 const KelolaKeuangan = () => {
     const dispatch = useDispatch();
@@ -72,7 +73,7 @@ const KelolaKeuangan = () => {
                         <Search onSearchChange={handleSearchChange} />
                     </div>
                     <div className="col-2 ms-auto">
-                        <Link to='/admin/tambah-artikel'>
+                        <Link to='/admin/tambah-keuangan'>
                             <button type="button" className="btn btn-primary">Tambah Keuangan</button>
                         </Link>
                     </div>
@@ -100,7 +101,7 @@ const KelolaKeuangan = () => {
                                             <td>{keuangan.tanggal}</td>
                                             <td>{keuangan.keterangan}</td>
                                             <td>
-                                                <Link to={`/admin/edit-artikel/${keuangan.id}`}>
+                                                <Link to={`/bendahara/edit-keuangan/${keuangan.id}`}>
                                                     <button className='btn btn-outline-warning mb-1 px-0'><i className='bx bxs-edit-alt' /></button>
                                                 </Link>
                                                 <button className='btn btn-danger mb-1 px-0' onClick={() => handleDeleteClick(keuangan.id)}><i className='bx bx-trash' /></button>
