@@ -16,7 +16,7 @@ const EditKeuangan = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const ListKeuangan = useSelector((state) => state.keuangan.dataKeuangan);
-    const keuanganToEdit = ListKeuangan.find((keuangan) => keuangan.id === id);
+    const keuanganToEdit = ListKeuangan.find((keuangan) => keuangan.id === parseInt(id)) || ListKeuangan.find((keuangan) => keuangan.id === id);
 
     useEffect(() => {
         console.log('use effect edit keuangan is running...');

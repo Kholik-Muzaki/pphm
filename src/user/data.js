@@ -187,6 +187,7 @@ export const dataProgramUnggulan = [
 
 export const albums = [
     {
+        id: 1,
         title: 'Album 1',
         description: 'Keterangan singkat tentang album 1.',
         images: [
@@ -205,6 +206,7 @@ export const albums = [
         ],
     },
     {
+        id: 2,
         title: 'Album 2',
         description: 'Keterangan singkat tentang album 2.',
         images: [
@@ -223,6 +225,7 @@ export const albums = [
         ],
     },
     {
+        id: 3,
         title: 'Album 3',
         description: 'Keterangan singkat tentang album 3.',
         images: [
