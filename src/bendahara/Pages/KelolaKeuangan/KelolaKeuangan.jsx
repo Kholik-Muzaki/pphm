@@ -3,12 +3,14 @@ import Search from "../../../admin/Component/Search/Search";
 import Layout from "../../Layout/Layout";
 import { deleteKeuangan } from "../../../admin/store/keuanganSlice";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Pagination from "../../../admin/Component/Pagination/Pagination";
 import ModalDelete from "../../../admin/Component/ModalDelete/ModalDelete";
+import image from "../../../Image";
 
 const KelolaKeuangan = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const KeuanganList = useSelector((state) => state.keuangan.dataKeuangan);
     const [showModal, setShowModal] = useState(false);
     const [keuanganToDelete, setKeuanganToDelete] = useState(null);
@@ -17,6 +19,12 @@ const KelolaKeuangan = () => {
     const [itemsPerPage, setItemsPerPage] = useState(3);
     const [searchTerm, setSearchTerm] = useState('');
     const itemsPerPageOptions = [3, 5, 10, 20];
+
+    // handle edit click
+    const handleEditClick = (id) => {
+        navigate(`/bendahara/edit-keuangan/${id}`);
+
+    }
 
     // handle delete click
     const handleDeleteClick = (id) => {
@@ -48,7 +56,6 @@ const KelolaKeuangan = () => {
 
     const filteredKeuangan = KeuanganList.filter((keuangan) =>
         keuangan.jenisTransaksi.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        keuangan.jumlah.toLowerCase().includes(searchTerm.toLowerCase()) ||
         keuangan.keterangan.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -101,9 +108,7 @@ const KelolaKeuangan = () => {
                                             <td>{keuangan.tanggal}</td>
                                             <td>{keuangan.keterangan}</td>
                                             <td>
-                                                <Link to={`/bendahara/edit-keuangan/${keuangan.id}`}>
-                                                    <button className='btn btn-outline-warning mb-1 px-0'><i className='bx bxs-edit-alt' /></button>
-                                                </Link>
+                                                <button className='btn btn-outline-warning mb-1 px-0' onClick={() => handleEditClick(keuangan.id)}><i className='bx bxs-edit-alt' /></button>
                                                 <button className='btn btn-danger mb-1 px-0' onClick={() => handleDeleteClick(keuangan.id)}><i className='bx bx-trash' /></button>
                                                 <button className='btn btn-primary mb-1 px-0'><i className='bx bx-show' /></button>
                                             </td>
