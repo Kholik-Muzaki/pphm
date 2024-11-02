@@ -26,7 +26,7 @@ const Layout = ({ children, titlePage }) => {
     return (
         <div className="container-fluid container-main-layout">
             <div className="row">
-                <div className="col-auto bg-light sidebar-menu d-flex justify-content-center">
+                <div className="col-auto bg-light sidebar-menu-layout d-flex justify-content-center">
                     <div className="icon-sidebar">
                         <section className="section-logo mb-3">
                             <img src={image.logo2} alt="" className="image-logo" />

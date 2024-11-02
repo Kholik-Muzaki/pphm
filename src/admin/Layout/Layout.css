@@ -1,11 +1,11 @@
 .container-main-layout {
-   /* height: 100vh !important; */
+   height: 100vh !important;
    /* width: 100% !important; */
    background-color: #f2f4fa;
 }
 
-.sidebar-menu {
-   height: 100vh;
+.sidebar-menu-layout {
+   height: 100vh !important;
    width: 80px;
    background-color: #ffffff !important;
 }

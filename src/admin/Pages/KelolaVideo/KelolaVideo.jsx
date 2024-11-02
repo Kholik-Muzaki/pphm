@@ -80,11 +80,11 @@ const KelolaVideo = () => {
                     <div className="table-responsive">
                         <table className="table table-bordered">
                             <thead className="custom-thead">
-                                <tr className='table-head'>
-                                    <th>ID</th>
-                                    <th>Judul</th>
-                                    <th>Link Video</th>
-                                    <th>Action</th>
+                                <tr className="table-head">
+                                    <th style={{ width: '5%' }}>ID</th>
+                                    <th style={{ width: '35%' }}>Judul</th>
+                                    <th style={{ width: '45%' }}>Link Video</th>
+                                    <th style={{ width: '15%' }}>Action</th>
                                 </tr>
                             </thead>
                             <tbody className='custom-tbody'>
@@ -94,12 +94,12 @@ const KelolaVideo = () => {
                                             <td>{video.id}</td>
                                             <td>{video.judul}</td>
                                             <td>{video.link}</td>
-                                            <td>
+                                            <td className='action-buttons'>
                                                 <Link to={`/admin/edit-video/${video.id}`}>
-                                                    <button className='btn btn-outline-warning mb-1 px-0'><i className='bx bxs-edit-alt' /></button>
+                                                    <button className='btn btn-outline-warning me-3'><i className='bx bxs-edit-alt' /></button>
                                                 </Link>
-                                                <button className='btn btn-danger mb-1 px-0' onClick={() => handleDeleteClick(video.id)}><i className='bx bx-trash' /></button>
-                                                <button className='btn btn-primary mb-1 px-0'><i className='bx bx-show' /></button>
+                                                <button className='btn btn-danger me-3' onClick={() => handleDeleteClick(video.id)}><i className='bx bx-trash' /></button>
+                                                <button className='btn btn-primary me-3'><i className='bx bx-show' /></button>
                                             </td>
                                         </tr>
                                     ))

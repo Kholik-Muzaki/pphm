@@ -10,8 +10,8 @@ import { deleteArtikel } from '../../store/artikelSlice';
 import ModalDelete from '../../Component/ModalDelete/ModalDelete';
 
 const KelolaArtikel = () => {
-    const articles = useSelector((state) => state.artikel.articles); 
-    const dispatch = useDispatch(); 
+    const articles = useSelector((state) => state.artikel.articles);
+    const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const [articleIdToDelete, setArticleIdToDelete] = useState(null);
 
@@ -89,13 +89,13 @@ const KelolaArtikel = () => {
                         <table className="table table-bordered">
                             <thead className="custom-thead">
                                 <tr className='table-head'>
-                                    <th>ID</th>
-                                    <th>Gambar</th>
-                                    <th>Judul</th>
-                                    <th>Konten</th>
-                                    <th>Penulis</th>
-                                    <th>Tanggal</th>
-                                    <th>Action</th>
+                                    <th style={{ width: '5%' }}>ID</th>
+                                    <th style={{ width: '10%' }}>Gambar</th>
+                                    <th style={{ width: '20%' }}>Judul</th>
+                                    <th style={{ width: '30%' }}>Konten</th>
+                                    <th style={{ width: '10%' }}>Penulis</th>
+                                    <th style={{ width: '10%' }}>Tanggal</th>
+                                    <th style={{ width: '15%' }}>Action</th>
                                 </tr>
                             </thead>
                             <tbody className='custom-tbody'>
@@ -111,12 +111,12 @@ const KelolaArtikel = () => {
                                             <td>{article.author}</td>
                                             <td>{article.date}</td>
 
-                                            <td>
+                                            <td className='action-buttons'>
                                                 <Link to={`/admin/edit-artikel/${article.id}`}>
-                                                    <button className='btn btn-outline-warning mb-1 px-0'><i className='bx bxs-edit-alt' /></button>
+                                                    <button className='btn btn-outline-warning me-2'><i className='bx bxs-edit-alt' /></button>
                                                 </Link>
-                                                <button className='btn btn-danger mb-1 px-0' onClick={() => handleDeleteClick(article.id)}><i className='bx bx-trash' /></button>
-                                                <button className='btn btn-primary mb-1 px-0'><i className='bx bx-show' /></button>
+                                                <button className='btn btn-danger me-2' onClick={() => handleDeleteClick(article.id)}><i className='bx bx-trash' /></button>
+                                                <button className='btn btn-primary'><i className='bx bx-show' /></button>
                                             </td>
                                         </tr>
                                     ))
