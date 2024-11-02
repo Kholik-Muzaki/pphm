@@ -135,10 +135,9 @@
    width: auto;
 }
 
-
 @media only screen and (max-width: 768px) {
-   .sidebar-menu {
-      display: none !important;
+   .sidebar-menu-layout {
+      display: none;
    }
 
    .main-content {
@@ -156,7 +155,6 @@
 }
 
 @media only screen and (max-width: 992px) {
-
    .main-content {
       padding-left: 0;
    }

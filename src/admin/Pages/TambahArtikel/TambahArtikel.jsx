@@ -23,7 +23,7 @@ const TambahArtikel = () => {
         const file = e.target.files[0]; // Get the first file
         if (file) {
             const reader = new FileReader();
-            reader.onloadend = () => {f
+            reader.onloadend = () => {
                 setImage(reader.result); // Store the base64 string
             };
             reader.readAsDataURL(file); // Convert the file to base64

@@ -7,6 +7,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Pagination from "../../../admin/Component/Pagination/Pagination";
 import ModalDelete from "../../../admin/Component/ModalDelete/ModalDelete";
 import image from "../../../Image";
+import DatePeeker from "../../Components/DatePeeker/DatePeeker";
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import { format } from 'date-fns';
+
 
 const KelolaKeuangan = () => {
     const dispatch = useDispatch();
@@ -19,6 +24,79 @@ const KelolaKeuangan = () => {
     const [itemsPerPage, setItemsPerPage] = useState(3);
     const [searchTerm, setSearchTerm] = useState('');
     const itemsPerPageOptions = [3, 5, 10, 20];
+
+    const [showModalDate, setShowModalDate] = useState(false);
+    const [selectedStartDate, setSelectedStartDate] = useState(null);
+    const [selectedEndDate, setSelectedEndDate] = useState(null);
+
+    const handleOpenDateModal = () => {
+        setShowModalDate(true);
+    }
+
+    // Fungsi untuk memproses cetak laporan berdasarkan rentang tanggal
+    const handleProcessDateRange = (startDate, endDate) => {
+        setSelectedStartDate(startDate);
+        setSelectedEndDate(endDate);
+
+        const filteredData = KeuanganList.filter((keuangan) => {
+            const tanggal = new Date(keuangan.tanggal);
+            return tanggal >= startDate && tanggal <= endDate;
+        });
+
+        if (filteredData.length === 0) {
+            alert('Tidak ada data dalam rentang tanggal yang dipilih.');
+            return;
+        }
+
+        // Inisialisasi jsPDF dan pengaturan halaman
+        const doc = new jsPDF();
+        const pageWidth = doc.internal.pageSize.getWidth();
+
+        // Menambahkan Kop Surat
+        doc.setFontSize(12);
+        doc.setTextColor(40);
+
+        // Tambahkan logo di kiri atas (opsional)
+        doc.addImage(image.logo2, 'PNG', 10, 10, 30, 30);
+
+        // Judul Laporan
+        doc.setFont('helvetica', 'bold');
+        doc.text('Laporan Keuangan', pageWidth / 2, 20, { align: 'center' });
+
+        // Nama Lembaga atau Alamat
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        doc.text('Pondok Pesantren Hidayatul Mubtadiien', pageWidth / 2, 28, { align: 'center' });
+        doc.text('Jl. Inpres, Bersole, Karangpucung, Kec. Purwokerto Selatan', pageWidth / 2, 34, { align: 'center' });
+        doc.text('Kabupaten Banyumas, Jawa Tengah 53142', pageWidth / 2, 40, { align: 'center' });
+
+        // Garis pemisah
+        doc.setDrawColor(0);
+        doc.line(10, 43, pageWidth - 10, 43);
+
+        // Periode Laporan
+        doc.setFontSize(10);
+        doc.text(`Periode: ${format(startDate, 'dd-MM-yyyy')} hingga ${format(endDate, 'dd-MM-yyyy')}`, pageWidth / 2, 50, { align: 'center' });
+
+        // Isi Tabel
+        autoTable(doc, {
+            startY: 53, // Mulai setelah kop surat
+            head: [['ID', 'Jenis Transaksi', 'Jumlah', 'Tanggal', 'Keterangan']],
+            body: filteredData.map((keuangan) => [
+                keuangan.id,
+                keuangan.jenisTransaksi,
+                keuangan.jumlah,
+                format(new Date(keuangan.tanggal), 'dd-MM-yyyy'),
+                keuangan.keterangan
+            ]),
+            headStyles: { fillColor: [0, 51, 153] }, // Warna header tabel
+            styles: { fontSize: 8, halign: 'center' }, // Gaya teks tabel
+        });
+
+        // Simpan file PDF
+        doc.save(`Laporan_Keuangan_${format(startDate, 'dd-MM-yyyy')}_to_${format(endDate, 'dd-MM-yyyy')}.pdf`);
+    };
+
 
     // handle edit click
     const handleEditClick = (id) => {
@@ -79,8 +157,13 @@ const KelolaKeuangan = () => {
                     <div className="col-4 mb-2">
                         <Search onSearchChange={handleSearchChange} />
                     </div>
+                    <div className="col-3 mb-2">
+                        <button type="button" className="btn btn-primary d-flex flex-row flex-start align-items-center"
+                            onClick={handleOpenDateModal}>
+                            <i className='bx bx-printer me-3'></i>Cetak Laporan Keuangan</button>
+                    </div>
                     <div className="col-2 ms-auto">
-                        <Link to='/admin/tambah-keuangan'>
+                        <Link to='/bendahara/tambah-keuangan'>
                             <button type="button" className="btn btn-primary">Tambah Keuangan</button>
                         </Link>
                     </div>
@@ -144,6 +227,14 @@ const KelolaKeuangan = () => {
                         description="Apakah Anda yakin ingin menghapus data keuangan ini?"
                     />
                 )}
+
+                {/* Modal Cetak Laporan Keuangan */}
+                <DatePeeker
+                    show={showModalDate}
+                    onClose={() => setShowModalDate(false)}
+                    onProcess={handleProcessDateRange}
+                />
+
             </div>
         </Layout>
 

@@ -120,9 +120,9 @@ const Layout = ({ children, titlePage }) => {
 
             <ModalLogout
                 show={showModalLogout}
-                omClose={handleCloseModal}
-                onSubmit={handleLogoutConfirm}
                 onClose={handleCloseModal}
+                onSubmit={handleLogoutConfirm}
+                omClose={handleCloseModal}
             ></ModalLogout>
         </div>
     );
