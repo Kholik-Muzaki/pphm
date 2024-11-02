@@ -7,6 +7,7 @@ const fotoSlice = createSlice({
         albums: albums,
     },
     reducers: {
+
         addAlbum: (state, action) => {
             state.albums.push(action.payload);
         },

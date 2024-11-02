@@ -27,6 +27,8 @@ import DashboardBendahara from "./bendahara/Pages/DashboardBendahara/DashboardBe
 import KelolaKeuangan from "./bendahara/Pages/KelolaKeuangan/KelolaKeuangan";
 import TambahKeuangan from "./bendahara/Pages/TambahKeuangan/TambahKeuangan";
 import EditKeuangan from "./bendahara/Pages/EditKeuangan/EditKeuangan";
+import TambahFoto from "./admin/Pages/TambahFoto/TambahFoto";
+import EditFoto from "./admin/Pages/EditFoto/EditFoto";
 
 function App() {
    return (
@@ -54,16 +56,18 @@ function App() {
             <Route path="admin/edit-artikel/:id" element={<EditArtikel />} />
             <Route path="/admin/kelola-berita" element={<KelolaBerita />} />
             <Route path="/admin/tambah-berita" element={<TambahBerita />} />
-            <Route path="admin/edit-berita/:id" element={<EditBerita />} />
-            <Route path="admin/kelola-foto" element={<KelolaFoto />} />
-            <Route path="admin/kelola-video" element={<KelolaVideo />} />
-            <Route path="admin/tambah-video" element={<TambahVideo />} />
-            <Route path="admin/edit-video/:id" element={<EditVideo />} />
-            <Route path="admin/tambah-keuangan" element={<TambahKeuangan />} />
+            <Route path="/admin/edit-berita/:id" element={<EditBerita />} />
+            <Route path="/admin/kelola-foto" element={<KelolaFoto />} />
+            <Route path="/admin/tambah-foto" element={<TambahFoto />} />
+            <Route path="/admin/edit-foto/:id" element={<EditFoto />} />
+            <Route path="/admin/kelola-video" element={<KelolaVideo />} />
+            <Route path="/admin/tambah-video" element={<TambahVideo />} />
+            <Route path="/admin/edit-video/:id" element={<EditVideo />} />
 
             {/* Bendahara */}
             <Route path="/bendahara" element={<DashboardBendahara />} />
             <Route path="/bendahara/kelola-keuangan" element={<KelolaKeuangan />} />
+            <Route path="/bendahara/tambah-keuangan" element={<TambahKeuangan />} />
             <Route path="/bendahara/edit-keuangan/:id" element={<EditKeuangan />} />
 
             <Route path="/coba" element={<Coba />} />

@@ -80,7 +80,7 @@ const KelolaAlbum = () => {
                         />
                     </div>
                     <div className="col-2 ms-auto">
-                        <Link to='/admin/tambah-album'>
+                        <Link to='/admin/tambah-foto'>
                             <button type="button" className="btn btn-primary">Tambah Album</button>
                         </Link>
                     </div>
@@ -123,7 +123,7 @@ const KelolaAlbum = () => {
                                                 </div>
                                             </td>
                                             <td>
-                                                <Link to={`/admin/edit-album/${album.id}`}>
+                                                <Link to={`/admin/edit-foto/${album.id}`}>
                                                     <button className='btn btn-outline-warning mb-1 px-0'><i className='bx bxs-edit-alt' /></button>
                                                 </Link>
                                                 <button className='btn btn-danger mb-1 px-0' onClick={() => handleDeleteClick(album.id)}><i className='bx bx-trash' /></button>

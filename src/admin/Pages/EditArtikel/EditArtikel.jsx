@@ -36,6 +36,17 @@ const EditArtikel = () => {
         }
     }, [articleToEdit, navigate]);
 
+    const handleImageChange = (e) => {
+        const file = e.target.files[0]; // Get the first file
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImage(reader.result); // Store the base64 string
+            };
+            reader.readAsDataURL(file); // Convert the file to base64
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -107,7 +118,8 @@ const EditArtikel = () => {
                                             type="file"
                                             className="form-control text-dark"
                                             id="image"
-                                            onChange={(e) => setImage(e.target.value)}
+                                            accept='image/*'
+                                            onChange={handleImageChange}
                                             required
                                         />
                                     </div>
