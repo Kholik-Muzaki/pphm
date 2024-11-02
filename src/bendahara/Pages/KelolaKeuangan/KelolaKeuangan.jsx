@@ -56,31 +56,27 @@ const KelolaKeuangan = () => {
         doc.setFontSize(12);
         doc.setTextColor(40);
 
-        // Tambahkan logo di kiri atas (opsional)
+        // Logo cetak
         doc.addImage(image.logo2, 'PNG', 10, 10, 30, 30);
 
-        // Judul Laporan
+        // Kop Cetak Laporan(Pondok Pesantren Hidayatul Mubtadiien)
         doc.setFont('helvetica', 'bold');
         doc.text('Laporan Keuangan', pageWidth / 2, 20, { align: 'center' });
 
-        // Nama Lembaga atau Alamat
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
         doc.text('Pondok Pesantren Hidayatul Mubtadiien', pageWidth / 2, 28, { align: 'center' });
         doc.text('Jl. Inpres, Bersole, Karangpucung, Kec. Purwokerto Selatan', pageWidth / 2, 34, { align: 'center' });
         doc.text('Kabupaten Banyumas, Jawa Tengah 53142', pageWidth / 2, 40, { align: 'center' });
 
-        // Garis pemisah
         doc.setDrawColor(0);
         doc.line(10, 43, pageWidth - 10, 43);
 
-        // Periode Laporan
         doc.setFontSize(10);
         doc.text(`Periode: ${format(startDate, 'dd-MM-yyyy')} hingga ${format(endDate, 'dd-MM-yyyy')}`, pageWidth / 2, 50, { align: 'center' });
 
-        // Isi Tabel
         autoTable(doc, {
-            startY: 53, // Mulai setelah kop surat
+            startY: 53,
             head: [['ID', 'Jenis Transaksi', 'Jumlah', 'Tanggal', 'Keterangan']],
             body: filteredData.map((keuangan) => [
                 keuangan.id,
@@ -89,7 +85,7 @@ const KelolaKeuangan = () => {
                 format(new Date(keuangan.tanggal), 'dd-MM-yyyy'),
                 keuangan.keterangan
             ]),
-            headStyles: { fillColor: [0, 51, 153] }, // Warna header tabel
+            headStyles: { fillColor: [0, 51, 153] }, 
             styles: { fontSize: 8, halign: 'center' }, // Gaya teks tabel
         });
 
@@ -190,7 +186,7 @@ const KelolaKeuangan = () => {
                                             <td>{keuangan.jumlah}</td>
                                             <td>{keuangan.tanggal}</td>
                                             <td>{keuangan.keterangan}</td>
-                                            <td>
+                                            <td className="d-flex gap-1">
                                                 <button className='btn btn-outline-warning mb-1 px-0' onClick={() => handleEditClick(keuangan.id)}><i className='bx bxs-edit-alt' /></button>
                                                 <button className='btn btn-danger mb-1 px-0' onClick={() => handleDeleteClick(keuangan.id)}><i className='bx bx-trash' /></button>
                                                 <button className='btn btn-primary mb-1 px-0'><i className='bx bx-show' /></button>

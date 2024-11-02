@@ -17,47 +17,58 @@ const DatePeeker = ({ show, onClose, onProcess }) => {
     };
 
     return (
-        <div className={`modal ${show ? 'd-block' : 'd-none'}`} tabIndex="-1">
-            <div className="modal-dialog modal-dialog-centered">
+
+        <div className={`modal ${show ? 'd-block' : 'd-none'} `} tabIndex="-1">
+            <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title">Cetak Laporan Keuangan</h5>
                         <button type="button" className="btn-close" onClick={onClose}></button>
                     </div>
                     <div className="modal-body">
-                        <div className="mb-3">
-                            <label>Mulai Tanggal:</label>
-                            <DatePicker
-                                selected={startDate}
-                                onChange={(date) => setStartDate(date)}
-                                selectsStart
-                                startDate={startDate}
-                                endDate={endDate}
-                                placeholderText="Pilih tanggal mulai"
-                                className="form-control"
-                            />
+                        <div className="mb-3 d-flex align-items-center">
+                            <div className="col-4">
+                                <label>Mulai Tanggal</label>
+                            </div>
+                            <div className="col-8">
+                                <DatePicker
+                                    selected={startDate}
+                                    onChange={(date) => setStartDate(date)}
+                                    selectsStart
+                                    startDate={startDate}
+                                    endDate={endDate}
+                                    placeholderText="Pilih tanggal mulai"
+                                    className="form-control"
+                                />
+                            </div>
                         </div>
-                        <div className="mb-3">
-                            <label>Hingga Tanggal:</label>
-                            <DatePicker
-                                selected={endDate}
-                                onChange={(date) => setEndDate(date)}
-                                selectsEnd
-                                startDate={startDate}
-                                endDate={endDate}
-                                minDate={startDate}
-                                placeholderText="Pilih tanggal akhir"
-                                className="form-control"
-                            />
+                        <div className="mb-3 d-flex align-items-center">
+                            <div className="col-4">
+                                <label>Hingga Tanggal</label>
+                            </div>
+                            <div className="col-8">
+                                <DatePicker
+                                    selected={endDate}
+                                    onChange={(date) => setEndDate(date)}
+                                    selectsEnd
+                                    startDate={startDate}
+                                    endDate={endDate}
+                                    minDate={startDate}
+                                    placeholderText="Pilih tanggal akhir"
+                                    className="form-control"
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className="modal-footer">
+                        <button type="button" className="btn btn-primary" onClick={handleProcess}>Cetak Laporan</button>
                         <button type="button" className="btn btn-secondary" onClick={onClose}>Batal</button>
-                        <button type="button" className="btn btn-primary" onClick={handleProcess}>Proses</button>
                     </div>
                 </div>
             </div>
         </div>
+
+
     );
 };
 
