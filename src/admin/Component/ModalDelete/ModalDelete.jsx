@@ -12,6 +12,8 @@ const ModalDelete = ({ onClose, onConfirm, title, description }) => {
                             src={image.trash}
                             alt="Delete"
                             className="modal-icon"
+                            height="80px"
+                            width="80px"
                         />
                     </div>
                     <div className="modal-body-delete">

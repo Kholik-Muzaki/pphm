@@ -4,7 +4,7 @@ import Pagination from "../../Component/Pagination/Pagination";
 import Layout from "../../Layout/Layout";
 import Search from '../../Component/Search/Search';
 import image from '../../../Image';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ModalDelete from '../../Component/ModalDelete/ModalDelete';
 import { deleteVideo } from '../../store/videoSlice';
 
@@ -13,6 +13,7 @@ const KelolaVideo = () => {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const [videoToDelete, setVideoToDelete] = useState(null);
+    const navigate = useNavigate()
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(3);
@@ -99,7 +100,7 @@ const KelolaVideo = () => {
                                                     <button className='btn btn-outline-warning me-3'><i className='bx bxs-edit-alt' /></button>
                                                 </Link>
                                                 <button className='btn btn-danger me-3' onClick={() => handleDeleteClick(video.id)}><i className='bx bx-trash' /></button>
-                                                <button className='btn btn-primary me-3'><i className='bx bx-show' /></button>
+                                                <button className='btn btn-primary me-3' onClick={() => navigate('/galeri-foto-video')}><i className='bx bx-show' /></button>
                                             </td>
                                         </tr>
                                     ))

@@ -1,4 +1,4 @@
-import logo from  '../src/user/assets/Image/logo.png';
+import logo from '../src/user/assets/Image/logo.png';
 import banner1 from '../src/user/assets/Image/1.jpg'
 import banner2 from '../src/user/assets/Image/2.jpg'
 import banner3 from '../src/user/assets/Image/3.jpg'
@@ -19,6 +19,8 @@ import hamburger from '../src/admin/assets/Image/hamburger.png'
 import searchIcon from '../src/admin/assets/Image/search.svg'
 import notFound from '../src/admin/assets/Image/notFound.svg'
 import money from '../src/bendahara/assets/money.png'
+import admin from '../src/admin/assets/Image/admin.png'
+import logout from '../src/admin/assets/Image/logout.png'
 
 const image = {
     logo,
@@ -41,7 +43,9 @@ const image = {
     hamburger,
     searchIcon,
     notFound,
-    money
+    money,
+    admin,
+    logout
 }
 
 export default image;

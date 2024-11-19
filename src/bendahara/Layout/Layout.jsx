@@ -6,6 +6,7 @@ import image from "../../Image";
 
 const Layout = ({ children, titlePage }) => {
     const [showModalLogout, setShowModalLogout] = useState(false);
+    const [showDropdown, setShowDropdown] = useState(false);
     const navigate = useNavigate();
 
     const handleLogoutClick = () => {
@@ -62,12 +63,51 @@ const Layout = ({ children, titlePage }) => {
                     </div>
                 </div>
                 <div className="col">
-                    <header className="header-menu-layout">
+                    <header className="header-menu-layout d-flex align-items-center justify-content-between">
                         {/* Hamburger Button */}
-                        <button className="btn button-hamburger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
-                            <img src={image.hamburger} alt="" />
-                        </button>
-                        <span className="title-page">{titlePage}</span>
+                        <div className="left-header d-flex align-items-center">
+                            <button
+                                className="btn button-hamburger"
+                                type="button"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasSidebar"
+                                aria-controls="offcanvasSidebar"
+                            >
+                                <img src={image.hamburger} alt="Menu" />
+                            </button>
+                            <span className="title-page">{titlePage}</span>
+                        </div>
+                        <div className="right-header me-5 position-relative">
+                            {/* Admin Image */}
+                            <div
+                                className="image-admin-header"
+                                onClick={() => setShowDropdown(!showDropdown)}
+                                style={{ cursor: "pointer" }}
+                            >
+                                <img src={image.admin} height="25px" width="25px" alt="Admin" />
+                            </div>
+
+                            {/* Dropdown Menu */}
+                            {showDropdown && (
+                                <div
+                                    className="dropdown-menu-custom shadow bg-white rounded p-2 position-absolute"
+                                    style={{
+                                        top: "40px",
+                                        right: "0px",
+                                        width: "150px",
+                                        zIndex: "10",
+                                    }}
+                                >
+                                    <div className="dropdown-item-header d-flex align-items-center py-2" style={{ cursor: "pointer" }}>
+                                        <i className="bx bx-user me-2"></i> Edit Profile
+                                    </div>
+                                    <div className="dropdown-item-header d-flex align-items-center py-2" style={{ cursor: "pointer" }}
+                                        onClick={handleLogoutClick}>
+                                        <i className="bx bx-log-out me-2"></i> Logout
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                     </header>
                     <hr style={{ margin: "0px 18px 16px 18px" }} />
 
