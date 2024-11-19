@@ -4,11 +4,12 @@ import Layout from "../../Layout/Layout";
 import Pagination from "../../Component/Pagination/Pagination";
 import { deleteAlbum } from '../../store/fotoSlice';
 import ModalDelete from '../../Component/ModalDelete/ModalDelete';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const KelolaAlbum = () => {
     const albums = useSelector((state) => state.foto.albums);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [showModal, setShowModal] = useState(false);
     const [albumIdToDelete, setAlbumIdToDelete] = useState(null);
@@ -128,7 +129,7 @@ const KelolaAlbum = () => {
                                                     <button className='btn btn-outline-warning me-3'><i className='bx bxs-edit-alt' /></button>
                                                 </Link>
                                                 <button className='btn btn-danger me-3' onClick={() => handleDeleteClick(album.id)}><i className='bx bx-trash' /></button>
-                                                <button className='btn btn-primary me-3'><i className='bx bx-show' /></button>
+                                                <button className='btn btn-primary me-3' onClick={() => navigate('/galeri-foto-video')}><i className='bx bx-show' /></button>
                                             </td>
                                         </tr>
                                     ))

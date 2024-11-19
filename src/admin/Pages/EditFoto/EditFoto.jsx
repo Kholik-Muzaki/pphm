@@ -137,3 +137,4 @@ const EditFoto = () => {
 }
 
 export default EditFoto;
+

@@ -23,7 +23,7 @@ const Navbar2 = () => {
                         <span className="navbar-toggler-icon" />
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                             <li className="nav-item py-lg-4">
                                 <Link className="nav-link" to="/home">
                                     Beranda
@@ -70,6 +70,11 @@ const Navbar2 = () => {
                             <li className="nav-item py-lg-4">
                                 <Link className="nav-link" to="/kontak">
                                     Kontak
+                                </Link>
+                            </li>
+                            <li className="nav-item py-lg-4">
+                                <Link className="nav-link" to="/login">
+                                    <button type='button' className='btn btn-login-navbar'>Login</button>
                                 </Link>
                             </li>
                         </ul>

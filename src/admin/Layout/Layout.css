@@ -70,6 +70,13 @@
    font-weight: 500;
 }
 
+.image-admin-header {
+   border: 1px solid #000000;
+   border-radius: 50%;
+   padding: 5px;
+}
+
+/* dropdown header */
 .main-content {
    height: max-content;
 }
