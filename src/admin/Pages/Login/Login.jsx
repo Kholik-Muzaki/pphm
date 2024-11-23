@@ -3,33 +3,48 @@ import image from "../../../Image"
 import './Login.style.css'
 import { useFormik } from "formik"
 import * as Yup from "yup"
+import { useState } from "react"
+import ApiInstance from "../../../api/api"
 const Login = () => {
-
     const navigate = useNavigate();
-    const handleSubmit = (values) => {
-        const { username, password, role } = values;
-        if (username === import.meta.env.VITE_admin_username && password === import.meta.env.VITE_admin_username && role === "Admin") {
-            navigate("/admin");
-            alert("Login Success as Admin");
-        } else if (username === import.meta.env.VITE_bendahara_username && password === import.meta.env.VITE_bendahara_password && role === "Bendahara") {
-            navigate("/bendahara");
-            alert("Login Success as Bendahara");
-        } else (
-            alert("Invalid credentials")
-        )
+    const [errorMessage, setErrorMessage] = useState("");
+    const handleSubmit = async (values) => {
+        try {
+            const response = await ApiInstance.post("/auth/login", {
+                username: values.username,
+                password: values.password
+            });
+            console.log("response data:", response.data);
+
+            const { token } = response.data.data;
+            const { role } = response.data.data.user;
+
+            localStorage.setItem("token", token);
+            localStorage.setItem("role", role);
+
+            if (role === "admin") {
+                navigate("/admin");
+            } if (role === "bendahara") {
+                navigate("/bendahara");
+            } else {
+                setErrorMessage("Role tidak dikenali");
+            }
+        } catch (error) {
+            setErrorMessage(
+                error.response?.data?.message || "Terjadi kesalahan saat login"
+            );
+        }
     }
 
     const formik = useFormik({
         initialValues: {
             username: "",
             password: "",
-            role: "",
         },
         onSubmit: handleSubmit,
         validationSchema: Yup.object().shape({
             username: Yup.string().required("Username harus diisi!"),
             password: Yup.string().required("Password harus diisi!"),
-            role: Yup.string().required("Role harus diisi!"),
         })
     })
 
@@ -85,24 +100,6 @@ const Login = () => {
                                         />
                                         {formik.touched.password && formik.errors.password && <div className="invalid-feedback">{formik.errors.password}</div>}
                                     </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="role" className="form-label">
-                                            Role
-                                        </label>
-                                        <select
-                                            id="role"
-                                            className={`form-select ${formik.touched.role && formik.errors.role ? "is-invalid" : ""}`}
-                                            name="role"
-                                            onChange={handleChange}
-                                            onBlur={formik.handleBlur}
-                                            value={formik.values.role}>
-                                            <option value="" label="Pilih Role" />
-                                            <option value="Admin" label="Admin" />
-                                            <option value="Bendahara" label="Bendahara" />
-                                        </select>
-                                        {formik.touched.role && formik.errors.role && <div className="invalid-feedback">{formik.errors.role}</div>}
-                                    </div>
-
                                     <button type="submit" className="btn btn-primary">
                                         Submit
                                     </button> <br />

@@ -23,8 +23,11 @@ const beritaSlice = createSlice({
                 existingBerita.image = image;
             }
         },
+        getAllBerita: (state) => {
+            return state.dataBerita;
+        }
     },
 });
 
-export const { addBerita, deleteBerita, editBerita } = beritaSlice.actions;
+export const { addBerita, deleteBerita, editBerita, getAllBerita } = beritaSlice.actions;
 export default beritaSlice.reducer;

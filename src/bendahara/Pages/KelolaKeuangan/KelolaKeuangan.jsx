@@ -85,7 +85,7 @@ const KelolaKeuangan = () => {
                 format(new Date(keuangan.tanggal), 'dd-MM-yyyy'),
                 keuangan.keterangan
             ]),
-            headStyles: { fillColor: [0, 51, 153] },
+            headStyles: { fillColor: [0, 51, 153] }, 
             styles: { fontSize: 8, halign: 'center' }, // Gaya teks tabel
         });
 
@@ -189,7 +189,7 @@ const KelolaKeuangan = () => {
                                             <td className="d-flex gap-1">
                                                 <button className='btn btn-outline-warning mb-1 px-0' onClick={() => handleEditClick(keuangan.id)}><i className='bx bxs-edit-alt' /></button>
                                                 <button className='btn btn-danger mb-1 px-0' onClick={() => handleDeleteClick(keuangan.id)}><i className='bx bx-trash' /></button>
-                                                <button className='btn btn-primary mb-1 px-0' onClick={() => navigate(`/bendahara/detail-keuangan/${keuangan.id}`)}><i className='bx bx-show' /></button>
+                                                <button className='btn btn-primary mb-1 px-0'  onClick={() => navigate(`/bendahara/detail-keuangan/${keuangan.id}`)}><i className='bx bx-show' /></button>
                                             </td>
                                         </tr>
                                     ))
