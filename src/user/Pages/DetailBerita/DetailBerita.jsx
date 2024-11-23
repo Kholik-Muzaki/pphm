@@ -2,16 +2,24 @@ import { useParams } from "react-router-dom";
 import BackToTopButton from "../../Component/BackToTopButton/BackToTopButton";
 import BannerPage from "../../Component/BannerPage/BannerPage"
 import Footer from "../../Component/Footer/Footer"
-import { dataBerita } from "../../data";
 import Navbar2 from "../../Component/Navbar/Navbar2";
 import './DetailBerita.css';
+import { useSelector } from "react-redux";
 
 const DetailBerita = () => {
     const { id } = useParams();
+    const dataBerita = useSelector((state) => state.berita.dataBerita);
     const berita = dataBerita.find(item => item.id === parseInt(id));
 
     if (!berita) {
-        return <h1>Berita Tidak Ditemukan!</h1>
+        // Jika berita tidak ditemukan
+        return (
+            <div>
+                <Navbar2 />
+                <h1 className="text-center mt-5">Berita Tidak Ditemukan!</h1>
+                <Footer />
+            </div>
+        );
     }
     return (
         <>
@@ -20,9 +28,9 @@ const DetailBerita = () => {
             <div className="container mt-2">
                 <div className="row">
                     <div className="col">
-                        <img src={berita.image} alt={berita.title} className="img-fluid mb-4" />
+                        <img src={berita.image} alt={berita.title} className="img-fluid image-detail" />
                         <h1 className="fw-bold h1-title-detail">{berita.title}</h1>
-                        <p className="mt-3">{berita.text}</p>
+                        <p className="mt-3">{berita.content}</p>
                         <p><strong>Author: </strong>{berita.author}</p>
                         <p><strong>Date: </strong>{berita.date}</p>
                     </div>

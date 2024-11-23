@@ -15,7 +15,6 @@ import Navbar2 from "./user/Component/Navbar/Navbar2";
 import DetailBerita from "./user/Pages/DetailBerita/DetailBerita";
 import DetailArtikel from "./user/Pages/DetailArtikel/DetailArtikel";
 import TambahArtikel from "./admin/Pages/TambahArtikel/TambahArtikel";
-import Coba from "./admin/Pages/Coba";
 import EditArtikel from "./admin/Pages/EditArtikel/EditArtikel";
 import TambahBerita from "./admin/Pages/TambahBerita/TambahBerita";
 import EditBerita from "./admin/Pages/EditBerita/EditBerita";
@@ -31,12 +30,13 @@ import TambahFoto from "./admin/Pages/TambahFoto/TambahFoto";
 import EditFoto from "./admin/Pages/EditFoto/EditFoto";
 import EditProfileAdmin from "./admin/Pages/EditProfile/EditProfile";
 import DetailKeuangan from "./bendahara/Pages/DetailKeuangan/DetailKeuangan";
+import ProtectedRoute from "./auth/ProtectedRoute";
 
 function App() {
    return (
       <Router>
          <Routes>
-            {/* User */}
+            {/* Public Routes */}
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/profil-pengasuh" element={<ProfilPengasuh />} />
@@ -51,30 +51,162 @@ function App() {
 
             {/* Login */}
             <Route path="/login" element={<Login />} />
-            {/* Admin */}
-            <Route path="/admin" element={<Dashboard />} />
-            <Route path="/admin/kelola-artikel" element={<KelolaArtikel />} />
-            <Route path="admin/tambah-artikel" element={<TambahArtikel />} />
-            <Route path="admin/edit-artikel/:id" element={<EditArtikel />} />
-            <Route path="/admin/kelola-berita" element={<KelolaBerita />} />
-            <Route path="/admin/tambah-berita" element={<TambahBerita />} />
-            <Route path="/admin/edit-berita/:id" element={<EditBerita />} />
-            <Route path="/admin/kelola-foto" element={<KelolaFoto />} />
-            <Route path="/admin/tambah-foto" element={<TambahFoto />} />
-            <Route path="/admin/edit-foto/:id" element={<EditFoto />} />
-            <Route path="/admin/kelola-video" element={<KelolaVideo />} />
-            <Route path="/admin/tambah-video" element={<TambahVideo />} />
-            <Route path="/admin/edit-video/:id" element={<EditVideo />} />
-            <Route path="/admin/edit-profile" element={<EditProfileAdmin />} />
 
-            {/* Bendahara */}
-            <Route path="/bendahara" element={<DashboardBendahara />} />
-            <Route path="/bendahara/kelola-keuangan" element={<KelolaKeuangan />} />
-            <Route path="/bendahara/tambah-keuangan" element={<TambahKeuangan />} />
-            <Route path="/bendahara/edit-keuangan/:id" element={<EditKeuangan />} />
-            <Route path="/bendahara/detail-keuangan/:id" element={<DetailKeuangan />} />
+            {/* Admin Private Routes */}
+            <Route
+               path="/admin"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <Dashboard />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/kelola-artikel"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <KelolaArtikel />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/tambah-artikel"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <TambahArtikel />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/edit-artikel/:id"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <EditArtikel />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/kelola-berita"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <KelolaBerita />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/tambah-berita"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <TambahBerita />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/edit-berita/:id"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <EditBerita />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/kelola-foto"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <KelolaFoto />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/tambah-foto"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <TambahFoto />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/edit-foto/:id"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <EditFoto />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/kelola-video"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <KelolaVideo />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/tambah-video"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <TambahVideo />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/edit-video/:id"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <EditVideo />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/admin/edit-profile"
+               element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                     <EditProfileAdmin />
+                  </ProtectedRoute>
+               }
+            />
 
-            <Route path="/coba" element={<Coba />} />
+            {/* Bendahara Private Routes */}
+            <Route
+               path="/bendahara"
+               element={
+                  <ProtectedRoute allowedRoles={["bendahara"]}>
+                     <DashboardBendahara />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/bendahara/kelola-keuangan"
+               element={
+                  <ProtectedRoute allowedRoles={["bendahara"]}>
+                     <KelolaKeuangan />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/bendahara/tambah-keuangan"
+               element={
+                  <ProtectedRoute allowedRoles={["bendahara"]}>
+                     <TambahKeuangan />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/bendahara/edit-keuangan/:id"
+               element={
+                  <ProtectedRoute allowedRoles={["bendahara"]}>
+                     <EditKeuangan />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/bendahara/detail-keuangan/:id"
+               element={
+                  <ProtectedRoute allowedRoles={["bendahara"]}>
+                     <DetailKeuangan />
+                  </ProtectedRoute>
+               }
+            />
          </Routes>
       </Router>
    );

@@ -24,8 +24,11 @@ const artikelSlice = createSlice({
                 existingArticle.image = image;
             }
         },
+        getAllArticles: (state) => {
+            return state.articles;
+        }
     },
 });
 
-export const { addArtikel, deleteArtikel, editArtikel } = artikelSlice.actions;
+export const { addArtikel, deleteArtikel, editArtikel, getAllArticles } = artikelSlice.actions;
 export default artikelSlice.reducer;
