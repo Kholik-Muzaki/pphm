@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import Search from "../../../admin/Component/Search/Search";
 import Layout from "../../Layout/Layout";
-import { deleteKeuangan } from "../../../admin/store/keuanganSlice";
-import { useState } from "react";
+import { deleteKeuangan, getKeuangan } from "../../../admin/store/keuanganSlice";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Pagination from "../../../admin/Component/Pagination/Pagination";
 import ModalDelete from "../../../admin/Component/ModalDelete/ModalDelete";
@@ -16,9 +16,9 @@ import { format } from 'date-fns';
 const KelolaKeuangan = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const KeuanganList = useSelector((state) => state.keuangan.dataKeuangan);
-    const [showModal, setShowModal] = useState(false);
+    const { dataKeuangan, status, error } = useSelector((state) => state.keuangan);
     const [keuanganToDelete, setKeuanganToDelete] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(3);
@@ -38,7 +38,7 @@ const KelolaKeuangan = () => {
         setSelectedStartDate(startDate);
         setSelectedEndDate(endDate);
 
-        const filteredData = KeuanganList.filter((keuangan) => {
+        const filteredData = dataKeuangan.filter((keuangan) => {
             const tanggal = new Date(keuangan.tanggal);
             return tanggal >= startDate && tanggal <= endDate;
         });
@@ -85,12 +85,31 @@ const KelolaKeuangan = () => {
                 format(new Date(keuangan.tanggal), 'dd-MM-yyyy'),
                 keuangan.keterangan
             ]),
-            headStyles: { fillColor: [0, 51, 153] }, 
+            headStyles: { fillColor: [0, 51, 153] },
             styles: { fontSize: 8, halign: 'center' }, // Gaya teks tabel
         });
 
         // Simpan file PDF
         doc.save(`Laporan_Keuangan_${format(startDate, 'dd-MM-yyyy')}_to_${format(endDate, 'dd-MM-yyyy')}.pdf`);
+    };
+
+    // fetching data
+    useEffect(() => {
+        if (status === "idle") {
+            dispatch(getKeuangan());
+        }
+    }, [dispatch, status]);
+
+    if (status === "loading") {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-blue-500"></div>
+            </div>
+        );
+    };
+
+    if (status === "failed") {
+        return <div>{error}</div>;
     };
 
 
@@ -108,9 +127,18 @@ const KelolaKeuangan = () => {
 
     const handleDeleteConfirm = () => {
         if (keuanganToDelete !== null) {
-            dispatch(deleteKeuangan(keuanganToDelete));
-            setShowModal(false);
-            setKeuanganToDelete(null);
+            dispatch(deleteKeuangan(keuanganToDelete))
+                .unwrap()
+                .then(() => {
+                    alert("Data berhasil dihapus");
+                })
+                .catch((error) => {
+                    alert("Gagal menghapus data keuangan", error);
+                })
+                .finally(() => {
+                    setShowModal(false);
+                    setKeuanganToDelete(null);
+                })
         }
     }
 
@@ -128,7 +156,7 @@ const KelolaKeuangan = () => {
     const indexOfLastKeuangan = currentPage * itemsPerPage;
     const indexOfFirstKeuangan = indexOfLastKeuangan - itemsPerPage;
 
-    const filteredKeuangan = KeuanganList.filter((keuangan) =>
+    const filteredKeuangan = dataKeuangan.filter((keuangan) =>
         keuangan.jenisTransaksi.toLowerCase().includes(searchTerm.toLowerCase()) ||
         keuangan.keterangan.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -184,12 +212,12 @@ const KelolaKeuangan = () => {
                                             <td>{keuangan.id}</td>
                                             <td>{keuangan.jenisTransaksi}</td>
                                             <td>{keuangan.jumlah}</td>
-                                            <td>{keuangan.tanggal}</td>
+                                            <td>{keuangan.tanggal.split("T")[0]}</td>
                                             <td>{keuangan.keterangan}</td>
                                             <td className="d-flex gap-1">
                                                 <button className='btn btn-outline-warning mb-1 px-0' onClick={() => handleEditClick(keuangan.id)}><i className='bx bxs-edit-alt' /></button>
                                                 <button className='btn btn-danger mb-1 px-0' onClick={() => handleDeleteClick(keuangan.id)}><i className='bx bx-trash' /></button>
-                                                <button className='btn btn-primary mb-1 px-0'  onClick={() => navigate(`/bendahara/detail-keuangan/${keuangan.id}`)}><i className='bx bx-show' /></button>
+                                                <button className='btn btn-primary mb-1 px-0' onClick={() => navigate(`/bendahara/detail-keuangan/${keuangan.id}`)}><i className='bx bx-show' /></button>
                                             </td>
                                         </tr>
                                     ))

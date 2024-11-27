@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from "../../Component/Pagination/Pagination";
 import Layout from "../../Layout/Layout";
@@ -6,19 +6,38 @@ import Search from '../../Component/Search/Search';
 import image from '../../../Image';
 import { Link, useNavigate } from 'react-router-dom';
 import ModalDelete from '../../Component/ModalDelete/ModalDelete';
-import { deleteVideo } from '../../store/videoSlice';
+import { deleteVideo, getVideo } from '../../store/videoSlice';
 
 const KelolaVideo = () => {
-    const videos = useSelector((state) => state.video.videos);
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const [videoToDelete, setVideoToDelete] = useState(null);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { videos, status, error } = useSelector((state) => state.video);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(3);
     const [searchTerm, setSearchTerm] = useState('');
     const itemsPerPageOptions = [3, 5, 10, 20];
+
+    // fetching data (all video)
+    useEffect(() => {
+        if (status === "idle") {
+            dispatch(getVideo())
+        }
+    }, [dispatch, status]);
+
+    if (status === "loading") {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-blue-500"></div>
+            </div>
+        );
+    }
+
+    if (status === "failed") {
+        return <div>{error}</div>;
+    };
 
     // Handle Delete Click
     const handleDeleteClick = (id) => {

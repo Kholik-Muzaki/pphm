@@ -19,7 +19,7 @@ const Layout = ({ children, titlePage }) => {
 
     const handleLogoutConfirm = () => {
         // proses logout
-
+        localStorage.removeItem("token");
         navigate('/login');
     }
 
@@ -98,9 +98,11 @@ const Layout = ({ children, titlePage }) => {
                                         zIndex: "10",
                                     }}
                                 >
-                                    <div className="dropdown-item-header d-flex align-items-center py-2" style={{ cursor: "pointer" }}>
-                                        <i className="bx bx-user me-2"></i> Edit Profile
-                                    </div>
+                                    <Link to="/bendahara/edit-profile" className="text-decoration-none text-dark">
+                                        <div className="dropdown-item-header d-flex align-items-center py-2" style={{ cursor: "pointer" }}>
+                                            <i className="bx bx-user me-2"></i> Edit Profile
+                                        </div>
+                                    </Link>
                                     <div className="dropdown-item-header d-flex align-items-center py-2" style={{ cursor: "pointer" }}
                                         onClick={handleLogoutClick}>
                                         <i className="bx bx-log-out me-2"></i> Logout

@@ -20,6 +20,7 @@ const Layout = ({ children, titlePage }) => {
 
     const handleLogoutConfirm = () => {
         // proses logout
+        localStorage.removeItem("token");
         navigate('/login');
     }
 
