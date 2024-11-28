@@ -1,28 +1,72 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { linkVideo } from "../../user/data";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import ApiInstance from "../../api/api";
+
+// async thunk delete video
+export const getVideo = createAsyncThunk(
+    "video/getVideo",
+    async () => {
+        const response = await ApiInstance.get('/video');
+        console.log(response.data.data);
+        return response.data.data
+    }
+)
+
+// async thunk delete video
+export const deleteVideo = createAsyncThunk(
+    'video/deleteVideo',
+    async (id) => {
+        await ApiInstance.delete(`/video/${id}`);
+        return id
+    }
+
+)
+
+// asyn thunk add video
+export const addVideo = createAsyncThunk(
+    'video/addVideo',
+    async (videoData) => {
+        const response = await ApiInstance.post('/video', videoData);
+        return response.data.data;
+    }
+)
 
 const videoSlice = createSlice({
     name: 'video',
     initialState: {
-        videos: linkVideo,
+        videos: [],
+        videoDetail: null,
+        status: "idle",
+        error: null
     },
-    reducers: {
-        addVideo: (state, action) => {
-            state.videos.push(action.payload);
-        },
-        deleteVideo: (state, action) => {
-            state.videos = state.videos.filter(video => video.id !== action.payload);
-        },
-        editVideo: (state, action) => {
-            const { id, judul, link } = action.payload;
-            const existingVideo = state.videos.find(video => video.id === id);
-            if (existingVideo) {
-                existingVideo.judul = judul;
-                existingVideo.link = link;
-            }
-        }
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            // fetch all videos
+            .addCase(getVideo.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(getVideo.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.videos = action.payload; // Store all fetched data
+            })
+            .addCase(getVideo.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+            // delete video
+            .addCase(deleteVideo.fulfilled, (state, action) => {
+                state.videos = state.videos.filter(
+                    (video) => video.id !== action.payload
+                );
+            })
+            // add video
+            .addCase(addVideo.fulfilled, (state, action) => {
+                state.videos.push(action.payload);
+            })
+
     }
+
+
 })
 
-export const { addVideo, deleteVideo, editVideo } = videoSlice.actions;
 export default videoSlice.reducer;

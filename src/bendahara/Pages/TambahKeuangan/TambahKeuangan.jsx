@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Layout from "../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
-import { addKeuangan } from "../../../admin/store/keuanganSlice";
+// import { addKeuangan } from "../../../admin/store/keuanganSlice";
 import ModalSuccess from "../../../admin/Component/ModalSuccess/ModalSuccess";
 import { useDispatch } from "react-redux";
+import { addKeuangan } from "../../../admin/store/keuanganSlice";
 
 const TambahKeuangan = () => {
     const [jenisTransaksi, setJenisTransaksi] = useState('');
@@ -16,17 +17,26 @@ const TambahKeuangan = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("Tanggal yang akan dikirim", tanggal)
 
         const newKeuangan = {
-            id: Date.now(),
             jenisTransaksi,
-            jumlah,
-            tanggal,
+            jumlah: parseFloat(jumlah),
+            tanggal: tanggal.split("T")[0],
             keterangan
         };
 
-        dispatch(addKeuangan(newKeuangan));
-        setIsModalVisible(true);
+        console.log(newKeuangan);
+
+
+        dispatch(addKeuangan(newKeuangan))
+            .unwrap() // resolve promise
+            .then(() => {
+                setIsModalVisible(true);
+            })
+            .catch((error) => {
+                alert("Gagal menambahkan data keuangan", error);
+            })
     }
 
     const handleModalClose = () => {

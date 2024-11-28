@@ -1,9 +1,10 @@
 import { useState } from "react";
 import ModalSuccess from "../../Component/ModalSuccess/ModalSuccess";
 import Layout from "../../Layout/Layout"
-import { addVideo } from "../../store/videoSlice";
+// import { addVideo } from "../../store/videoSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addVideo } from "../../store/videoSlice";
 
 const TambahVideo = () => {
     const [judul, setJudul] = useState('');
@@ -20,9 +21,17 @@ const TambahVideo = () => {
             judul,
             link
         };
+        console.log(newVideo);
 
-        dispatch(addVideo(newVideo));
-        setIsModalVisible(true);
+        dispatch(addVideo(newVideo))
+            .unwrap()
+            .then(() => {
+                setIsModalVisible(true);
+            })
+            .catch((error) => {
+                alert("Gagal menambahkan video", error);
+            })
+
     }
 
     const handleModalClose = () => {

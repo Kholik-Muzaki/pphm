@@ -1,54 +1,114 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { DataKeuangan } from "../../user/data";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import ApiInstance from "../../api/api";
 
-export const fetchKeuangan = createAsyncThunk(
-    "keuangan/fetchKeuangan",
+// asyn thunk get all keuangan
+export const getKeuangan = createAsyncThunk(
+    "keuangan/getKeuangan",
     async () => {
-        const response = await ApiInstance.get("/api/auth/keuangan");
-        return response.data;
-    })
+        const response = await ApiInstance.get("/keuangan");
+        return response.data.data;
+    }
+);
 
+// asyn thunk get keuangan by id
+export const getKeuanganById = createAsyncThunk(
+    "keuangan/getKeuanganById",
+    async (id) => {
+        const response = await ApiInstance.get(`/keuangan/${id}`);
+        return response.data.data;
+    }
+);
+
+// asyn thunk add new keuangan
+export const addKeuangan = createAsyncThunk(
+    "keuangan/addKeuangan",
+    async (keuanganData) => {
+        const response = await ApiInstance.post("/keuangan", keuanganData);
+        return response.data.data;
+    }
+);
+
+// asyn thunk update keuangan
+export const updateKeuangan = createAsyncThunk(
+    "keuangan/updateKeuangan",
+    async ({ id, keuanganData }) => {
+        const response = await ApiInstance.put(`/keuangan/${id}`, keuanganData);
+        return response.data.data;
+    }
+);
+
+// asyn thunk delete keuangan
+export const deleteKeuangan = createAsyncThunk(
+    "keuangan/deleteKeuangan",
+    async (id) => {
+        await ApiInstance.delete(`/keuangan/${id}`);
+        return id;
+    }
+);
+
+// slice definition
 const keuanganSlice = createSlice({
     name: "keuangan",
     initialState: {
-        dataKeuangan: [],
-        status: "idle",
-        error: null
+        dataKeuangan: [], 
+        keuanganDetail: null, 
+        status: "idle", 
+        error: null, 
     },
-    reducers: {
-        addKeuangan: (state, action) => {
-            state.dataKeuangan.push(action.payload);
-        },
-        deleteKeuangan: (state, action) => {
-            state.dataKeuangan = state.dataKeuangan.filter(keuangan => keuangan.id !== action.payload);
-        },
-        editKeuangan: (state, action) => {
-            const { id, jenisTransaksi, jumlah, tanggal, keterangan } = action.payload;
-            const existingKeuangan = state.dataKeuangan.find(keuangan => keuangan.id === id);
-            if (existingKeuangan) {
-                existingKeuangan.jenisTransaksi = jenisTransaksi;
-                existingKeuangan.jumlah = jumlah;
-                existingKeuangan.tanggal = tanggal;
-                existingKeuangan.keterangan = keterangan;
-            }
-        },
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchKeuangan.pending, (state) => {
+            // Fetch all keuangan
+            .addCase(getKeuangan.pending, (state) => {
                 state.status = "loading";
             })
-            .addCase(fetchKeuangan.fulfilled, (state, action) => {
+            .addCase(getKeuangan.fulfilled, (state, action) => {
                 state.status = "succeeded";
-                state.dataKeuangan = action.payload;
+                state.dataKeuangan = action.payload; // Store all fetched data
             })
-            .addCase(fetchKeuangan.rejected, (state, action) => {
+            .addCase(getKeuangan.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             })
-    }
-})
 
-export const { addKeuangan, deleteKeuangan, editKeuangan } = keuanganSlice.actions;
+            // Fetch keuangan by ID
+            .addCase(getKeuanganById.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(getKeuanganById.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.keuanganDetail = action.payload; // Store detail data
+            })
+            .addCase(getKeuanganById.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+
+            // Add new keuangan
+            .addCase(addKeuangan.fulfilled, (state, action) => {
+                state.dataKeuangan.push(action.payload); // Add the new data to the list
+            })
+
+            // Update keuangan
+            .addCase(updateKeuangan.fulfilled, (state, action) => {
+                const index = state.dataKeuangan.findIndex(
+                    (keuangan) => keuangan.id === action.payload.id
+                );
+                if (index !== -1) {
+                    state.dataKeuangan[index] = action.payload; // Update the specific data
+                }
+                if (state.keuanganDetail?.id === action.payload.id) {
+                    state.keuanganDetail = action.payload; // Update detail if currently editing
+                }
+            })
+
+            // Delete keuangan
+            .addCase(deleteKeuangan.fulfilled, (state, action) => {
+                state.dataKeuangan = state.dataKeuangan.filter(
+                    (keuangan) => keuangan.id !== action.payload
+                ); // Remove the deleted data
+            });
+    },
+});
+
 export default keuanganSlice.reducer;

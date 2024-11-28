@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom"
-import image from "../../../Image"
-import './Login.style.css'
+import './Login.css'
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import { useState } from "react"
 import ApiInstance from "../../../api/api"
+import image from "../../../Image"
 const Login = () => {
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState("");
@@ -14,6 +14,7 @@ const Login = () => {
                 username: values.username,
                 password: values.password
             });
+
             console.log("response data:", response.data);
 
             const { token } = response.data.data;
@@ -57,59 +58,76 @@ const Login = () => {
         <>
             <div className="container-fluid login-container">
                 <div className="row login-container-row">
+                    {/* Bagian kiri dengan gambar */}
                     <div className="col-sm-12 col-md-12 col-lg-6 login-kiri">
-                        <img src={image.imageLogin} alt="" />
+                        <img src={image.adminLogo} alt="Login Illustration" className="login-image" />
                     </div>
 
+                    {/* Sisi Kanan: Form */}
                     <div className="col-sm-12 col-md-12 col-lg-6 login-kanan">
-                        <div className="row">
-                            <div className="col-1"></div>
-                            <div className="col-9">
-                                <h2 className="selamat-datang">Selamat Datang Kembali</h2>
-                                <p>Silahkan melakukan login dengan mengisi form di bawah!</p>
+                        <h2 className="selamat-datang">Selamat Datang Kembali</h2>
+                        <p className="p-login">Masuklah dengan penuh keikhlasan, menuju kesuksesan.</p>
 
-                                <form onSubmit={formik.handleSubmit}>
-                                    <div className="mb-3">
-                                        <label htmlFor="exampleInputEmail1" className="form-label">
-                                            Username
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className={`form-control ${formik.touched.username && formik.errors.username ? "is-invalid" : ""}`}
-                                            id="username"
-                                            aria-describedby="username"
-                                            name="username"
-                                            onChange={handleChange}
-                                            onBlur={formik.handleBlur}
-                                            value={formik.values.username}
-                                        />
-                                        {formik.touched.username && formik.errors.username && <div className="invalid-feedback">{formik.errors.username}</div>}
-                                    </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="exampleInputPassword1" className="form-label">
-                                            Password
-                                        </label>
-                                        <input
-                                            type="password"
-                                            className={`form-control ${formik.touched.password && formik.errors.password ? "is-invalid" : ""}`}
-                                            id="exampleInputPassword1"
-                                            name="password"
-                                            onChange={handleChange}
-                                            onBlur={formik.handleBlur}
-                                            value={formik.values.password}
-                                        />
-                                        {formik.touched.password && formik.errors.password && <div className="invalid-feedback">{formik.errors.password}</div>}
-                                    </div>
-                                    <button type="submit" className="btn btn-primary">
-                                        Submit
-                                    </button> <br />
-                                </form>
+                        <form onSubmit={formik.handleSubmit}>
+                            {/* Input Username */}
+                            <div className="mb-3">
+                                <label htmlFor="username" className="form-label">
+                                    Username
+                                </label>
+                                <input
+                                    type="text"
+                                    className={`form-control form-login ${formik.touched.username && formik.errors.username ? "is-invalid" : ""}`}
+                                    id="username"
+                                    name="username"
+                                    onChange={handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.username}
+                                />
+                                {formik.touched.username && formik.errors.username && (
+                                    <div className="invalid-feedback">{formik.errors.username}</div>
+                                )}
                             </div>
-                            <div className="col-2"></div>
-                        </div>
+
+                            {/* Input Password */}
+                            <div className="mb-3">
+                                <label htmlFor="password" className="form-label">
+                                    Password
+                                </label>
+                                <input
+                                    type="password"
+                                    className={`form-control ${formik.touched.password && formik.errors.password ? "is-invalid" : ""}`}
+                                    id="password"
+                                    name="password"
+                                    onChange={handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.password}
+                                />
+                                {formik.touched.password && formik.errors.password && (
+                                    <div className="invalid-feedback">{formik.errors.password}</div>
+                                )}
+                            </div>
+
+                            {/* Tombol Login */}
+                            <button type="submit" className="btn btn-primary btn-login">Login</button>
+
+                            {/* Error Message Global */}
+                            {errorMessage && (
+                                <div className="alert alert-danger error-message" role="alert">
+                                    {errorMessage}
+                                </div>
+                            )}
+
+                        </form>
+
+                        {/* Kutipan Islami */}
+                        <p className="kutipan-islami">
+                            "Bismillah, setiap langkah menuju keberhasilan adalah doa."
+                        </p>
                     </div>
                 </div>
-            </div >
+            </div>
+
+
         </>
     )
 }

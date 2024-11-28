@@ -2,13 +2,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../Layout/Layout"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { editVideo } from "../../store/videoSlice";
+// import { editVideo } from "../../store/videoSlice";
 import ModalSuccess from "../../Component/ModalSuccess/ModalSuccess";
 
 const EditVideo = () => {
 
     const { id } = useParams();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const navigate = useNavigate();
     const [judul, setJudul] = useState('');
     const [link, setLink] = useState('');
@@ -35,7 +35,7 @@ const EditVideo = () => {
             judul,
             link
         };
-        dispatch(editVideo(editedVideo));
+        // dispatch(editVideo(editedVideo));
         setIsModalVisible(true);
     };
 

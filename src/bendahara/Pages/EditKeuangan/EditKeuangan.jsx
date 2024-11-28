@@ -3,53 +3,81 @@ import Layout from "../../Layout/Layout"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import ModalSuccess from "../../../admin/Component/ModalSuccess/ModalSuccess";
-import { editKeuangan } from "../../../admin/store/keuanganSlice";
+import { getKeuanganById, updateKeuangan } from "../../../admin/store/keuanganSlice";
 
 const EditKeuangan = () => {
+
     const { id } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { keuanganDetail, status, error } = useSelector((state) => state.keuangan);
+
     const [jenisTransaksi, setJenisTransaksi] = useState('');
     const [jumlah, setJumlah] = useState('');
     const [tanggal, setTanggal] = useState('');
     const [keterangan, setKeterangan] = useState('');
     const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const ListKeuangan = useSelector((state) => state.keuangan.dataKeuangan);
-    const keuanganToEdit = ListKeuangan.find((keuangan) => keuangan.id === parseInt(id)) || ListKeuangan.find((keuangan) => keuangan.id === id);
 
+    // fetching data
     useEffect(() => {
-        console.log('use effect edit keuangan is running...');
-        if (keuanganToEdit) {
-            setJenisTransaksi(keuanganToEdit.jenisTransaksi);
-            setJumlah(keuanganToEdit.jumlah);
-            setTanggal(keuanganToEdit.tanggal);
-            setKeterangan(keuanganToEdit.keterangan);
-        } else {
-            navigate('/bendahara/kelola-keuangan');
+        if (id) {
+            dispatch(getKeuanganById(id))
         }
-    }, [keuanganToEdit, navigate]);
+    }, [id, dispatch]);
 
+    // mengisi form setelah data diambil dari params
+    useEffect(() => {
+        if (keuanganDetail) {
+            setJenisTransaksi(keuanganDetail.jenisTransaksi);
+            setJumlah(keuanganDetail.jumlah);
+            setTanggal(keuanganDetail.tanggal.split("T")[0]);
+            setKeterangan(keuanganDetail.keterangan);
+        }
+    }, [keuanganDetail]);
+
+    // handle submit
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const editedKeuangan = {
-            id: keuanganToEdit.id,
+        const updatedData = {
             jenisTransaksi,
             jumlah,
             tanggal,
             keterangan
         };
 
-        dispatch(editKeuangan(editedKeuangan));
-        setIsModalVisible(true);
-    };
+        dispatch(updateKeuangan({ id, keuanganData: updatedData }))
+            .unwrap()
+            .then(() => {
+                setIsModalVisible(true);
+            })
+            .catch((err) => {
+                alert(`Gagal mengedit data keuangan: ${err.message}`)
+            })
+    }
 
     const handleModalClose = () => {
         setIsModalVisible(false);
         navigate('/bendahara/kelola-keuangan');
     };
 
+    if (status === 'loading') {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
+    if (status === 'failed') {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <p>{error}</p>
+            </div>
+        );
+    }
 
     return (
         <Layout titlePage="Edit Keuangan">

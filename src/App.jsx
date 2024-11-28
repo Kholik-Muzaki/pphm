@@ -31,6 +31,7 @@ import EditFoto from "./admin/Pages/EditFoto/EditFoto";
 import EditProfileAdmin from "./admin/Pages/EditProfile/EditProfile";
 import DetailKeuangan from "./bendahara/Pages/DetailKeuangan/DetailKeuangan";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import EditProfileBendahara from "./bendahara/Pages/EditProfileBendahara/EditProfileBendahara";
 
 function App() {
    return (
@@ -204,6 +205,14 @@ function App() {
                element={
                   <ProtectedRoute allowedRoles={["bendahara"]}>
                      <DetailKeuangan />
+                  </ProtectedRoute>
+               }
+            />
+            <Route
+               path="/bendahara/edit-profile"
+               element={
+                  <ProtectedRoute allowedRoles={["bendahara"]}>
+                     <EditProfileBendahara />
                   </ProtectedRoute>
                }
             />
