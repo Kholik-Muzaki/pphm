@@ -102,16 +102,22 @@ const KelolaKeuangan = () => {
 
     if (status === "loading") {
         return (
-            <div className="flex items-center justify-center h-screen">
-                <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-blue-500"></div>
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
             </div>
         );
     };
 
     if (status === "failed") {
-        return <div>{error}</div>;
+        return (
+            <div className="alert alert-danger">
+                <h4>Terjadi Kesalahan:</h4>
+                <p>{error}</p>
+            </div>
+        );
     };
-
 
     // handle edit click
     const handleEditClick = (id) => {
@@ -131,6 +137,7 @@ const KelolaKeuangan = () => {
                 .unwrap()
                 .then(() => {
                     alert("Data berhasil dihapus");
+                    dispatch(getKeuangan());
                 })
                 .catch((error) => {
                     alert("Gagal menghapus data keuangan", error);
@@ -247,7 +254,7 @@ const KelolaKeuangan = () => {
                     <ModalDelete
                         onClose={handleModalClose}
                         onConfirm={handleDeleteConfirm}
-                        title="Hapus Artikel"
+                        title="Hapus Keuangan"
                         description="Apakah Anda yakin ingin menghapus data keuangan ini?"
                     />
                 )}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from "../../Component/Pagination/Pagination";
 import Layout from "../../Layout/Layout";
@@ -6,12 +6,12 @@ import "./KelolaArtikel.css";
 import Search from '../../Component/Search/Search';
 import image from '../../../Image';
 import { Link } from 'react-router-dom';
-import { deleteArtikel } from '../../store/artikelSlice';
+import { deleteArtikel, getArticle } from '../../store/artikelSlice';
 import ModalDelete from '../../Component/ModalDelete/ModalDelete';
 
 const KelolaArtikel = () => {
-    const articles = useSelector((state) => state.artikel.articles);
     const dispatch = useDispatch();
+    const { articles, status, error } = useSelector((state) => state.artikel);
     const [showModal, setShowModal] = useState(false);
     const [articleIdToDelete, setArticleIdToDelete] = useState(null);
 
@@ -19,6 +19,32 @@ const KelolaArtikel = () => {
     const [itemsPerPage, setItemsPerPage] = useState(3);
     const [searchTerm, setSearchTerm] = useState('');
     const itemsPerPageOptions = [3, 5, 10, 20];
+
+    // fetch all articles
+    useEffect(() => {
+        if (status === "idle") {
+            dispatch(getArticle());
+        }
+    }, [dispatch, status]);
+
+    if (status === "loading") {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        )
+    }
+
+    if (status === "failed") {
+        return (
+            <div className="alert alert-danger">
+                <h4>Terjadi Kesalahan:</h4>
+                <p>{error}</p>
+            </div>
+        )
+    }
 
     // Handle Delete Click
     const handleDeleteClick = (id) => {
@@ -28,9 +54,19 @@ const KelolaArtikel = () => {
 
     const handleDeleteConfirm = () => {
         if (articleIdToDelete !== null) {
-            dispatch(deleteArtikel(articleIdToDelete));
-            setShowModal(false);
-            setArticleIdToDelete(null);
+            dispatch(deleteArtikel(articleIdToDelete))
+                .unwrap()
+                .then(() => {
+                    alert('Data berhasil dihapus');
+                    dispatch(getArticle());
+                })
+                .catch((error) => {
+                    alert('Gagal menghapus data artikel', error);
+                })
+                .finally(() => {
+                    setShowModal(false);
+                    setArticleIdToDelete(null);
+                })
         }
     };
 
@@ -104,7 +140,7 @@ const KelolaArtikel = () => {
                                         <tr key={article.id} className='align-middle'>
                                             <td>{article.id}</td>
                                             <td>
-                                                {article.image && <img src={article.image} alt={article.title} style={{ width: '50px', height: '50px' }} />}
+                                                {article.image && <img src={`http://localhost:3000/${article.image}`} alt={article.title} style={{ width: '50px', height: '50px' }} />}
                                             </td>
                                             <td>{article.title}</td>
                                             <td>{truncateContent(article.content, 10)}</td>
@@ -116,7 +152,9 @@ const KelolaArtikel = () => {
                                                     <button className='btn btn-outline-warning me-2'><i className='bx bxs-edit-alt' /></button>
                                                 </Link>
                                                 <button className='btn btn-danger me-2' onClick={() => handleDeleteClick(article.id)}><i className='bx bx-trash' /></button>
-                                                <button className='btn btn-primary'><i className='bx bx-show' /></button>
+                                                <Link to={`/artikel/${article.id}`}>
+                                                    <button className='btn btn-primary'><i className='bx bx-show' /></button>
+                                                </Link>
                                             </td>
                                         </tr>
                                     ))

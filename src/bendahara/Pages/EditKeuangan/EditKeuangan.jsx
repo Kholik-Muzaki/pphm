@@ -6,7 +6,6 @@ import ModalSuccess from "../../../admin/Component/ModalSuccess/ModalSuccess";
 import { getKeuanganById, updateKeuangan } from "../../../admin/store/keuanganSlice";
 
 const EditKeuangan = () => {
-
     const { id } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -73,7 +72,8 @@ const EditKeuangan = () => {
     }
     if (status === 'failed') {
         return (
-            <div className="d-flex justify-content-center align-items-center vh-100">
+            <div className="alert alert-danger">
+                <h4>Terjadi Kesalahan:</h4>
                 <p>{error}</p>
             </div>
         );

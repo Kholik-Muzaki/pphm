@@ -1,19 +1,42 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 import "./DetailKeuangan.css";
+import { getKeuanganById } from "../../../admin/store/keuanganSlice";
 
 const DetailKeuangan = () => {
     const navigate = useNavigate();
-    const { id } = useParams(); // Mengambil ID dari parameter URL
-    const KeuanganList = useSelector((state) => state.keuangan.dataKeuangan); // Mendapatkan data dari Redux
+    const { id } = useParams();
+    const { keuanganDetail, status, error } = useSelector((state) => state.keuangan);
+    const dispatch = useDispatch();
 
-    // Mencari data keuangan berdasarkan ID
-    const keuangan = KeuanganList.find((item) => item.id.toString() === id);
+    useEffect(() => {
+        if (id) {
+            dispatch(getKeuanganById(id))
+        }
+    }, [id, dispatch])
 
+    if (status === "loading") {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        )
+    }
+
+    if (status === "failed") {
+        return (
+            <div className="alert alert-danger">
+                <h4>Terjadi Kesalahan:</h4>
+                <p>{error}</p>
+            </div>
+        )
+    }
     // Jika data tidak ditemukan
-    if (!keuangan) {
+    if (!keuanganDetail) {
         return (
             <Layout titlePage="Detail Keuangan">
                 <div className="container mt-4 text-center">
@@ -39,23 +62,23 @@ const DetailKeuangan = () => {
                     <div className="card-body">
                         <div className="mb-3">
                             <strong>ID:</strong>
-                            <p className="form-control">{keuangan.id}</p>
+                            <p className="form-control">{keuanganDetail.id}</p>
                         </div>
                         <div className="mb-3">
                             <strong>Jenis Transaksi:</strong>
-                            <p className="form-control">{keuangan.jenisTransaksi}</p>
+                            <p className="form-control">{keuanganDetail.jenisTransaksi}</p>
                         </div>
                         <div className="mb-3">
                             <strong>Jumlah:</strong>
-                            <p className="form-control">{keuangan.jumlah}</p>
+                            <p className="form-control">{keuanganDetail.jumlah}</p>
                         </div>
                         <div className="mb-3">
                             <strong>Tanggal:</strong>
-                            <p className="form-control">{keuangan.tanggal}</p>
+                            <p className="form-control">{keuanganDetail.tanggal}</p>
                         </div>
                         <div className="mb-3">
                             <strong>Keterangan:</strong>
-                            <p className="form-control">{keuangan.keterangan}</p>
+                            <p className="form-control">{keuanganDetail.keterangan}</p>
                         </div>
                         <div className="text-center">
                             <button
