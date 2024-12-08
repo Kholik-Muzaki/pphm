@@ -6,7 +6,7 @@ import Search from '../../Component/Search/Search';
 import image from '../../../Image';
 import { Link, useNavigate } from 'react-router-dom';
 import ModalDelete from '../../Component/ModalDelete/ModalDelete';
-import { deleteVideo, getVideo } from '../../store/videoSlice';
+import { deleteVideo, getVideo, resetStatus } from '../../store/videoSlice';
 
 const KelolaVideo = () => {
     const dispatch = useDispatch();
@@ -29,14 +29,21 @@ const KelolaVideo = () => {
 
     if (status === "loading") {
         return (
-            <div className="flex items-center justify-center h-screen">
-                <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-blue-500"></div>
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
             </div>
         );
     }
 
     if (status === "failed") {
-        return <div>{error}</div>;
+        return (
+            <div className="alert alert-danger">
+                <h4>Terjadi Kesalahan:</h4>
+                <p>{error}</p>
+            </div>
+        )
     };
 
     // Handle Delete Click
@@ -47,11 +54,21 @@ const KelolaVideo = () => {
 
     const handleDeleteConfirm = () => {
         if (videoToDelete !== null) {
-            dispatch(deleteVideo(videoToDelete));
-            setShowModal(false);
-            setVideoToDelete(null);
+            dispatch(deleteVideo(videoToDelete))
+                .unwrap()
+                .then(() => {
+                    alert("Data berhasil dihapus");
+                    dispatch(resetStatus()); ;
+                })
+                .catch((error) => {
+                    alert("Gagal menghapus data keuangan", error);
+                })
+                .finally(() => {
+                    setShowModal(false);
+                    setVideoToDelete(null);
+                })
         }
-    };
+    }
 
     const handleModalClose = () => {
         setShowModal(false);

@@ -4,7 +4,7 @@ import Layout from "../../Layout/Layout"
 // import { addVideo } from "../../store/videoSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addVideo } from "../../store/videoSlice";
+import { addVideo, resetStatus } from "../../store/videoSlice";
 
 const TambahVideo = () => {
     const [judul, setJudul] = useState('');
@@ -17,7 +17,6 @@ const TambahVideo = () => {
         e.preventDefault();
 
         const newVideo = {
-            id: Date.now(),
             judul,
             link
         };
@@ -36,6 +35,7 @@ const TambahVideo = () => {
 
     const handleModalClose = () => {
         setIsModalVisible(false);
+        dispatch(resetStatus());
         navigate('/admin/kelola-video');
     }
 

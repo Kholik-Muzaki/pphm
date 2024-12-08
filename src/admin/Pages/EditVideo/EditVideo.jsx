@@ -2,42 +2,71 @@ import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../Layout/Layout"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-// import { editVideo } from "../../store/videoSlice";
 import ModalSuccess from "../../Component/ModalSuccess/ModalSuccess";
+import { editVideo, getVideoById, resetStatus } from "../../store/videoSlice";
 
 const EditVideo = () => {
-
     const { id } = useParams();
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { videoDetail, status, error } = useSelector((state) => state.video);
     const [judul, setJudul] = useState('');
     const [link, setLink] = useState('');
     const [isModalVisible, setIsModalVisible] = useState(false);
 
-    // ambil video berdasarkan id
-    const videoList = useSelector((state) => state.video.videos);
-    const videoToEdit = videoList.find(video => video.id === parseInt(id));
-
+    // fetxhing data by id
     useEffect(() => {
-        if (videoToEdit) {
-            setJudul(videoToEdit.judul);
-            setLink(videoToEdit.link);
-        } else {
-            navigate('/admin/kelola-video');
+        if (id) {
+            dispatch(getVideoById(id))
         }
-    }, [videoToEdit, navigate]);
+    }, [id, dispatch]);
 
+    // mengisi form setelah data diambil dari params
+    useEffect(() => {
+        if (videoDetail) {
+            setJudul(videoDetail.judul);
+            setLink(videoDetail.link);
+        }
+    }, [videoDetail]);
+
+    // handle Sumbit update
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const editedVideo = {
-            id: videoToEdit.id,
             judul,
             link
         };
-        // dispatch(editVideo(editedVideo));
-        setIsModalVisible(true);
+
+        dispatch(editVideo({ id, videoData: editedVideo }))
+            .unwrap()
+            .then(() => {
+                setIsModalVisible(true);
+                dispatch(resetStatus());
+            })
+            .catch((err) => {
+                alert(`Gagal mengedit video: ${err.message}`)
+            })
     };
+
+    // pengkondisian state
+    if (status === 'loading') {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
+    if (status === 'failed') {
+        return (
+            <div className="alert alert-danger">
+                <h4>Terjadi Kesalahan:</h4>
+                <p>{error}</p>
+            </div>
+        );
+    }
 
     const handleModalClose = () => {
         setIsModalVisible(false);

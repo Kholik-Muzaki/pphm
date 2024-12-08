@@ -50,10 +50,10 @@ export const deleteKeuangan = createAsyncThunk(
 const keuanganSlice = createSlice({
     name: "keuangan",
     initialState: {
-        dataKeuangan: [], 
-        keuanganDetail: null, 
-        status: "idle", 
-        error: null, 
+        dataKeuangan: [],
+        keuanganDetail: null,
+        status: "idle",
+        error: null,
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -85,29 +85,51 @@ const keuanganSlice = createSlice({
             })
 
             // Add new keuangan
+            .addCase(addKeuangan.pending, (state) => {
+                state.status = "loading";
+            })
             .addCase(addKeuangan.fulfilled, (state, action) => {
-                state.dataKeuangan.push(action.payload); // Add the new data to the list
+                state.status = "succeeded";
+                state.dataKeuangan.push(action.payload);
+            })
+            .addCase(addKeuangan.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
             })
 
             // Update keuangan
+            .addCase(updateKeuangan.pending, (state) => {
+                state.status = "loading";
+            })
             .addCase(updateKeuangan.fulfilled, (state, action) => {
-                const index = state.dataKeuangan.findIndex(
-                    (keuangan) => keuangan.id === action.payload.id
-                );
+                state.status = "succeeded";
+                const index = state.dataKeuangan.findIndex((keuangan) => keuangan.id === action.payload.id);
                 if (index !== -1) {
-                    state.dataKeuangan[index] = action.payload; // Update the specific data
+                    state.dataKeuangan[index] = action.payload;
                 }
                 if (state.keuanganDetail?.id === action.payload.id) {
-                    state.keuanganDetail = action.payload; // Update detail if currently editing
+                    state.keuanganDetail = action.payload;
                 }
+            })
+            .addCase(updateKeuangan.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+                console.error("Error updating keuangan:", action.error.message);
             })
 
             // Delete keuangan
+            .addCase(deleteKeuangan.pending, (state) => {
+                state.status = "loading";
+            })
             .addCase(deleteKeuangan.fulfilled, (state, action) => {
-                state.dataKeuangan = state.dataKeuangan.filter(
-                    (keuangan) => keuangan.id !== action.payload
-                ); // Remove the deleted data
-            });
+                state.status = "succeeded";
+                state.dataKeuangan = state.dataKeuangan.filter((keuangan) => keuangan.id !== action.payload);
+            })
+            .addCase(deleteKeuangan.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+
     },
 });
 

@@ -1,33 +1,60 @@
 // store/artikelSlice.js
-import { createSlice } from '@reduxjs/toolkit';
-import { artikelData } from '../../user/data';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import ApiInstance from '../../api/api';
+
+// asyn thunk get all artikel
+export const getArticle = createAsyncThunk(
+    'artikel/getArticle',
+    async () => {
+        const response = await ApiInstance.get('/artikel');
+        return response.data.data
+    }
+)
+
+export const getArtikelById = createAsyncThunk(
+    'artikel/getArtikelById',
+    async (id) => {
+        const response = await ApiInstance.get(`/artikel/${id}`);
+        return response.data.data
+    }
+)
 
 const artikelSlice = createSlice({
     name: 'artikel',
     initialState: {
-        articles: artikelData,
+        articles: [],
+        artikelDetail: null,
+        status: "idle",
+        error: null
     },
-    reducers: {
-        addArtikel: (state, action) => {
-            state.articles.push(action.payload);
-        },
-        deleteArtikel: (state, action) => {
-            state.articles = state.articles.filter(article => article.id !== action.payload);
-        },
-        editArtikel: (state, action) => {
-            const { id, title, content, author, image } = action.payload;
-            const existingArticle = state.articles.find(article => article.id === id);
-            if (existingArticle) {
-                existingArticle.title = title;
-                existingArticle.content = content;
-                existingArticle.author = author;
-                existingArticle.image = image;
-            }
-        },
-        getAllArticles: (state) => {
-            return state.articles;
-        }
-    },
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            // fetch all artikel
+            .addCase(getArticle.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(getArticle.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.articles = action.payload;
+            })
+            .addCase(getArticle.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+            // get artikel by id
+            .addCase(getArtikelById.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(getArtikelById.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.artikelDetail = action.payload;
+            })
+            .addCase(getArtikelById.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+    }
 });
 
 export const { addArtikel, deleteArtikel, editArtikel, getAllArticles } = artikelSlice.actions;
