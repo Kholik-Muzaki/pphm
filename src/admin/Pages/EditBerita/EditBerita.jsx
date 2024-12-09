@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import './EditBerita.css';
 import ModalSuccess from '../../Component/ModalSuccess/ModalSuccess';
-import { editBerita } from '../../store/beritaSlice';
+import { editBerita, getBeritaById } from '../../store/beritaSlice';
 
 const EditBerita = () => {
     const { id } = useParams();
@@ -21,52 +21,68 @@ const EditBerita = () => {
     const quillRef = useRef(null);
 
     // Ambil berita berdasarkan ID
-    const beritaList = useSelector((state) => state.berita.dataBerita);
-    const beritaToEdit = beritaList.find(berita => berita.id === parseInt(id));
+    const { beritaDetail, status, error } = useSelector((state) => state.berita);
 
     useEffect(() => {
-        if (beritaToEdit) {
-            setTitle(beritaToEdit.title);
-            setAuthor(beritaToEdit.author);
-            setDate(beritaToEdit.date);
-            setImage(beritaToEdit.image);
-            setContent(beritaToEdit.content);
-        } else {
-            navigate('/admin/kelola-berita');
+        if (id) {
+            dispatch(getBeritaById(id))
         }
-    }, [beritaToEdit, navigate]);
+    }, [id, dispatch]);
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0]; // Get the first file
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImage(reader.result); // Store the base64 string
-            };
-            reader.readAsDataURL(file); // Convert the file to base64
+    // mengisi form setelah data diambil dari params\
+    useEffect(() => {
+        if (beritaDetail) {
+            setTitle(beritaDetail.title);
+            setAuthor(beritaDetail.author);
+            setDate(beritaDetail.date.split("T")[0]);
+            setImage(beritaDetail.image);
+            setContent(beritaDetail.content);
         }
-    };
+    }, [beritaDetail, navigate]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const editedBerita = {
-            id: beritaToEdit.id,
             title,
             author,
             date,
             image,
             content
         };
-
-        dispatch(editBerita(editedBerita));
-        setIsModalVisible(true);
+        dispatch(editBerita({ id, beritaData: editedBerita }))
+            .unwrap()
+            .then(() => {
+                setIsModalVisible(true)
+            })
+            .catch((error) => {
+                alert("Gagal mengedit berita: " + error.message)
+            })
     };
 
     const handleModalClose = () => {
         setIsModalVisible(false);
         navigate('/admin/kelola-berita');
     };
+
+    if (status === 'loading') {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
+    if (status === 'failed') {
+        return (
+            <div className="alert alert-danger">
+                <h4>Terjadi Kesalahan:</h4>
+                <p>{error}</p>
+            </div>
+        );
+    }
+
 
     return (
         <Layout titlePage="Edit Berita">
@@ -119,7 +135,7 @@ const EditBerita = () => {
                                             className="form-control text-dark"
                                             id="image"
                                             accept='image/*'
-                                            onChange={handleImageChange}
+                                            onChange={(e) => setImage(e.target.files[0])}
                                             required
                                         />
                                     </div>

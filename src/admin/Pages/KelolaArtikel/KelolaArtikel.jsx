@@ -6,14 +6,14 @@ import "./KelolaArtikel.css";
 import Search from '../../Component/Search/Search';
 import image from '../../../Image';
 import { Link } from 'react-router-dom';
-import { deleteArtikel, getArticle } from '../../store/artikelSlice';
+import { deleteArticle, getArticle } from '../../store/artikelSlice';
 import ModalDelete from '../../Component/ModalDelete/ModalDelete';
 
 const KelolaArtikel = () => {
     const dispatch = useDispatch();
     const { articles, status, error } = useSelector((state) => state.artikel);
     const [showModal, setShowModal] = useState(false);
-    const [articleIdToDelete, setArticleIdToDelete] = useState(null);
+    const [articleToDelete, setArticleToDelete] = useState(null);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(3);
@@ -48,13 +48,13 @@ const KelolaArtikel = () => {
 
     // Handle Delete Click
     const handleDeleteClick = (id) => {
-        setArticleIdToDelete(id);
+        setArticleToDelete(id);
         setShowModal(true);
     };
 
     const handleDeleteConfirm = () => {
-        if (articleIdToDelete !== null) {
-            dispatch(deleteArtikel(articleIdToDelete))
+        if (articleToDelete !== null) {
+            dispatch(deleteArticle(articleToDelete))
                 .unwrap()
                 .then(() => {
                     alert('Data berhasil dihapus');
@@ -65,14 +65,14 @@ const KelolaArtikel = () => {
                 })
                 .finally(() => {
                     setShowModal(false);
-                    setArticleIdToDelete(null);
+                    setArticleToDelete(null);
                 })
         }
     };
 
     const handleModalClose = () => {
         setShowModal(false);
-        setArticleIdToDelete(null);
+        setArticleToDelete(null);
     };
 
     const handleSearchChange = (e) => {

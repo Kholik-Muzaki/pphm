@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import './EditArtikel.css';
 import ModalSuccess from '../../Component/ModalSuccess/ModalSuccess';
-import { editArtikel } from '../../store/artikelSlice';
+import { editArticle, getArtikelById } from '../../store/artikelSlice';
 const EditArtikel = () => {
     const { id } = useParams()
     const dispatch = useDispatch();
@@ -19,39 +19,31 @@ const EditArtikel = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const quillRef = useRef(null);
 
-    // Ambil artikel berdasarkan ID
-    const articles = useSelector((state) => state.artikel.articles);
-    const articleToEdit = articles.find(article => article.id === parseInt(id));
+    const { artikelDetail, status, error } = useSelector((state) => state.artikel);
+
+    // fetxhing article by id
+    useEffect(() => {
+        if (id) {
+            dispatch(getArtikelById(id))
+        }
+    }, [id, dispatch]);
+
+    // mengisi form setalah data diambil dari params
 
     useEffect(() => {
-        if (articleToEdit) {
-            setTitle(articleToEdit.title);
-            setAuthor(articleToEdit.author);
-            setDate(articleToEdit.date);
-            setImage(articleToEdit.image);
-            setContent(articleToEdit.content);
-        } else {
-            // Jika artikel tidak ditemukan, bisa diarahkan ke halaman lain atau tampilkan pesan
-            navigate('/admin/kelola-artikel');
+        if (artikelDetail) {
+            setTitle(artikelDetail.title);
+            setAuthor(artikelDetail.author);
+            setDate(artikelDetail.date.split("T")[0]);
+            setImage(artikelDetail.image);
+            setContent(artikelDetail.content);
         }
-    }, [articleToEdit, navigate]);
-
-    const handleImageChange = (e) => {
-        const file = e.target.files[0]; // Get the first file
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImage(reader.result); // Store the base64 string
-            };
-            reader.readAsDataURL(file); // Convert the file to base64
-        }
-    };
+    }, [artikelDetail]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const editedArticle = {
-            id: articleToEdit.id, // Tetapkan ID artikel yang sama
             title,
             author,
             date,
@@ -59,14 +51,38 @@ const EditArtikel = () => {
             content
         };
 
-        dispatch(editArtikel(editedArticle));
-        setIsModalVisible(true);
+        dispatch(editArticle({ id, articleData: editedArticle }))
+            .unwrap()
+            .then(() => {
+                setIsModalVisible(true);
+            })
+            .catch((err) => {
+                alert("Gagal mengedit artikel: " + err.message)
+            })
     };
 
     const handleModalClose = () => {
         setIsModalVisible(false);
         navigate('/admin/kelola-artikel');
     };
+
+    if (status === 'loading') {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
+    if (status === 'failed') {
+        return (
+            <div className="alert alert-danger">
+                <h4>Terjadi Kesalahan:</h4>
+                <p>{error}</p>
+            </div>
+        );
+    }
 
     return (
         <Layout titlePage="Edit Artikel">
@@ -119,7 +135,7 @@ const EditArtikel = () => {
                                             className="form-control text-dark"
                                             id="image"
                                             accept='image/*'
-                                            onChange={handleImageChange}
+                                            onChange={(e) => setImage(e.target.files[0])}
                                             required
                                         />
                                     </div>

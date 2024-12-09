@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from "../../Layout/Layout";
 import Pagination from "../../Component/Pagination/Pagination";
-import { deleteAlbum } from '../../store/fotoSlice';
+import { deleteAlbum, getAllAlbum } from '../../store/fotoSlice';
 import ModalDelete from '../../Component/ModalDelete/ModalDelete';
 import { Link, useNavigate } from 'react-router-dom';
+import image from '../../../Image';
 
 const KelolaAlbum = () => {
-    const albums = useSelector((state) => state.foto.albums);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { albums, status, error } = useSelector((state) => state.foto);
 
     const [showModal, setShowModal] = useState(false);
     const [albumIdToDelete, setAlbumIdToDelete] = useState(null);
@@ -18,6 +19,30 @@ const KelolaAlbum = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const itemsPerPageOptions = [3, 5, 10, 20];
 
+    // fetching all album 
+    useEffect(() => {
+        if (status === "idle") {
+            dispatch(getAllAlbum());
+        }
+    }, [dispatch, status]);
+    if (status === "loading") {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        )
+    }
+    if (status === "failed") {
+        return (
+            <div className="alert alert-danger">
+                <h4>Terjadi Kesalahan:</h4>
+                <p>{error}</p>
+            </div>
+        );
+    }
+
     const handleDeleteClick = (id) => {
         setAlbumIdToDelete(id);
         setShowModal(true);
@@ -25,9 +50,19 @@ const KelolaAlbum = () => {
 
     const handleDeleteConfirm = () => {
         if (albumIdToDelete !== null) {
-            dispatch(deleteAlbum(albumIdToDelete));
-            setShowModal(false);
-            setAlbumIdToDelete(null);
+            dispatch(deleteAlbum(albumIdToDelete))
+                .unwrap()
+                .then(() => {
+                    alert('Data berhasil dihapus');
+                    dispatch(getAllAlbum());
+                })
+                .catch((error) => {
+                    alert('Gagal menghapus data artikel', error);
+                })
+                .finally(() => {
+                    setShowModal(false);
+                    setAlbumIdToDelete(null);
+                })
         }
     };
 
@@ -111,7 +146,7 @@ const KelolaAlbum = () => {
                                                     {album.images.slice(0, 3).map((image, index) => (
                                                         <img
                                                             key={index}
-                                                            src={image.url}
+                                                            src={`http://localhost:3000/${image.src}`}
                                                             alt={`Preview ${index + 1}`}
                                                             style={{
                                                                 width: '50px',
@@ -122,7 +157,7 @@ const KelolaAlbum = () => {
                                                         />
                                                     ))}
                                                     {album.images.length > 3 && <span>+{album.images.length - 3}</span>}
-                                                </div>
+                                                </div>  
                                             </td>
                                             <td className='action-buttons'>
                                                 <Link to={`/admin/edit-foto/${album.id}`}>
@@ -135,8 +170,9 @@ const KelolaAlbum = () => {
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan={5} className="text-center">
-                                            <h6 className='mt-2'>Data album tidak ditemukan</h6>
+                                        <td colSpan={7} className="text-center">
+                                            <img src={image.notFound} alt="" className='mt-5' />
+                                            <h6 className='mt-2'>Data tidak ditemukan</h6>
                                         </td>
                                     </tr>
                                 )}

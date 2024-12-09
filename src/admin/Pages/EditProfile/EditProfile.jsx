@@ -1,18 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../../admin/Layout/Layout";
+import ApiInstance from "../../../api/api";
+import ModalSuccess from "../../Component/ModalSuccess/ModalSuccess";
 import "./EditProfile.css";
 
 const EditProfileAdmin = () => {
-    // Placeholder for user data (replace with fetched data from database)
-    const [userData, setUserData] = useState({
-        username: "admin123",
-        password: "password123",
-    });
-
+    const [userData, setUserData] = useState(null);
     const [editData, setEditData] = useState({
         username: "",
         password: "",
     });
+    const [statusMessage, setStatusMessage] = useState("");
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const response = await ApiInstance.get("/auth/profile");
+                console.log(response.data.data.user);
+                setUserData(response.data.data.user);
+            } catch (error) {
+                console.error("Error fetching profile:", error);
+                setStatusMessage("Gagal memuat data profil.");
+            }
+        };
+
+        fetchProfile();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -22,11 +38,45 @@ const EditProfileAdmin = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Submit logic here (e.g., update database with editData)
-        console.log("Updated data:", editData);
+
+        try {
+            const response = await ApiInstance.put("/auth/updateProfile", editData);
+            console.log("Response data:", response);
+
+            setStatusMessage("Profil berhasil diperbarui!");
+            setIsModalVisible(true); // Tampilkan modal sukses
+
+            setUserData((prevUserData) => ({
+                ...prevUserData,
+                username: editData.username || prevUserData.username,
+            }));
+
+            setEditData({
+                username: "",
+                password: "",
+            });
+
+            setTimeout(() => {
+                setIsModalVisible(false);
+                navigate("/admin");
+            }, 5000);
+        } catch (error) {
+            console.error("Error updating profile:", error);
+            setStatusMessage("Gagal memperbarui profil. Silakan coba lagi.");
+        }
     };
+
+    if (!userData) {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <Layout titlePage="Edit Profile Admin">
@@ -43,7 +93,7 @@ const EditProfileAdmin = () => {
                             </div>
                             <div className="mb-3">
                                 <label className="form-label"><strong>Password:</strong></label>
-                                <p className="form-control">{userData.password}</p>
+                                <p className="form-control">*******</p>
                             </div>
                         </div>
                     </div>
@@ -90,6 +140,14 @@ const EditProfileAdmin = () => {
                     </div>
                 </div>
             </div>
+
+            {isModalVisible && (
+                <ModalSuccess
+                    onClose={() => setIsModalVisible(false)}
+                    title="Sukses"
+                    description="Profil admin berhasil diperbarui!"
+                />
+            )}
         </Layout>
     );
 };

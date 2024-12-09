@@ -16,7 +16,7 @@ const GaleriFoto = ({ album, index }) => {
                                     className={`carousel-item ${imgIndex === 0 ? 'active' : ''}`}
                                 >
                                     <img
-                                        src={img.src}
+                                        src={`http://localhost:3000/${img.src}`}
                                         className="d-block w-100"
                                         alt={img.caption}
                                         style={{ height: '400px', objectFit: 'cover' }}

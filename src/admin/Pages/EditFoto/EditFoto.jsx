@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editAlbum } from "../../store/fotoSlice";
+import { editAlbum, getAlbumById } from "../../store/fotoSlice";
 import ModalSuccess from "../../Component/ModalSuccess/ModalSuccess";
 
 const EditFoto = () => {
@@ -14,50 +14,62 @@ const EditFoto = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const FotoList = useSelector((state) => state.foto.albums);
-    const albumToEdit = FotoList.find((album) => album.id === parseInt(id));
+    const { albumDetail, status, error } = useSelector((state) => state.foto);
 
     useEffect(() => {
-        if (albumToEdit) {
-            setTitle(albumToEdit.title);
-            setDescription(albumToEdit.description);
-            setImages(albumToEdit.images);
-        } else {
-            navigate('/admin/kelola-foto');
+        if (id) {
+            dispatch(getAlbumById(id));
         }
-    }, [albumToEdit, navigate]);
+    }, [id, dispatch]);
 
-    const handleImageChange = (e) => {
-        const files = Array.from(e.target.files);
-        const newImages = files.map((file) => {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onloadend = () => {
-                    resolve({ src: reader.result }); // Store the base64 string in an object
-                };
-                reader.onerror = reject;
-            });
-        });
-
-        Promise.all(newImages).then((imageList) => {
-            setImages((prevImages) => [...prevImages, ...imageList]); // Add all new images to state
-        }).catch((error) => {
-            console.error("Error converting files to base64:", error);
-        });
-    };
-
+    // megisi form setelah data diambil dari params
+    useEffect(() => {
+        if (albumDetail) {
+            setTitle(albumDetail.title);
+            setDescription(albumDetail.description);
+            setImages(albumDetail.images);
+        }
+    }, [albumDetail]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const editedAlbum = {
-            id: albumToEdit.id,
-            title,
-            description,
-            images
-        };
-        dispatch(editAlbum(editedAlbum));
-        setIsModalVisible(true);
+
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('description', description);
+        images.forEach((image) => {
+            if (image instanceof File) {
+                formData.append('images', image); // Kirim semua file baru dengan field 'images'
+            } else if (typeof image === 'object' && image.src) {
+                formData.append('existingImages', image.src); // Kirim gambar lama dengan field 'existingImages'
+            }
+        });
+
+        dispatch(editAlbum({ id, albumData: formData }))
+            .unwrap()
+            .then(() => {
+                setIsModalVisible(true);
+            })
+            .catch((error) => {
+                alert('Gagal mengedit album: ' + (error.response?.data?.message || error.message));
+            });
+    };
+    if (status === 'loading') {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
+    if (status === "failed") {
+        return (
+            <div className="alert alert-danger">
+                <h4>Terjadi Kesalahan:</h4>
+                <p>{error}</p>
+            </div>
+        );
     }
 
     const handleModalClose = () => {
@@ -106,7 +118,7 @@ const EditFoto = () => {
                                             className="form-control"
                                             id="images"
                                             accept="image/*"
-                                            onChange={handleImageChange}
+                                            onChange={(e) => setImages(Array.from(e.target.files))}
                                             multiple
                                             required
                                         />

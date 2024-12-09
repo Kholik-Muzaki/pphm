@@ -4,13 +4,40 @@ import BannerPage from "../../Component/BannerPage/BannerPage"
 import Footer from "../../Component/Footer/Footer"
 import GaleriFoto from "../../Component/GaleriFoto/GaleriFoto"
 import Navbar2 from "../../Component/Navbar/Navbar2"
-import { albums } from "../../data"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GaleriVideo from '../../Component/GaleriVideo/GaleriVIdeo';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllAlbum } from '../../../admin/store/fotoSlice';
 
 
 const GaleriFotoVideo = () => {
+    const { albums, status, error } = useSelector((state) => state.foto);
     const [showAll, setShowAll] = useState(false);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (status === "idle") {
+            dispatch(getAllAlbum());
+        }
+    }, [dispatch, status]);
+
+    if (status === "loading") {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        )
+    }
+    if (status === "failed") {
+        return (
+            <div className="alert alert-danger">
+                <h4>Terjadi Kesalahan:</h4>
+                <p>{error}</p>
+            </div>
+        );
+    }
 
     const handleToggleAlbums = () => {
         setShowAll(!showAll);

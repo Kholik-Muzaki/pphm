@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 import ApiInstance from "../../../api/api";
+import ModalSuccess from "../../../admin/Component/ModalSuccess/ModalSuccess";
 
 const EditProfileBendahara = () => {
-    const [userData, setUserData] = useState(null); // Mulai dengan null
+    const [userData, setUserData] = useState(null);
     const [editData, setEditData] = useState({
         username: "",
         password: "",
     });
-
     const [statusMessage, setStatusMessage] = useState("");
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const navigate = useNavigate();
 
-    // Fetch user profile data
     useEffect(() => {
         const fetchProfile = async () => {
             try {
@@ -20,42 +22,45 @@ const EditProfileBendahara = () => {
                 setUserData(response.data.data.user);
             } catch (error) {
                 console.error("Error fetching profile:", error);
+                setStatusMessage("Gagal memuat data profil.");
             }
         };
 
         fetchProfile();
     }, []);
 
-    // Handle input changes in the form
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setEditData((prevData) => ({
-            ...prevData,
+        setEditData({
+            ...editData,
             [name]: value,
-        }));
+        });
     };
 
-    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const response = await ApiInstance.put("/auth/updateProfile", editData);
-            console.log("response data:", response);
-            
-            setStatusMessage("Profil berhasil diperbarui!");
+            console.log("Response data:", response);
 
-            // Update the displayed profile with the new data
+            setStatusMessage("Profil berhasil diperbarui!");
+            setIsModalVisible(true); // Tampilkan modal sukses
+
             setUserData((prevUserData) => ({
                 ...prevUserData,
                 username: editData.username || prevUserData.username,
             }));
 
-            // Clear form fields after success
             setEditData({
                 username: "",
                 password: "",
             });
+
+            setTimeout(() => {
+                setIsModalVisible(false);
+                navigate("/bendahara");
+            }, 5000);
         } catch (error) {
             console.error("Error updating profile:", error);
             setStatusMessage("Gagal memperbarui profil. Silakan coba lagi.");
@@ -63,7 +68,6 @@ const EditProfileBendahara = () => {
     };
 
     if (!userData) {
-        // Show a loading spinner or fallback UI while fetching data
         return (
             <div className="d-flex justify-content-center align-items-center vh-100">
                 <div className="spinner-border text-primary" role="status">
@@ -75,7 +79,6 @@ const EditProfileBendahara = () => {
 
     return (
         <Layout titlePage="Edit Profile Bendahara">
-            {/* Display User Details */}
             <div className="row">
                 <div className="col-md-8 offset-md-2">
                     <div className="card shadow-sm">
@@ -89,14 +92,13 @@ const EditProfileBendahara = () => {
                             </div>
                             <div className="mb-3">
                                 <label className="form-label"><strong>Password:</strong></label>
-                                <p className="form-control">{userData.password}</p>
+                                <p className="form-control">*******</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Edit Profile Form */}
             <div className="row mt-4">
                 <div className="col-md-8 offset-md-2">
                     <div className="card shadow-sm">
@@ -133,15 +135,18 @@ const EditProfileBendahara = () => {
                                     </button>
                                 </div>
                             </form>
-                            {statusMessage && (
-                                <div className="mt-3 text-center">
-                                    <p>{statusMessage}</p>
-                                </div>
-                            )}
                         </div>
                     </div>
                 </div>
             </div>
+
+            {isModalVisible && (
+                <ModalSuccess
+                    onClose={() => setIsModalVisible(false)}
+                    title="Sukses"
+                    description="Profil bendahara berhasil diperbarui!"
+                />
+            )}
         </Layout>
     );
 };
