@@ -146,7 +146,7 @@ const KelolaKeuangan = () => {
                     setShowModal(false);
                     setKeuanganToDelete(null);
                 })
-        }
+        } 
     }
 
     const handleModalClose = () => {

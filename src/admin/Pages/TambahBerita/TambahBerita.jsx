@@ -18,31 +18,24 @@ const TambahBerita = () => {
     const dispatch = useDispatch();
     const quillRef = useRef(null);
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImage(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const newBerita = {
-            id: Date.now(),
-            title,
-            author,
-            date,
-            image,
-            content
-        };
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('author', author);
+        formData.append('date', date);
+        formData.append('image', image);
+        formData.append('content', content);
 
-        dispatch(addBerita(newBerita));
-        setIsModalVisible(true);
+        dispatch(addBerita(formData))
+            .unwrap()
+            .then(() => {
+                setIsModalVisible(true);
+            })
+            .catch((error) => [
+                alert("Gagal menambahkan data berita", error)
+            ])
     };
 
     const handleModalClose = () => {
@@ -98,10 +91,11 @@ const TambahBerita = () => {
                                         <label htmlFor="image" className='text-dark fw-bold'>Gambar :</label>
                                         <input
                                             type="file"
-                                            className="form-control text-dark"
+                                            className="form-control"
+                                            name='image'
                                             id="image"
                                             accept="image/*"
-                                            onChange={handleImageChange}
+                                            onChange={(e) => setImage(e.target.files[0])}
                                             required
                                         />
                                     </div>

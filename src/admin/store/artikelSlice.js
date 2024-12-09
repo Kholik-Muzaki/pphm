@@ -11,6 +11,7 @@ export const getArticle = createAsyncThunk(
     }
 )
 
+//asyn thunk  get artucle by id
 export const getArtikelById = createAsyncThunk(
     'artikel/getArtikelById',
     async (id) => {
@@ -18,6 +19,41 @@ export const getArtikelById = createAsyncThunk(
         return response.data.data
     }
 )
+
+// asyn thunk delete artikel
+export const deleteArticle = createAsyncThunk(
+    "artikel/deleteArticle",
+    async (id) => {
+        await ApiInstance.delete(`/artikel/${id}`);
+        return id
+    }
+)
+
+// asyn thunk add article
+export const addArticle = createAsyncThunk(
+    "artikel/addArticle",
+    async (articleData) => {
+        const response = await ApiInstance.post("/artikel", articleData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        });
+        return response.data.data;
+    }
+);
+
+// asyn thunk edit article
+export const editArticle = createAsyncThunk(
+    "artikel/editArticle",
+    async ({ id, articleData }) => {
+        const response = await ApiInstance.put(`/artikel/${id}`, articleData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        });
+        return response.data.data;
+    }
+);
 
 const artikelSlice = createSlice({
     name: 'artikel',
@@ -51,6 +87,48 @@ const artikelSlice = createSlice({
                 state.artikelDetail = action.payload;
             })
             .addCase(getArtikelById.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+            // delete artikel
+            .addCase(deleteArticle.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(deleteArticle.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.articles = state.articles.filter(artikel => artikel.id !== action.payload);
+            })
+            .addCase(deleteArticle.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+            // add article
+            .addCase(addArticle.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(addArticle.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.articles.push(action.payload);
+            })
+            .addCase(addArticle.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+            // update artikel
+            .addCase(editArticle.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(editArticle.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                const index = state.articles.findIndex((artikel) => artikel.id === action.payload.id);
+                if (index !== -1) {
+                    state.dataArtikel[index] = action.payload;
+                }
+                if (state.artikelDetail?.id === action.payload.id) {
+                    state.artikelDetail = action.payload;
+                }
+            })
+            .addCase(editArticle.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             })

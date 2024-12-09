@@ -3,54 +3,40 @@ import Layout from "../../Layout/Layout";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ModalSuccess from '../../Component/ModalSuccess/ModalSuccess';
-import { addAlbum } from '../../store/fotoSlice';
+import { addAlbum, getAllAlbum } from '../../store/fotoSlice';
 
-const TambahAlbum = () => {
+const TambahFoto = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [images, setImages] = useState([]);
     const [isModalVisible, setIsModalVisible] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
-    const handleImageChange = (e) => {
-        const files = Array.from(e.target.files); // Ambil semua file yang dipilih
-        const newImages = files.map((file) => {
-            return new Promise((resolve) => {
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    resolve({ src: reader.result }); // Mengembalikan objek dengan src sebagai base64
-                };
-                reader.readAsDataURL(file); // Mengonversi file ke base64
-            });
-        });
-
-        // Tunggu semua Promise selesai
-        Promise.all(newImages).then((imageList) => {
-            setImages((prevImages) => [...prevImages, ...imageList]); // Menambahkan gambar baru ke state
-        });
-    };
-
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const newAlbum = {
-            id: Date.now(),
-            title,
-            description,
-            images
-        };
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('description', description);
+        images.forEach((image) => {
+            formData.append('images', image);
+        });
 
-        dispatch(addAlbum(newAlbum));
-        setIsModalVisible(true);
+        dispatch(addAlbum(formData))
+            .unwrap()
+            .then(() => {
+                setIsModalVisible(true);
+                dispatch(getAllAlbum());
+            })
+            .catch((error) => {
+                alert('Gagal menambahkan data album', error);
+            });
     };
-
     const handleModalClose = () => {
         setIsModalVisible(false);
         navigate('/admin/kelola-foto');
     };
-
     return (
         <Layout titlePage="Tambah Album">
             <div className="container form-container">
@@ -91,7 +77,7 @@ const TambahAlbum = () => {
                                             className="form-control"
                                             id="images"
                                             accept="image/*"
-                                            onChange={handleImageChange}
+                                            onChange={(e) => setImages(Array.from(e.target.files))}
                                             multiple
                                             required
                                         />
@@ -121,4 +107,4 @@ const TambahAlbum = () => {
     );
 };
 
-export default TambahAlbum;
+export default TambahFoto;

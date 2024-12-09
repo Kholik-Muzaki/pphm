@@ -26,12 +26,12 @@ import DashboardBendahara from "./bendahara/Pages/DashboardBendahara/DashboardBe
 import KelolaKeuangan from "./bendahara/Pages/KelolaKeuangan/KelolaKeuangan";
 import TambahKeuangan from "./bendahara/Pages/TambahKeuangan/TambahKeuangan";
 import EditKeuangan from "./bendahara/Pages/EditKeuangan/EditKeuangan";
-import TambahFoto from "./admin/Pages/TambahFoto/TambahFoto";
 import EditFoto from "./admin/Pages/EditFoto/EditFoto";
 import EditProfileAdmin from "./admin/Pages/EditProfile/EditProfile";
 import DetailKeuangan from "./bendahara/Pages/DetailKeuangan/DetailKeuangan";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import EditProfileBendahara from "./bendahara/Pages/EditProfileBendahara/EditProfileBendahara";
+import TambahFoto from "./admin/Pages/TambahFoto/TambahFoto";
 
 function App() {
    return (

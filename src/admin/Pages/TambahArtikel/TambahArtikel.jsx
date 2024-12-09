@@ -6,44 +6,37 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './TambahArtikel.css';
 import ModalSuccess from '../../Component/ModalSuccess/ModalSuccess';
-import { addArtikel } from '../../store/artikelSlice';
+import { addArticle } from '../../store/artikelSlice';
 
 const TambahArtikel = () => {
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [date, setDate] = useState('');
-    const [image, setImage] = useState(null); // Changed to null for file storage
+    const [image, setImage] = useState(null);
     const [content, setContent] = useState('');
     const [isModalVisible, setIsModalVisible] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const quillRef = useRef(null);
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0]; // Get the first file
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImage(reader.result); // Store the base64 string
-            };
-            reader.readAsDataURL(file); // Convert the file to base64
-        }
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const newArticle = {
-            id: Date.now(),
-            title,
-            author,
-            date,
-            image, // This will be the base64 string
-            content
-        };
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('author', author);
+        formData.append('date', date);
+        formData.append('image', image);
+        formData.append('content', content);
 
-        dispatch(addArtikel(newArticle));
-        setIsModalVisible(true);
+        dispatch(addArticle(formData))
+            .unwrap()
+            .then(() => {
+                setIsModalVisible(true);
+            })
+            .catch((error) => {
+                alert('Gagal menambahkan data artikel', error);
+            })
     };
 
     const handleModalClose = () => {
@@ -99,10 +92,11 @@ const TambahArtikel = () => {
                                         <label htmlFor="image" className='text-dark fw-bold'>Image :</label>
                                         <input
                                             type="file"
-                                            className="form-control text-dark"
+                                            className="form-control"
+                                            name='image'
                                             id="image"
-                                            accept="image/*" // Optional: limit file types to images
-                                            onChange={handleImageChange} // Use the new handler
+                                            accept="image/*"
+                                            onChange={(e) => setImage(e.target.files[0])}
                                             required
                                         />
                                     </div>

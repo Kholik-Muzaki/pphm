@@ -9,7 +9,7 @@ const CardBerita = ({ data }) => {
                     {data.map(item => (
                         <div key={item.id} className="col-sm-12 col-md-6 col-lg-4">
                             <div className="card card-artikel">
-                                <img src={item.image} className="card-img-top" alt="..." />
+                                <img src={`http://localhost:3000/${item.image}`} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title text-title">{item.title}</h5>
                                     <p className="card-text text-dark">

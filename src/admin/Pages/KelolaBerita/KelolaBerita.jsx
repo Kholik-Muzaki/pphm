@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from "../../Component/Pagination/Pagination";
 import Layout from "../../Layout/Layout";
 import Search from '../../Component/Search/Search';
 import image from '../../../Image';
 import { Link } from 'react-router-dom';
-import { deleteBerita } from '../../store/beritaSlice';
+import { deleteBerita, getBerita } from '../../store/beritaSlice';
 import ModalDelete from '../../Component/ModalDelete/ModalDelete';
 
 const KelolaBerita = () => {
-    const beritaList = useSelector((state) => state.berita.dataBerita); // Ambil artikel dari Redux state
-    const dispatch = useDispatch(); // Inisialisasi useDispatch
+    const dispatch = useDispatch();
+    const { dataBerita, status, error } = useSelector((state) => state.berita);
     const [showModal, setShowModal] = useState(false);
     const [beritaIdToDelete, setBeritaIdToDelete] = useState(null);
 
@@ -19,6 +19,31 @@ const KelolaBerita = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const itemsPerPageOptions = [3, 5, 10, 20];
 
+    // fetching all berita
+    useEffect(() => {
+        if (status === "idle") {
+            dispatch(getBerita());
+        }
+    }, [dispatch, status]);
+
+    if (status === "loading") {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        )
+    }
+
+    if (status === "failed") {
+        return (
+            <div className="alert alert-danger">
+                <h4>Terjadi Kesalahan:</h4>
+                <p>{error}</p>
+            </div>
+        )
+    }
     // Handle Delete Click
     const handleDeleteClick = (id) => {
         setBeritaIdToDelete(id);
@@ -27,9 +52,19 @@ const KelolaBerita = () => {
 
     const handleDeleteConfirm = () => {
         if (beritaIdToDelete !== null) {
-            dispatch(deleteBerita(beritaIdToDelete));
-            setShowModal(false);
-            setBeritaIdToDelete(null);
+            dispatch(deleteBerita(beritaIdToDelete))
+                .unwrap()
+                .then(() => {
+                    alert('Data berhasil dihapus');
+                    dispatch(getBerita())
+                })
+                .catch((error) => {
+                    alert('Gagal menghapus data artikel', error)
+                })
+                .finally(() => {
+                    setShowModal(false);
+                    setBeritaIdToDelete(null);
+                })
         }
     };
 
@@ -46,7 +81,7 @@ const KelolaBerita = () => {
     const indexOfLastBerita = currentPage * itemsPerPage;
     const indexOfFirstBerita = indexOfLastBerita - itemsPerPage;
 
-    const filteredBerita = beritaList.filter((berita) =>
+    const filteredBerita = dataBerita.filter((berita) =>
         berita.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         berita.content.toLowerCase().includes(searchTerm.toLowerCase()) || // Pastikan ini adalah field yang benar
         berita.author.toLowerCase().includes(searchTerm.toLowerCase())
@@ -103,19 +138,21 @@ const KelolaBerita = () => {
                                         <tr key={berita.id} className='align-middle'>
                                             <td>{berita.id}</td>
                                             <td>
-                                                {berita.image && <img src={berita.image} alt={berita.title} style={{ width: '50px', height: '50px' }} />}
+                                                {berita.image && <img src={`http://localhost:3000/${berita.image}`} alt={berita.title} style={{ width: '50px', height: '50px' }} />}
                                             </td>
                                             <td>{berita.title}</td>
                                             <td>{truncateContent(berita.content, 10)}</td>
                                             <td>{berita.author}</td>
-                                            <td>{berita.date}</td>
+                                            <td>{berita.date.split("T")[0]}</td>
 
                                             <td className='action-buttons'>
                                                 <Link to={`/admin/edit-berita/${berita.id}`}>
                                                     <button className='btn btn-outline-warning me-2'><i className='bx bxs-edit-alt' /></button>
                                                 </Link>
                                                 <button className='btn btn-danger me-2' onClick={() => handleDeleteClick(berita.id)}><i className='bx bx-trash' /></button>
-                                                <button className='btn btn-primary me-2'><i className='bx bx-show' /></button>
+                                                <Link to={`/berita/${berita.id}`}>
+                                                    <button className='btn btn-primary me-2'><i className='bx bx-show' /></button>
+                                                </Link>
                                             </td>
                                         </tr>
                                     ))
