@@ -58,7 +58,7 @@ const KelolaVideo = () => {
                 .unwrap()
                 .then(() => {
                     alert("Data berhasil dihapus");
-                    dispatch(resetStatus()); ;
+                    dispatch(resetStatus());;
                 })
                 .catch((error) => {
                     alert("Gagal menghapus data keuangan", error);
@@ -117,10 +117,11 @@ const KelolaVideo = () => {
                     <div className="table-responsive">
                         <table className="table table-bordered">
                             <thead className="custom-thead">
-                                <tr className="table-head">
+                                <tr className="table-head text-center">
                                     <th style={{ width: '5%' }}>ID</th>
-                                    <th style={{ width: '35%' }}>Judul</th>
-                                    <th style={{ width: '45%' }}>Link Video</th>
+                                    <th style={{ width: '25%' }}>Judul</th>
+                                    <th style={{ width: '30%' }}>Link Video</th>
+                                    <th style={{ width: '25%' }}>Preview</th>
                                     <th style={{ width: '15%' }}>Action</th>
                                 </tr>
                             </thead>
@@ -131,6 +132,19 @@ const KelolaVideo = () => {
                                             <td>{video.id}</td>
                                             <td>{video.judul}</td>
                                             <td>{video.link}</td>
+                                            <td className='text-center'>
+                                                <iframe
+                                                    width="200"
+                                                    height="120"
+                                                    src={`https://www.youtube.com/embed/${video.link}`}
+                                                    title={video.judul}
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    allowFullScreen
+                                                    style={{ borderRadius: '8px' }}
+                                                />
+                                            </td>
+
                                             <td className='action-buttons'>
                                                 <Link to={`/admin/edit-video/${video.id}`}>
                                                     <button className='btn btn-outline-warning me-3'><i className='bx bxs-edit-alt' /></button>
