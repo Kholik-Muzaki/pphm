@@ -1,93 +1,148 @@
+
+/* Header Menu */
 .header-menu {
    height: 100vh;
    width: 100%;
-   background-image: url("../../assets/Image/2.jpg");
+   background-image: url("../../assets/Image/banner.jpg");
    background-attachment: fixed;
    background-position: center;
    background-size: cover;
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   color: #fff;
+   padding: 20px;
+}
+
+.header-menu::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.6);
+   z-index: 1;
+   backdrop-filter: blur(5px);
 }
 
 .container-header-menu {
-   height: 100%;
-   padding-top: 80px;
+   position: relative;
+   z-index: 2;
+   padding: 20px;
+   max-width: 800px;
 }
 
-.h2-header {
-   font-size: 50px;
-   color: #fff;
-   font-weight: bold;
+/* Judul Utama */
+.h1-header {
+   font-size: 56px;
+   font-weight: 700;
+   line-height: 1.2;
+   margin-bottom: 10px;
+   animation: fadeInDown 1s ease;
 }
 
-.h2-header span {
-   color: #ff9900;
+.h1-header.highlight {
+   color: #ffcc00;
 }
 
-.desc-header-menu {
-   background-color: rgba(255, 255, 255, 0.6);
-   border-radius: 20px;
-   box-shadow: rgba(255, 255, 255, 0.6);
-   height: auto;
-   padding: 10px;
-}
-
-.desc-header-menu .p-header {
-   font-size: 18px;
-   color: #000;
+/* Subjudul */
+.p-subheader {
+   font-size: 20px;
    font-weight: 400;
+   margin-bottom: 30px;
+   animation: fadeInUp 1s ease;
 }
 
-.btn-header {
-   background-color: #ff9900;
-   padding: 5px;
+/* Kutipan Inspiratif */
+.quote {
+   font-size: 18px;
    font-style: italic;
-   color: #fff;
-   border-radius: 20px;
-   font-size: 18px;
-   font-weight: 400;
-   border: none;
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: center;
-   gap: 10px;
+   color: #ffcc00;
+   margin: 20px 0;
+   padding: 10px 20px;
+   border-left: 4px solid #ffcc00;
+   background: rgba(255, 255, 255, 0.1);
+   border-radius: 5px;
+   animation: fadeIn 1.5s ease;
 }
 
-.btn-header:hover {
-   background-color: #fff;
-   color: #ff9900;
-   transition: ease-in-out 0.5s;
+/* Info Box */
+.info-box {
+   background: rgba(255, 255, 255, 0.15);
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+   font-size: 16px;
+   line-height: 1.6;
+   margin-top: 20px;
+   animation: fadeInUp 1.2s ease;
 }
 
-@media (max-width: 576px) {
-   .container-header-menu {
-      height: 100%;
-      padding-top: 80px;
+/* Animasi */
+@keyframes fadeInDown {
+   from {
+      opacity: 0;
+      transform: translateY(-30px);
    }
-
-   .h2-header {
-      font-size: 30px;
-      font-weight: bold;
-   }
-
-   .row-desc-header-menu {
-      padding-left: 10px;
-      padding-right: 10px;
+   to {
+      opacity: 1;
+      transform: translateY(0);
    }
 }
 
-@media (min-width: 576px) and (max-width: 768px) {
-   .container-header-menu {
-      height: 100%;
-      padding-top: 80px;
+@keyframes fadeInUp {
+   from {
+      opacity: 0;
+      transform: translateY(30px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
+}
+
+/* Responsivitas */
+@media (max-width: 768px) {
+   .h1-header {
+      font-size: 36px;
    }
 
-   .h2-header {
-      font-size: 30px;
-      font-weight: bold;
+   .p-subheader {
+      font-size: 16px;
    }
 
-   .row-desc-header-menu {
-      padding-left: 10px;
-      padding-right: 10px;
+   .quote {
+      font-size: 16px;
+   }
+
+   .info-box {
+      font-size: 14px;
+      padding: 15px;
+   }
+}
+
+@media (max-width: 480px) {
+   .h1-header {
+      font-size: 28px;
+   }
+
+   .p-subheader {
+      font-size: 14px;
+   }
+
+   .quote {
+      font-size: 14px;
    }
 }

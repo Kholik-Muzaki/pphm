@@ -17,10 +17,15 @@ const ProfilPesantren = () => {
                <div className="col-sm-12 text-center">
                   <h3 className="fw-bold mb-4 h3-title-profil">Sejarah Pesantren</h3>
                   <p className="lead">
-                     Pesantren Al-Hikmah didirikan pada tahun 1980 oleh KH. Ahmad Maulana dengan tujuan untuk
-                     memberikan pendidikan agama yang komprehensif kepada generasi muda. Seiring waktu, pesantren
-                     ini berkembang menjadi salah satu lembaga pendidikan Islam terkemuka, dengan ribuan santri dari
-                     seluruh Indonesia.
+                  Berdiri kokoh sejak 1995, Pondok Pesantren Hidayatul Mubtadi’ien adalah sebuah lembaga pendidikan Islam yang telah memberikan kontribusi besar dalam membentuk generasi muda yang berilmu, beriman, dan berakhlak mulia. Berlokasi di Jl. Inpres, Bersole, Karangpucung, Kec. Purwokerto Selatan, Kab. Banyumas, Jawa Tengah, pesantren ini menjadi rumah kedua bagi para santri yang ingin mendalami ilmu agama dan mempersiapkan diri untuk masa depan.
+
+Didirikan oleh K.H. Nururrohman setelah menyelesaikan pendidikan di Pondok Pesantren Lirboyo, Kediri, pesantren ini dibangun atas dasar semangat pengabdian dan keinginan kuat untuk membina generasi muda melalui pendidikan Islam yang komprehensif. Sejak awal berdirinya, Pondok Pesantren Hidayatul Mubtadi’ien konsisten mengajarkan nilai-nilai Islam rahmatan lil ‘alamin, dengan kurikulum yang seimbang antara ilmu agama, akhlak, dan wawasan luas tentang kehidupan.
+
+Pesantren ini bukan hanya tempat untuk belajar, tetapi juga tempat untuk membentuk karakter. Setiap santri dibimbing untuk menjadi pribadi yang jujur, amanah, berdisiplin, dan memiliki semangat untuk membangun bangsa. Dengan suasana yang penuh kedamaian, nilai-nilai kebersamaan, dan pengajaran yang mendalam, Pondok Pesantren Hidayatul Mubtadi’ien terus melahirkan generasi Qurani yang siap menghadapi tantangan zaman.
+
+Di sini, para santri tidak hanya menghafal kitab, tetapi juga belajar tentang kehidupan, tanggung jawab, dan kontribusi positif untuk masyarakat. Dengan bimbingan dari para pengasuh yang penuh dedikasi, pesantren ini menjadi cahaya penerang dan tempat bersemi harapan untuk masa depan umat.
+
+Pondok Pesantren Hidayatul Mubtadi’ien: Menginspirasi, mendidik, dan mempersiapkan generasi yang siap membawa perubahan.
                   </p>
                   <p>
                      Dengan motto <em>"Membangun Generasi Qurani"</em>, Pesantren Al-Hikmah terus berinovasi dalam
