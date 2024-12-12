@@ -164,27 +164,6 @@ export const artikelData = [
     }
 ];
 
-export const dataProgramUnggulan = [
-    {
-        "id": 1,
-        "image": "https://via.placeholder.com/600x400?text=Kegiatan+Kemasyarakatan",
-        "title": "Kajian Kitab Kuning",
-        "text": "Pengajian kitab kuning bulanan yang diadakan setiap bulan gunan meningkatkan kesejahteraan masyarakat"
-    },
-    {
-        "id": 2,
-        "image": "https://via.placeholder.com/600x400?text=Kegiatan+Kemasyarakatan",
-        "title": "Kajian Kitab Kuning",
-        "text": "Pengajian kitab kuning tahunan yang diadakan setiap tahun gunan meningkatkan kesejahteraan masyarakat"
-    },
-    {
-        "id": 3,
-        "image": "https://via.placeholder.com/600x400?text=Kegiatan+Kemasyarakatan",
-        "title": "Kajian Kitab Kuning",
-        "text": "Pengajian kitab kuning tahunan yang diadakan setiap tahun gunan meningkatkan kesejahteraan masyarakat"
-    }
-];
-
 export const albums = [
     {
         id: 1,
@@ -276,25 +255,6 @@ export const linkVideo = [
         link: "https://www.youtube.com/embed/hxiUeqMoiiE",
         judul: "Sholawat Bersama menyamut tahun baru hijriyah"
     }
-];
-
-export const fasilitasPesantren = [
-    {
-        icon: "fas fa-mosque",
-        title: "Masjid",
-        description: "Masjid Al-Hikmah merupakan pusat kegiatan ibadah dan pengajian yang bisa menampung hingga 1000 santri dan jamaah."
-    },
-    {
-        icon: "fas fa-bed",
-        title: "Asrama",
-        description: "Pesantren memiliki asrama yang nyaman dan bersih untuk para santri. Setiap asrama dilengkapi dengan fasilitas yang mendukung kenyamanan."
-    },
-    {
-        icon: "fas fa-book",
-        title: "Perpustakaan",
-        description: "Perpustakaan pesantren menyediakan berbagai koleksi kitab-kitab Islam klasik, buku-buku pelajaran, dan referensi modern yang dapat diakses santri."
-    },
-    // Tambahkan lebih banyak fasilitas sesuai kebutuhan
 ];
 
 export const DataKeuangan = [

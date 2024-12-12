@@ -1,5 +1,6 @@
 import "./ProfilHome.css";
 import pengasuh from "../../assets/Image/pengasuh.png";
+import santri from "../../assets/Image/santri.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
@@ -11,62 +12,54 @@ const ProfilHome = () => {
    }, []);
 
    return (
-      <>
-         <div data-aos="fade-up" data-aos-duration="2000">
-            <div className="container mt-5">
-               <div className="row">
-                  <div className="col-sm-12 col-md-12 col-lg-6 order-sm-1 order-md-1 order-lg-1 d-flex justify-content-center align-items-center">
-                     <img
-                        src={pengasuh}
-                        className="image-pengasuh"
-                        alt="" />
-                  </div>
-                  <div className="col-sm-12 col-md-12 col-lg-6 order-sm-2 order-md-2 order-lg-2">
-                     <h2 className="h2-profil-home">Profil Pengasuh</h2>
-                     <hr />
-                     <p>
-                        KH. Ahmad Maulana merupakan pengasuh Pondok Pesantren Al-Hikmah yang telah berdedikasi dalam dunia pendidikan Islam selama lebih dari 30 tahun. Dengan pengalaman yang luas dalam membina santri, beliau berperan aktif dalam menyebarkan ajaran Islam yang rahmatan lil alamin dan membimbing santri-santrinya menjadi insan yang berakhlak mulia.
+      <section className="profil-home-section">
+         <div className="container profil-home-container">
 
-                        Latar belakang pendidikan beliau mencakup pendidikan formal di dalam dan luar negeri, termasuk studi keislaman di Universitas Al-Azhar, Mesir. Selain itu, beliau juga aktif sebagai tokoh ulama dalam berbagai forum dakwah internasional dan memiliki komitmen untuk membangun generasi muda muslim yang berkualitas.
-                     </p>
-                     <Link to='/profil-pengasuh' className="text-decoration-none">
-                        <button className="btn d-flex justify-content-center align-items-center flex-row btn-profil">
-                           Baca Selengkapnya
-                           <i className='bx bx-right-arrow-alt bx-sm text-decoration-none ms-2 bx-profil'></i>
-                        </button>
-                     </Link>
-                  </div>
+            {/* Profil Pengasuh */}
+            <div className="row mb-5" data-aos="fade-up" data-aos-duration="2000">
+               <div className="col-sm-12 col-lg-6 d-flex justify-content-center align-items-center">
+                  <img src={pengasuh} className="profil-home-image" alt="Pengasuh" />
+               </div>
+               <div className="col-sm-12 col-lg-6">
+                  <h2 className="profil-home-title">Profil Pengasuh</h2>
+                  <hr className="profil-home-hr" />
+                  <p className="profil-home-text">
+                     K.H. Nururrohman adalah sosok ulama yang penuh dedikasi dan kecintaan terhadap dunia pendidikan Islam. Beliau adalah pendiri Pondok Pesantren Hidayatul Mubtadi’ien, sebuah lembaga pendidikan yang kini menjadi salah satu pilar penting dalam membentuk generasi muda berilmu dan berakhlak mulia di Purwokerto Selatan, Banyumas, Jawa Tengah.
+                     Lahir dari perjalanan ilmu yang panjang, K.H. Nururrohman menimba ilmu di Pondok Pesantren Lirboyo, Kediri, Jawa Timur, yang terkenal dengan tradisi keilmuan Islam yang kuat dan mendalam. Setelah menyelesaikan pendidikannya pada tahun 1995, beliau mewujudkan cita-citanya untuk mendirikan pesantren sebagai wadah bagi generasi muda untuk belajar, berkembang, dan menjadi insan yang siap membangun agama, bangsa, dan negara.
+                  </p>
+                  <Link to="/profil-pengasuh" className="text-decoration-none">
+                     <button className="profil-home-btn">
+                        Baca Selengkapnya
+                        <i className="bx bx-right-arrow-alt bx-sm"></i>
+                     </button>
+                  </Link>
                </div>
             </div>
-         </div>
-         <div data-aos="fade-up" data-aos-duration="2000">
-            <div className="container mt-5">
-               <div className="row">
-                  <div className="col-sm-12 col-md-12 col-lg-6 order-sm-2 order-md-2 order-lg-1">
-                     <h2 className="h2-profil-home">Profil Pesantren</h2>
-                     <hr />
-                     <p>
-                        Pesantren Al-Hikmah didirikan pada tahun 1980 oleh KH. Ahmad Maulana dengan tujuan untuk memberikan pendidikan agama yang komprehensif kepada generasi muda. Seiring waktu, pesantren ini berkembang menjadi salah satu lembaga pendidikan Islam terkemuka, dengan ribuan santri dari seluruh Indonesia.
 
-                        Dengan motto "Membangun Generasi Qurani", Pesantren Al-Hikmah terus berinovasi dalam mengembangkan kurikulum yang seimbang antara pendidikan agama dan umum, serta memberikan fasilitas yang mendukung perkembangan santri.
-                     </p>
-                     <Link to='/profil-pesantren' className="text-decoration-none">
-                        <button className="btn d-flex justify-content-center align-items-center flex-row btn-profil">
-                           Baca Selengkapnya
-                           <i className='bx bx-right-arrow-alt bx-sm text-decoration-none ms-2 bx-profil'></i>
-                        </button>
-                     </Link>
-                  </div>
-                  <div className="col-sm-12 col-md-12 col-lg-6 order-sm-1 order-md-1 order-lg-2 d-flex justify-content-center align-items-center">
-                     <img
-                        src={pengasuh}
-                        className="image-pengasuh ms-0"
-                        alt="" />
-                  </div>
+            {/* Profil Pesantren */}
+            <div className="row" data-aos="fade-up" data-aos-duration="2000">
+               <div className="col-sm-12 col-lg-6 order-lg-2 d-flex justify-content-center align-items-center">
+                  <img src={santri} className="profil-home-image" alt="Pesantren" />
+               </div>
+               <div className="col-sm-12 col-lg-6 order-lg-1">
+                  <h2 className="profil-home-title">Profil Pesantren</h2>
+                  <hr className="profil-home-hr" />
+                  <p className="profil-home-text">
+                     Berdiri kokoh sejak 1995, Pondok Pesantren Hidayatul Mubtadi’ien adalah sebuah lembaga pendidikan Islam yang telah memberikan kontribusi besar dalam membentuk generasi muda yang berilmu, beriman, dan berakhlak mulia. Berlokasi di Jl. Inpres, Bersole, Karangpucung, Kec. Purwokerto Selatan, Kab. Banyumas, Jawa Tengah, pesantren ini menjadi rumah kedua bagi para santri yang ingin mendalami ilmu agama dan mempersiapkan diri untuk masa depan.
+
+                     Didirikan oleh K.H. Nururrohman setelah menyelesaikan pendidikan di Pondok Pesantren Lirboyo, Kediri, pesantren ini dibangun atas dasar semangat pengabdian dan keinginan kuat untuk membina generasi muda melalui pendidikan Islam yang komprehensif. Sejak awal berdirinya, Pondok Pesantren Hidayatul Mubtadi’ien konsisten mengajarkan nilai-nilai Islam rahmatan lil ‘alamin, dengan kurikulum yang seimbang antara ilmu agama, akhlak, dan wawasan luas tentang kehidupan.
+                  </p>
+                  <Link to="/profil-pesantren" className="text-decoration-none">
+                     <button className="profil-home-btn">
+                        Baca Selengkapnya
+                        <i className="bx bx-right-arrow-alt bx-sm"></i>
+                     </button>
+                  </Link>
                </div>
             </div>
+
          </div>
-      </>
+      </section>
    );
 };
 

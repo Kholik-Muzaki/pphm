@@ -3,6 +3,7 @@ import BannerPage from "../../Component/BannerPage/BannerPage";
 import Footer from "../../Component/Footer/Footer";
 import Navbar2 from "../../Component/Navbar/Navbar2";
 import "./ProfilPengasuh.css"; // Import CSS untuk styling responsif
+import pengasuh from "../../assets/Image/pengasuh.png";
 
 const ProfilPengasuh = () => {
     return (
@@ -14,26 +15,26 @@ const ProfilPengasuh = () => {
                     {/* Bagian Gambar Pengasuh */}
                     <div className="col-md-4 text-center">
                         <img
-                            src="https://via.placeholder.com/300x400?text=Foto+Pengasuh"
+                            src={pengasuh}
                             alt="Pengasuh Pesantren"
-                            className="img-fluid rounded-circle profile-img"
+                            className="img-fluid profile-img"
                         />
                     </div>
 
                     {/* Bagian Profil Pengasuh */}
                     <div className="col-md-8">
-                        <h2 className="fw-bold mb-4">KH. Ahmad Maulana</h2>
+                        <h2 className="fw-bold mb-4"> K.H. Nururrohman </h2>
                         <p className="lead">
-                            KH. Ahmad Maulana merupakan pengasuh Pondok Pesantren Al-Hikmah yang telah berdedikasi dalam
-                            dunia pendidikan Islam selama lebih dari 30 tahun. Dengan pengalaman yang luas dalam membina
-                            santri, beliau berperan aktif dalam menyebarkan ajaran Islam yang rahmatan lil alamin dan membimbing
-                            santri-santrinya menjadi insan yang berakhlak mulia.
+                            K.H. Nururrohman adalah sosok ulama yang penuh dedikasi dan kecintaan terhadap dunia pendidikan Islam. Beliau adalah pendiri Pondok Pesantren Hidayatul Mubtadi’ien, sebuah lembaga pendidikan yang kini menjadi salah satu pilar penting dalam membentuk generasi muda berilmu dan berakhlak mulia di Purwokerto Selatan, Banyumas, Jawa Tengah.
+
+                            Lahir dari perjalanan ilmu yang panjang, K.H. Nururrohman menimba ilmu di Pondok Pesantren Lirboyo, Kediri, Jawa Timur, yang terkenal dengan tradisi keilmuan Islam yang kuat dan mendalam. Setelah menyelesaikan pendidikannya pada tahun 1995, beliau mewujudkan cita-citanya untuk mendirikan pesantren sebagai wadah bagi generasi muda untuk belajar, berkembang, dan menjadi insan yang siap membangun agama, bangsa, dan negara.
+
+                            Dengan semangat yang tak pernah padam, beliau membimbing santri dengan nilai-nilai akhlakul karimah, kecintaan pada ilmu, dan komitmen untuk menyebarkan ajaran Islam rahmatan lil ‘alamin. Keteguhan hati, kebijaksanaan, dan kasih sayang beliau telah menjadi sumber inspirasi dan teladan bagi para santri dan masyarakat sekitar.
+
+
                         </p>
                         <p>
-                            Latar belakang pendidikan beliau mencakup pendidikan formal di dalam dan luar negeri, termasuk
-                            studi keislaman di Universitas Al-Azhar, Mesir. Selain itu, beliau juga aktif sebagai tokoh ulama
-                            dalam berbagai forum dakwah internasional dan memiliki komitmen untuk membangun generasi muda
-                            muslim yang berkualitas.
+                            K.H. Nururrohman percaya bahwa pendidikan bukan sekadar menghafal teks, melainkan membentuk karakter dan pemahaman mendalam akan kehidupan. Lewat kepemimpinannya, Pondok Pesantren Hidayatul Mubtadi’ien terus menjadi tempat bersemi harapan, lahirnya generasi Qurani yang berilmu dan berintegritas.
                         </p>
                     </div>
                 </div>
@@ -69,7 +70,7 @@ const ProfilPengasuh = () => {
                                 mulia dan pribadi yang bertanggung jawab."
                             </p>
                             <footer className="blockquote-footer mt-2">
-                                KH. Ahmad Maulana, Pengasuh Pondok Pesantren Al-Hikmah
+                                K.H. Nururrohman, Pengasuh Pondok Pesantren Hidayatul Mubtadi’ien
                             </footer>
                         </blockquote>
                     </div>

@@ -21,6 +21,12 @@ import notFound from '../src/admin/assets/Image/notFound.svg'
 import money from '../src/bendahara/assets/money.png'
 import admin from '../src/admin/assets/Image/admin.png'
 import logout from '../src/admin/assets/Image/logout.png'
+import bannerFix from '../src/user/assets/Image/banner.jpg'
+import bannerFix2 from '../src/user/assets/Image/banner2.jpg'
+import kitab from "../src/user/assets/Image/kitab.png"
+import sholawat from "../src/user/assets/Image/sholawat.png"
+import manakib from "../src/user/assets/Image/manakib.png"
+import santri from "../src/user/assets/Image/santri.png"
 
 const image = {
     logo,
@@ -45,7 +51,13 @@ const image = {
     notFound,
     money,
     admin,
-    logout
+    logout,
+    bannerFix,
+    bannerFix2,
+    kitab,
+    sholawat,
+    manakib,
+    santri
 }
 
 export default image;
