@@ -7,7 +7,6 @@ import Navbar2 from "../../Component/Navbar/Navbar2"
 import { useDispatch, useSelector } from "react-redux"
 import { getArticle } from "../../../admin/store/artikelSlice"
 
-
 const Artikel = () => {
     const { articles, status, error } = useSelector((state) => state.artikel);
     const dispatch = useDispatch();
