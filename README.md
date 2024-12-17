@@ -1,6 +1,4 @@
-# Creating README.md content based on the extended Getting Started instructions and other relevant details
-
-readme_content = """# 🌐 Pondok Pesantren Hidayatul Mubtadi'ien Website Front-End
+🌐 Pondok Pesantren Hidayatul Mubtadi'ien Website Front-End
 
 Welcome to the **front-end** repository for the **Pondok Pesantren Hidayatul Mubtadi'ien** website. This project serves as a digital platform to provide information, news, articles, and media galleries for the Islamic boarding school located in Central Java, Indonesia.
 
