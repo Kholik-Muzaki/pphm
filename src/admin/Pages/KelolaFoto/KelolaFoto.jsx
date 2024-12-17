@@ -146,7 +146,7 @@ const KelolaAlbum = () => {
                                                     {album.images.slice(0, 3).map((image, index) => (
                                                         <img
                                                             key={index}
-                                                            src={`http://localhost:3000/${image.src}`}
+                                                            src={`https://api.pphmbersole.site/${image.src}`}
                                                             alt={`Preview ${index + 1}`}
                                                             style={{
                                                                 width: '50px',

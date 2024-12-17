@@ -140,7 +140,7 @@ const KelolaArtikel = () => {
                                         <tr key={article.id} className='align-middle'>
                                             <td>{article.id}</td>
                                             <td>
-                                                {article.image && <img src={`http://localhost:3000/${article.image}`} alt={article.title} style={{ width: '50px', height: '50px' }} />}
+                                                {article.image && <img src={`https://api.pphmbersole.site/${article.image}`} alt={article.title} style={{ width: '50px', height: '50px' }} />}
                                             </td>
                                             <td>{article.title}</td>
                                             <td>{truncateContent(article.content, 10)}</td>
