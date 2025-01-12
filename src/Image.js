@@ -25,7 +25,7 @@ import bannerFix from '../src/user/assets/Image/banner.jpg'
 import bannerFix2 from '../src/user/assets/Image/banner2.jpg'
 import kitab from "../src/user/assets/Image/kitab.png"
 import sholawat from "../src/user/assets/Image/sholawat.png"
-import manakib from "../src/user/assets/Image/manakib.png"
+import duror from "../src/user/assets/Image/duror.png"
 import santri from "../src/user/assets/Image/santri.png"
 
 const image = {
@@ -56,7 +56,7 @@ const image = {
     bannerFix2,
     kitab,
     sholawat,
-    manakib,
+    duror,
     santri
 }
 

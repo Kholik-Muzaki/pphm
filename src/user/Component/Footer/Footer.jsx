@@ -41,7 +41,7 @@ const Footer = () => {
                      <div className="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
                         <img src={image.logo} alt="logo pphm" height="100px" className="mt-0" />
                         <p className="text">
-                           **Pondok Pesantren Hidayatul Mubtadi'ien** berdiri sejak tahun 1995 di Purwokerto Selatan, Banyumas. Dengan visi membentuk generasi beriman, bertakwa, dan berakhlak mulia, kami berkomitmen memberikan pendidikan Islam yang komprehensif dan berkualitas bagi seluruh santri.
+                           Pondok Pesantren Hidayatul Mubtadi'ien berdiri sejak tahun 1995 di Purwokerto Selatan, Banyumas. Dengan visi membentuk generasi beriman, bertakwa, dan berakhlak mulia, kami berkomitmen memberikan pendidikan Islam yang komprehensif dan berkualitas bagi seluruh santri.
                         </p>
                      </div>
 
@@ -57,24 +57,13 @@ const Footer = () => {
                         <p><Link to="/kontak" className="text-white">Kontak</Link></p>
                      </div>
 
-                     {/* Link Terkait */}
-                     <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <h6 className="text-uppercase fw-bold h6-footer">Link Terkait</h6>
-                        <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{ width: 60, backgroundColor: "#7c4dff", height: 2 }} />
-                        <p><Link to="https://kemenag.go.id" className="text-white" target="_blank" rel="noopener noreferrer">Kemenag RI</Link></p>
-                        <p><Link to="https://nu.or.id" className="text-white" target="_blank" rel="noopener noreferrer">NU Online</Link></p>
-                        <p><Link to="https://pesantren.id" className="text-white" target="_blank" rel="noopener noreferrer">Pesantren ID</Link></p>
-                        <p><Link to="https://santrijateng.id" className="text-white" target="_blank" rel="noopener noreferrer">Santri Jateng ID</Link></p>
-                     </div>
-
                      {/* Contact Section */}
                      <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <h6 className="text-uppercase fw-bold h6-footer">Kontak</h6>
                         <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{ width: 60, backgroundColor: "#7c4dff", height: 2 }} />
-                        <p><i className="fas fa-home mr-3" /> Jl. Inpres, Bersole, Purwokerto Selatan, Banyumas, Jawa Tengah</p>
-                        <p><i className="fas fa-envelope mr-3" /> pphm@gmail.com</p>
-                        <p><i className="fas fa-phone mr-3" /> +62 812 3456 7890</p>
-                        <p><i className="fas fa-print mr-3" /> +62 281 1234 5678</p>
+                        <p><i className="fas fa-home mr-3" /><br /> Jl. Inpres, Bersole, Purwokerto Selatan, Banyumas, Jawa Tengah</p>
+                        <p><i className="fas fa-envelope mr-3" /><br /> hidayatulmubtadiien087@gmail.com</p>
+                        <p><i className="fas fa-phone mr-3" /> <br /> +62 822-1199-4651</p>
                      </div>
                   </div>
                </div>
@@ -82,7 +71,7 @@ const Footer = () => {
 
             {/* Copyright Section */}
             <div className="text-center p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
-               © 2024 Hak Cipta
+               © 2025 Hak Cipta
                <Link to="/" className="text-white ms-1">Pondok Pesantren Hidayatul Mubtadi'ien</Link>
             </div>
          </footer>

@@ -17,23 +17,3 @@ hr {
    margin: 0 auto;
 }
 
-/* Visi dan Misi */
-.vision-mission {
-   text-align: left;
-   font-size: 1.1rem;
-}
-
-.vision-mission ul {
-   padding-left: 20px;
-}
-
-.vision-mission ul li {
-   margin-bottom: 10px;
-}
-
-/* Responsif */
-@media (max-width: 768px) {
-   .vision-mission ul {
-      padding-left: 15px;
-   }
-}

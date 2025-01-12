@@ -35,28 +35,6 @@ Pondok Pesantren Hidayatul Mubtadi’ien: Menginspirasi, mendidik, dan mempersia
                </div>
             </div>
 
-            {/* Visi dan Misi */}
-            <div className="row mt-5">
-               <div className="col-sm-12">
-                  <h3 className="fw-bold text-center h3-title-profil">Visi dan Misi</h3>
-                  <hr />
-                  <div className="vision-mission">
-                     <h4 className="fw-bold">Visi:</h4>
-                     <p>
-                        Mewujudkan generasi muslim yang beriman, bertaqwa, berilmu, dan berakhlak mulia serta siap berkontribusi
-                        dalam membangun peradaban Islam yang rahmatan lil 'alamin.
-                     </p>
-                     <h4 className="fw-bold mt-3">Misi:</h4>
-                     <ul>
-                        <li>Memberikan pendidikan Islam yang holistik dan menyeluruh.</li>
-                        <li>Mengembangkan potensi santri dalam bidang akademik dan keterampilan hidup.</li>
-                        <li>Mendidik santri untuk menjadi pemimpin yang bertanggung jawab dan amanah.</li>
-                        <li>Menanamkan kecintaan terhadap ilmu pengetahuan dan budaya Islami.</li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-
             {/* fasilitas Pesantren */}
             <FasilitasPesantren />
             {/* Program Unggulan */}

@@ -143,10 +143,15 @@ const KelolaArtikel = () => {
                                                 {article.image && <img src={`https://api.pphmbersole.site/${article.image}`} alt={article.title} style={{ width: '50px', height: '50px' }} />}
                                             </td>
                                             <td>{article.title}</td>
-                                            <td>{truncateContent(article.content, 10)}</td>
+                                            <td>
+                                                <div
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: truncateContent(article.content, 10),
+                                                    }}
+                                                />
+                                            </td>
                                             <td>{article.author}</td>
-                                            <td>{article.date}</td>
-
+                                            <td>{article.date.split("T")[0]}</td>
                                             <td className='action-buttons'>
                                                 <Link to={`/admin/edit-artikel/${article.id}`}>
                                                     <button className='btn btn-outline-warning me-2'><i className='bx bxs-edit-alt' /></button>

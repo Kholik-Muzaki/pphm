@@ -39,28 +39,6 @@ const ProfilPengasuh = () => {
                     </div>
                 </div>
 
-                {/* Visi dan Misi */}
-                <div className="row mt-5">
-                    <div className="col-sm-12">
-                        <h3 className="fw-bold text-center">Visi dan Misi</h3>
-                        <hr />
-                        <div className="vision-mission">
-                            <h4 className="fw-bold">Visi:</h4>
-                            <p>
-                                Mewujudkan generasi muda yang beriman, bertaqwa, berakhlak mulia, dan memiliki kompetensi
-                                dalam berbagai bidang ilmu, sehingga mampu berkontribusi positif untuk agama, bangsa, dan negara.
-                            </p>
-                            <h4 className="fw-bold mt-3">Misi:</h4>
-                            <ul>
-                                <li>Memberikan pendidikan Islam yang komprehensif dan berkualitas.</li>
-                                <li>Membina santri untuk memiliki akhlak yang mulia dan jiwa kepemimpinan.</li>
-                                <li>Mengembangkan potensi santri di bidang akademik, seni, dan keterampilan.</li>
-                                <li>Menjaga tradisi keilmuan Islam yang berdasarkan Al-Quran dan Hadis.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
                 {/* Quote atau Kata Bijak */}
                 <div className="row mt-5">
                     <div className="col-sm-12 text-center">

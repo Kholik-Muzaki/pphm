@@ -17,15 +17,13 @@ const KontakInfo = () => {
                     <div className="col-sm-12 col-md-12 col-lg-4 mt-3">
                         <i className='bx bxs-envelope bx-md bx-border-circle bx-tada'></i>
                         <h4 className="name-text mt-3 mb-3">Email</h4>
-                        <p className='text-center'>hidayatulmubtadiienPaBersole@gmail.com</p>
-                        <p className='text-center'>hidayatulmubtadiienPiBersole@gmail.com</p>
+                        <p className='text-center'>hidayatulmubtadiien087gmail.com</p>
                     </div>
 
                     <div className="col-sm-12 col-md-12 col-lg-4 mt-3">
                         <i className='bx bxl-whatsapp bx-md bx-border-circle bx-tada'></i>
                         <h4 className="name-text mt-3 mb-3">WhatsApp</h4>
-                        <p className='text-center'>+628123456789</p>
-                        <p className='text-center'>+628987654321</p>
+                        <p className='text-center'>+62 822-1199-4651</p>
                     </div>
 
                     <div className="col-sm-12 col-md-12 col-lg-4 mt-3">
