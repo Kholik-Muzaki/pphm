@@ -141,7 +141,13 @@ const KelolaBerita = () => {
                                                 {berita.image && <img src={`https://api.pphmbersole.site/${berita.image}`} alt={berita.title} style={{ width: '50px', height: '50px' }} />}
                                             </td>
                                             <td>{berita.title}</td>
-                                            <td>{truncateContent(berita.content, 10)}</td>
+                                            <td>
+                                                <div
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: truncateContent(berita.content, 10),
+                                                    }}
+                                                />
+                                            </td>
                                             <td>{berita.author}</td>
                                             <td>{berita.date.split("T")[0]}</td>
 

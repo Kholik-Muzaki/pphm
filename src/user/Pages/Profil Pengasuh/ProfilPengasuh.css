@@ -21,20 +21,6 @@ h3 {
    line-height: 1.6;
 }
 
-.vision-mission {
-   text-align: left;
-   font-size: 1.1rem;
-}
-
-/* Style untuk ul */
-.vision-mission ul {
-   padding-left: 20px;
-}
-
-.vision-mission ul li {
-   margin-bottom: 10px;
-}
-
 .blockquote {
    font-size: 1.5rem;
    font-style: italic;

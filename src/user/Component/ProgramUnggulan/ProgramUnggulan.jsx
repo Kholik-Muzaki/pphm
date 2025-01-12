@@ -14,19 +14,19 @@ const ProgramUnggulan = () => {
             "id": 1,
             "image": image.kitab,
             "title": "Kajian Kitab Kuning",
-            "text": "Dalam pengajian Kitab Kuning, kami menggali khazanah ilmu yang telah diwariskan para ulama. Diadakan secara berkala setiap bulan dan tahun, pengajian ini menjadi jembatan bagi para santri dan masyarakat untuk memahami lebih dalam tentang akidah, fiqih, tasawuf, dan akhlak."
+            "text": "Kajian Kitab Kuning adalah upaya menggali warisan keilmuan para ulama. Dalam kajian ini, santri diajak memahami akidah, fiqih, tasawuf, dan akhlak secara mendalam, menjadi bekal bagi kehidupan yang berlandaskan ilmu dan iman."
         },
         {
             "id": 2,
             "image": image.sholawat,
             "title": "Sholawat Nabi",
-            "text": "Melantunkan Sholawat Nabi bukan sekadar ritual, melainkan wujud cinta kita kepada Baginda Rasulullah SAW. Melalui acara ini, kami mengajak Anda untuk bersama-sama memanjatkan sholawat dengan penuh khusyuk dan harap, meraih keberkahan dan syafaat beliau di dunia dan akhirat."
+            "text": "Sholawat Nabi adalah wujud cinta kepada Rasulullah ﷺ. Dalam acara ini, kami bersama-sama melantunkan sholawat dengan penuh khusyuk untuk meraih keberkahan, ketenangan, dan syafaat beliau di dunia dan akhirat."
         },
         {
             "id": 3,
-            "image": image.manakib,
-            "title": "Manakib",
-            "text": "Manakib adalah pengajian khusus yang membahas kisah dan keteladanan para wali Allah, khususnya Syaikh Abdul Qadir Al-Jailani. Melalui kegiatan ini, kami mengenang jejak langkah para kekasih Allah yang penuh kebijaksanaan, kesabaran, dan keikhlasan."
+            "image": image.duror,
+            "title": "Pembacaan Maulid Simtud Duror",
+            "text": "Melalui pembacaan Maulid Simtud Duror, kami menghidupkan cinta kepada Rasulullah ﷺ dengan lantunan syair yang penuh makna, mempererat ukhuwah, dan menjemput keberkahan."
         }
     ];
     return (

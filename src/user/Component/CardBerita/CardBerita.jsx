@@ -12,14 +12,16 @@ const CardBerita = ({ data }) => {
                                 <img src={`https://api.pphmbersole.site/${item.image}`} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title text-title">{item.title}</h5>
-                                    <p className="card-text text-dark">
-                                        {item.content.slice(0, 100)}...
-                                        <br />
-                                    </p>
+                                    <div
+                                        className="card-text text-dark"
+                                        dangerouslySetInnerHTML={{
+                                            __html: item.content.slice(0, 100) + '...',
+                                        }}
+                                    />
                                     <Link to={`/berita/${item.id}`} className="read-more"> Read More...</Link>
                                 </div>
                                 <div className="card-footer d-flex justify-content-between">
-                                    <p className='text-footer'>{item.date}</p>
+                                    <p className='text-footer'>{item.date.split("T")[0]}</p>
                                     <p className='text-footer'>Author: {item.author}</p>
                                 </div>
                             </div>
