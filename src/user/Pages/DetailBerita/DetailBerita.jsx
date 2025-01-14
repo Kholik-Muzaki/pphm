@@ -55,9 +55,13 @@ const DetailBerita = () => {
             <div className="container mt-2">
                 <div className="row">
                     <div className="col">
-                        <img src={`http://localhost:3000/${beritaDetail.image}`} alt={beritaDetail.title} className="img-fluid image-detail" />
+                        <img src={`https://api.pphmbersole.site/${beritaDetail.image}`} alt={beritaDetail.title} className="img-fluid image-detail" />
                         <h1 className="fw-bold h1-title-detail">{beritaDetail.title}</h1>
-                        <p className="mt-3">{beritaDetail.content}</p>
+                        <p className="mt-3"
+                            dangerouslySetInnerHTML={{
+                                __html: item.content.slice(0, 100) + '...',
+                            }}
+                        />
                         <p><strong>Author: </strong>{beritaDetail.author}</p>
                         <p><strong>Date: </strong>{beritaDetail.date}</p>
                     </div>

@@ -55,9 +55,13 @@ const DetailArtikel = () => {
             <div className="container mt-2">
                 <div className="row">
                     <div className="col">
-                        <img src={`http://localhost:3000/${artikelDetail.image}`} alt={artikelDetail.title} className="img-fluid image-detail" />
+                        <img src={`https://api.pphmbersole.site/${artikelDetail.image}`} alt={artikelDetail.title} className="img-fluid image-detail" />
                         <h1 className="fw-bold h1-title-detail">{artikelDetail.title}</h1>
-                        <p className="mt-3">{artikelDetail.content}</p>
+                        <p className="mt-3"
+                            dangerouslySetInnerHTML={{
+                                __html: item.content
+                            }}
+                        />
                         <p><strong>Author: </strong>{artikelDetail.author}</p>
                         <p><strong>Date: </strong>{artikelDetail.date}</p>
                     </div>
