@@ -59,7 +59,7 @@ const DetailBerita = () => {
                         <h1 className="fw-bold h1-title-detail">{beritaDetail.title}</h1>
                         <p className="mt-3"
                             dangerouslySetInnerHTML={{
-                                __html: item.content.slice(0, 100) + '...',
+                                __html: beritaDetail.content.slice(0, 100) + '...',
                             }}
                         />
                         <p><strong>Author: </strong>{beritaDetail.author}</p>

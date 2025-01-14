@@ -59,7 +59,7 @@ const DetailArtikel = () => {
                         <h1 className="fw-bold h1-title-detail">{artikelDetail.title}</h1>
                         <p className="mt-3"
                             dangerouslySetInnerHTML={{
-                                __html: item.content
+                                __html: artikelDetail.content
                             }}
                         />
                         <p><strong>Author: </strong>{artikelDetail.author}</p>
