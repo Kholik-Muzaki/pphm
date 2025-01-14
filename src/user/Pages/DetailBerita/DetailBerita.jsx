@@ -43,7 +43,7 @@ const DetailBerita = () => {
             <div>
                 <Navbar2 />
                 <BannerPage label="Berita Tidak Ditemukan" />
-                <h1 className="text-center mt-5">Berita Tidak Ditemukan!</h1>
+                <h1 className="text-center mt-5">Berita Tidak Ditemukan!!</h1>
                 <Footer />
             </div>
         );
